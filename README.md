@@ -77,11 +77,3 @@ El sistema utiliza una base de datos relacional con las siguientes tablas princi
 3. **Sincronización de datos:**
    - Los datos se almacenan localmente en el dispositivo y se sincronizan con el servidor una vez que se detecta una conexión a Internet.
 
-## Contribuciones
-
-Si deseas contribuir a este proyecto:
-
-1. Haz un fork del repositorio.
-2. Crea una rama para tu funcionalidad:
-   ```bash
-   git checkout -b feature/nueva-funcionalidad
