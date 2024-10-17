@@ -57,7 +57,7 @@ El sistema utiliza una base de datos relacional con las siguientes tablas princi
 1. **Instalación de la aplicación móvil:**
    - Clona el repositorio en tu máquina local:
      ```bash
-     git clone https://github.com/tu_usuario/BioTech-Monitoring.git
+     git clone https://github.com/Acortes1403/SecurePath
      ```
    - Compila la aplicación en Android Studio y ejecuta en un dispositivo o emulador compatible.
 
