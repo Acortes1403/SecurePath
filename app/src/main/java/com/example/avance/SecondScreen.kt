@@ -22,12 +22,12 @@ import androidx.navigation.NavController
 
 @Composable
 fun SecondScreen(navController: NavController) {
-    var email by remember { mutableStateOf("example@gmail.com") }
-    var password by remember { mutableStateOf("example123") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.vista1),
+            painter = painterResource(id = R.drawable.vista1), // Asegúrate de que la imagen exista
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -37,25 +37,25 @@ fun SecondScreen(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp), // Ajusta el padding general para el contenido
-            contentAlignment = Alignment.TopStart // Alinea el botón en la esquina superior izquierda
+                .padding(16.dp),
+            contentAlignment = Alignment.TopStart
         ) {
             Button(
                 onClick = { navController.popBackStack() },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent, // Fondo transparente
-                    contentColor = Color.White // Texto blanco
+                    containerColor = Color.Transparent,
+                    contentColor = Color.White
                 ),
-                modifier = Modifier.offset(x = (-10).dp) // Desplazarlo más a la izquierda con un offset negativo
+                modifier = Modifier.offset(x = (-10).dp)
             ) {
-                Text("<") // Texto del botón de regreso
+                Text("<")
             }
         }
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 16.dp, vertical = 64.dp), // Ajuste de padding para el contenido general
+                .padding(horizontal = 16.dp, vertical = 64.dp),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Top
         ) {
@@ -63,7 +63,7 @@ fun SecondScreen(navController: NavController) {
                 text = "Bienvenido",
                 fontSize = 40.sp,
                 color = Color.White,
-                fontWeight = FontWeight.Bold,  // Grosor del texto
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(top = 105.dp)
             )
 
@@ -71,16 +71,16 @@ fun SecondScreen(navController: NavController) {
                 text = "Inicia Sesión",
                 fontSize = 28.sp,
                 color = Color.Black,
-                fontWeight = FontWeight.SemiBold,  // Grosor del texto
+                fontWeight = FontWeight.SemiBold,
                 modifier = Modifier
-                    .padding(top = 115.dp)
+                    .padding(top = 110.dp)
                     .fillMaxWidth()
             )
 
             Text(
                 text = "Email",
                 fontSize = 16.sp,
-                color = Color.White,
+                color = Color.Black,
                 modifier = Modifier
                     .padding(top = 24.dp)
                     .fillMaxWidth()
@@ -90,13 +90,14 @@ fun SecondScreen(navController: NavController) {
             TextField(
                 value = email,
                 onValueChange = { email = it },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
             )
 
             Text(
                 text = "Contraseña",
                 fontSize = 16.sp,
-                color = Color.White,
+                color = Color.Black,
                 modifier = Modifier
                     .padding(top = 24.dp)
                     .fillMaxWidth()
@@ -107,7 +108,8 @@ fun SecondScreen(navController: NavController) {
                 value = password,
                 onValueChange = { password = it },
                 modifier = Modifier.fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation()
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
             )
 
             // Row para el botón "Olvidaste la contraseña?"
@@ -118,14 +120,14 @@ fun SecondScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.End
             ) {
                 Button(
-                    onClick = { /* Navegar a la pantalla de recuperar contraseña */ },
+                    onClick = { navController.navigate("olvidaste_cont_screen") },
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = Color.Black
+                        containerColor = Color.Transparent, // Fondo transparente
+                        contentColor = Color.Black // Texto negro
                     ),
-                    modifier = Modifier.padding(start = 8.dp)
+                    modifier = Modifier.padding(top = 16.dp)
                 ) {
-                    Text(text = "Olvidaste la contraseña?", fontSize = 14.sp)
+                    Text("Olvidaste tu contraseña?", fontSize = 14.sp)
                 }
             }
 

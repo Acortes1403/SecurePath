@@ -1,6 +1,5 @@
 package com.example.avance
 
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,7 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -29,7 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
-
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +53,9 @@ fun Navigation() {
         composable("first_screen") { FirstScreen(navController) }
         composable("second_screen") { SecondScreen(navController) }
         composable("third_screen") { ThirdScreen(navController) }
+        composable("olvidaste_cont_screen") { OlvidasteContScreen(navController) }
+        composable("verificar_screen") { VerificarScreen(navController) }
+
     }
 }
 
@@ -72,41 +76,33 @@ fun FirstScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom
         ) {
+            // Botón de Iniciar Sesión
             Button(
                 onClick = { navController.navigate("second_screen") },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF4A5E23), // Verde militar
-                    contentColor = Color.White // Texto blanco
+                    containerColor = Color(0xFF4A5E23),
+                    contentColor = Color.White
                 ),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 24.dp) // Aumenta el padding inferior para subir los botones
+                    .padding(bottom = 8.dp)
+                    .offset(y = (-70).dp)
             ) {
-                Text("Iniciar Sesión")
+                Text("Iniciar Sesión", fontSize = 20.sp)
             }
 
+            // Botón de Crear Cuenta
             Button(
                 onClick = { navController.navigate("third_screen") },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent, // Fondo transparente
-                    contentColor = Color.Black // Texto negro
+                    containerColor = Color.Transparent,
+                    contentColor = Color.Black
                 ),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 178.dp) // Aumenta el padding inferior para que los botones suban más
+                    .padding(bottom = 8.dp)
+                    .offset(y = (-70).dp)
             ) {
-                Text("Crear Cuenta")
+                Text("Crear Cuenta", fontSize = 20.sp)
             }
         }
-    }
-}
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AvanceTheme {
-        FirstScreen(rememberNavController())
     }
 }
