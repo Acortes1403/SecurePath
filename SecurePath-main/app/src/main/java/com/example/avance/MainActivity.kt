@@ -31,6 +31,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import com.example.avance.tiposformularios.FormSelect1
+import com.example.avance.tiposformularios.FormSelect2
+import com.example.avance.tiposformularios.FormSelect3
+import com.example.avance.tiposformularios.FormSelect4
+import com.example.avance.tiposformularios.FormSelect5
+import com.example.avance.tiposformularios.FormSelect6
+import com.example.avance.tiposformularios.FormSelect7
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +64,14 @@ fun Navigation() {
         composable("verificar_screen") { VerificarScreen(navController) }
         composable("hola_samantha") { HolaSamantha(navController) } // Asegúrate de pasar el navController
         composable("perfil") { Perfil() } // Nueva pantalla de perfil
+        composable("formulario_activity") { FormularioScreen(navController) }
+        composable("form_1") { FormSelect1(navController) }
+        composable("form_2") { FormSelect2(navController) }
+        composable("form_3") { FormSelect3(navController) }
+        composable("form_4") { FormSelect4(navController) }
+        composable("form_5") { FormSelect5(navController) }
+        composable("form_6") { FormSelect6(navController) }
+        composable("form_7") { FormSelect7(navController) }
     }
 }
 

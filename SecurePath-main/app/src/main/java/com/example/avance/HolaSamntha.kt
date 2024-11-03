@@ -86,7 +86,7 @@ fun HolaSamantha(navController: NavController) { // Asegúrate de recibir el nav
 
             // Circular Button
             IconButton(
-                onClick = { /* Action for + button */ },
+                onClick = { navController.navigate("formulario_activity") },
                 modifier = Modifier
                     .size(56.dp) // Size of the button
                     .background(Color(0xFF4A4B2A), shape = CircleShape) // Military green color
