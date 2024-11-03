@@ -1,6 +1,5 @@
 package com.example.avance.tiposformularios
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -10,12 +9,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.avance.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -100,7 +97,7 @@ fun FormSelect4(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             // Tipos de Cultivo
-            FormTextField("Tipos de Cultivo", tipoCultivo) { tipoCultivo = it }
+            FormTextFieldS4("Tipos de Cultivo", tipoCultivo) { tipoCultivo = it }
 
             Spacer(modifier = Modifier.height(16.dp))
 

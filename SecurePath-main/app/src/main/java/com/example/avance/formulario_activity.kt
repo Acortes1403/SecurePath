@@ -209,7 +209,6 @@ fun FormularioScreen(navController: NavController) {
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormTextField(
     label: String,
