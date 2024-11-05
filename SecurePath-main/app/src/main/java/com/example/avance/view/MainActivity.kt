@@ -1,4 +1,4 @@
-package com.example.avance
+package com.example.avance.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,8 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -31,16 +28,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
-<<<<<<< HEAD
-import com.example.avance.tiposformularios.FormSelect1
-import com.example.avance.tiposformularios.FormSelect2
-import com.example.avance.tiposformularios.FormSelect3
-import com.example.avance.tiposformularios.FormSelect4
-import com.example.avance.tiposformularios.FormSelect5
-import com.example.avance.tiposformularios.FormSelect6
-import com.example.avance.tiposformularios.FormSelect7
-=======
->>>>>>> 8beac99b33b40d2a5048ab9b4da9ec1c7cebea6b
+import com.example.avance.R
+import com.example.avance.view.tiposformularios.FormSelect2
+import com.example.avance.view.tiposformularios.FormSelect1
+import com.example.avance.view.tiposformularios.FormSelect3
+import com.example.avance.view.tiposformularios.FormSelect4
+import com.example.avance.view.tiposformularios.FormSelect5
+import com.example.avance.view.tiposformularios.FormSelect6
+import com.example.avance.view.tiposformularios.FormSelect7
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +63,6 @@ fun Navigation() {
         composable("verificar_screen") { VerificarScreen(navController) }
         composable("hola_samantha") { HolaSamantha(navController) } // Asegúrate de pasar el navController
         composable("perfil") { Perfil() } // Nueva pantalla de perfil
-<<<<<<< HEAD
         composable("formulario_activity") { FormularioScreen(navController) }
         composable("form_1") { FormSelect1(navController) }
         composable("form_2") { FormSelect2(navController) }
@@ -76,8 +71,6 @@ fun Navigation() {
         composable("form_5") { FormSelect5(navController) }
         composable("form_6") { FormSelect6(navController) }
         composable("form_7") { FormSelect7(navController) }
-=======
->>>>>>> 8beac99b33b40d2a5048ab9b4da9ec1c7cebea6b
     }
 }
 

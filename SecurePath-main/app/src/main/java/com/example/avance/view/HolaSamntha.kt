@@ -1,4 +1,4 @@
-package com.example.avance
+package com.example.avance.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.navigation.NavController
+import com.example.avance.R
 
 @Composable
 fun HolaSamantha(navController: NavController) { // Asegúrate de recibir el navController
@@ -86,11 +87,7 @@ fun HolaSamantha(navController: NavController) { // Asegúrate de recibir el nav
 
             // Circular Button
             IconButton(
-<<<<<<< HEAD
                 onClick = { navController.navigate("formulario_activity") },
-=======
-                onClick = { /* Action for + button */ },
->>>>>>> 8beac99b33b40d2a5048ab9b4da9ec1c7cebea6b
                 modifier = Modifier
                     .size(56.dp) // Size of the button
                     .background(Color(0xFF4A4B2A), shape = CircleShape) // Military green color
