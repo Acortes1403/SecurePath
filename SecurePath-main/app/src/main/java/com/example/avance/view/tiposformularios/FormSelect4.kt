@@ -45,8 +45,8 @@ fun FormSelect4(navController: NavController, viewModel: FormularioViewModel = v
             Text("Seguimiento", fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("Si", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("No", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
+                ObservationRadioButton("Si", formData.yesandno) { viewModel.updateYesNo(it) }
+                ObservationRadioButton("No", formData.yesandno) { viewModel.updateYesNo(it) }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -65,16 +65,16 @@ fun FormSelect4(navController: NavController, viewModel: FormularioViewModel = v
             Text("Cobertura", fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("BD", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("RA", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("RB", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("PA", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("PL", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("CP", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("CT", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("VH", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("TD", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("IF", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
+                ObservationRadioButton("BD", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("RA", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("RB", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("PA", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("PL", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("CP", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("CT", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("VH", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("TD", formData.observationType) { viewModel.updateObservationType(it) }
+                ObservationRadioButton("IF", formData.observationType) { viewModel.updateObservationType(it) }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -83,14 +83,14 @@ fun FormSelect4(navController: NavController, viewModel: FormularioViewModel = v
             Text("Disturbio", fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("Inundación", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Quema", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Tala", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Erosión", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Minería", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Carretera", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Más plantas acuáticas", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Otro", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
+                ObservationRadioButton("Inundación", formData.disturbance) { viewModel.updateDisturbance(it) }
+                ObservationRadioButton("Quema", formData.disturbance) { viewModel.updateDisturbance(it) }
+                ObservationRadioButton("Tala", formData.disturbance) { viewModel.updateDisturbance(it) }
+                ObservationRadioButton("Erosión", formData.disturbance) { viewModel.updateDisturbance(it) }
+                ObservationRadioButton("Minería", formData.disturbance) { viewModel.updateDisturbance(it) }
+                ObservationRadioButton("Carretera", formData.disturbance) { viewModel.updateDisturbance(it) }
+                ObservationRadioButton("Más plantas acuáticas", formData.disturbance) { viewModel.updateDisturbance(it) }
+                ObservationRadioButton("Otro", formData.disturbance) { viewModel.updateDisturbance(it) }
             }
 
             Spacer(modifier = Modifier.height(16.dp))

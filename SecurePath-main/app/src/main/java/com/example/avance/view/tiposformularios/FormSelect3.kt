@@ -45,10 +45,10 @@ fun FormSelect3(navController: NavController, viewModel: FormularioViewModel = v
             Text("Zona", fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("Bosque", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Arreglo Agroforestal", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Cultivos Transitorios", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Cultivos Permanentes", formData.selectedObservation) { viewModel.updateSelectedObservation(it) }
+                ObservationRadioButton("Bosque", formData.zone) { viewModel.updateZone(it) }
+                ObservationRadioButton("Arreglo Agroforestal", formData.zone) { viewModel.updateZone(it) }
+                ObservationRadioButton("Cultivos Transitorios", formData.zone) { viewModel.updateZone(it) }
+                ObservationRadioButton("Cultivos Permanentes", formData.zone) { viewModel.updateZone(it) }
             }
 
             Spacer(modifier = Modifier.height(16.dp))

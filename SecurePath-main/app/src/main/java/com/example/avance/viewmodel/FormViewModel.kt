@@ -87,4 +87,11 @@ class FormularioViewModel : ViewModel() {
     fun updateMinHumidity(minHumidity: String) { formData.value = formData.value.copy(minHumidity = minHumidity) }
 
     fun updateCreekLevel(creekLevel: String) { formData.value = formData.value.copy(creekLevel = creekLevel) }
+
+    fun updateObservationType(selectedObservationType: String) { formData.value = formData.value.copy(observationType = selectedObservationType) }
+
+    fun updateYesNo(yesandno: String) { formData.value = formData.value.copy(yesandno = yesandno) }
+
+    fun updateDisturbance(disturbance: String) { formData.value = formData.value.copy(disturbance = disturbance) }
+
 }

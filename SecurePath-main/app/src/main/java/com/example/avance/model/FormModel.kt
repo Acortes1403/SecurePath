@@ -41,8 +41,9 @@ data class FormData(
     val minHumidity: String = "",
     val creekLevel: String = "",
     val observations: String = "",
-
-
+    val observationType: String = "",
+    val yesandno: String = "",
+    val disturbance: String = ""
 
 )
 
