@@ -47,6 +47,6 @@ data class FormData(
 
 )
 
-enum class ObservationType {
+//enum class ObservationType {
     //LA_VIO, HUELLA, RASTRO, CACERIA, LE_DIJERON
-}
+//}
