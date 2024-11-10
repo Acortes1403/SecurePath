@@ -46,7 +46,3 @@ data class FormData(
     val disturbance: String = ""
 
 )
-
-//enum class ObservationType {
-    //LA_VIO, HUELLA, RASTRO, CACERIA, LE_DIJERON
-//}

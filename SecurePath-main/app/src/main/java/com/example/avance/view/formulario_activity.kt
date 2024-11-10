@@ -17,20 +17,23 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.avance.R
+import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormularioScreen(
     navController: NavController,
-    viewModel: FormularioViewModel = viewModel() // Usa el ViewModel
+    viewModel: FormularioViewModel = viewModel(),
+    fontSizeViewModel: FontSizeViewModel = viewModel() // Usa el ViewModel para el fontSize
 ) {
     val formData = viewModel.formData.value
+    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Formulario", color = Color.White) },
+                title = { Text("Formulario", color = Color.White, fontSize = fontSize.sp) },
                 navigationIcon = {
                     Text(
                         text = "<",
@@ -54,8 +57,8 @@ fun FormularioScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
         ) {
-            FormTextField("Nombre", formData.name, onValueChange = viewModel::updateName)
-            FormTextField("Fecha", formData.date, onValueChange = viewModel::updateDate)
+            FormTextField("Nombre", formData.name, fontSize = fontSize, onValueChange = viewModel::updateName)
+            FormTextField("Fecha", formData.date, fontSize = fontSize, onValueChange = viewModel::updateDate)
 
             // Campo de Localidad con botón de ícono
             Row(
@@ -65,6 +68,7 @@ fun FormularioScreen(
                 FormTextField(
                     "Localidad",
                     formData.location,
+                    fontSize = fontSize,
                     onValueChange = viewModel::updateLocation,
                     modifier = Modifier.weight(1f)
                 )
@@ -79,13 +83,13 @@ fun FormularioScreen(
                 }
             }
 
-            FormTextField("Hora", formData.time, onValueChange = viewModel::updateTime)
-            FormTextField("Número de Transecto", formData.transectNumber, onValueChange = viewModel::updateTransectNumber)
+            FormTextField("Hora", formData.time, fontSize = fontSize, onValueChange = viewModel::updateTime)
+            FormTextField("Número de Transecto", formData.transectNumber, fontSize = fontSize, onValueChange = viewModel::updateTransectNumber)
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Sección de Estado del Tiempo
-            Text("Estado del Tiempo", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Estado del Tiempo", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -99,16 +103,16 @@ fun FormularioScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             // Sección de Tipo de Registro
-            Text("Tipo de Registro", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Tipo de Registro", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                SelectableOption("Fauna en Transectos", formData.selectedRegistro) { viewModel.updateRegistro("Fauna en Transectos") }
-                SelectableOption("Fauna en Punto de Conteo", formData.selectedRegistro) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
-                SelectableOption("Fauna Búsqueda Libre", formData.selectedRegistro) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
-                SelectableOption("Validación de Cobertura", formData.selectedRegistro) { viewModel.updateRegistro("Validación de Cobertura") }
-                SelectableOption("Parcela de Vegetación", formData.selectedRegistro) { viewModel.updateRegistro("Parcela de Vegetación") }
-                SelectableOption("Cámaras Trampa", formData.selectedRegistro) { viewModel.updateRegistro("Cámaras Trampa") }
-                SelectableOption("Variables Climáticas", formData.selectedRegistro) { viewModel.updateRegistro("Variables Climáticas") }
+                SelectableOption("Fauna en Transectos", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Transectos") }
+                SelectableOption("Fauna en Punto de Conteo", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
+                SelectableOption("Fauna Búsqueda Libre", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
+                SelectableOption("Validación de Cobertura", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Validación de Cobertura") }
+                SelectableOption("Parcela de Vegetación", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Parcela de Vegetación") }
+                SelectableOption("Cámaras Trampa", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Cámaras Trampa") }
+                SelectableOption("Variables Climáticas", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Variables Climáticas") }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -129,21 +133,21 @@ fun FormularioScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
             ) {
-                Text("SIGUIENTE", color = Color.White)
+                Text("SIGUIENTE", color = Color.White, fontSize = fontSize.sp)
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormTextField(label: String, value: String, modifier: Modifier = Modifier, onValueChange: (String) -> Unit) {
+fun FormTextField(label: String, value: String, fontSize: Float, modifier: Modifier = Modifier, onValueChange: (String) -> Unit) {
     TextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text(label) },
+        label = { Text(label, fontSize = fontSize.sp) },
         modifier = modifier.fillMaxWidth().padding(4.dp),
-        singleLine = true
+        singleLine = true,
+        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
     )
 }
 
@@ -159,7 +163,7 @@ fun WeatherIcon(iconId: Int, description: String, onClick: () -> Unit = {}) {
 }
 
 @Composable
-fun SelectableOption(label: String, selectedOption: String?, onSelected: (String) -> Unit) {
+fun SelectableOption(label: String, selectedOption: String?, fontSize: Float, onSelected: (String) -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -171,6 +175,7 @@ fun SelectableOption(label: String, selectedOption: String?, onSelected: (String
             selected = (label == selectedOption),
             onClick = { onSelected(label) }
         )
-        Text(label, fontSize = 14.sp)
+        Text(label, fontSize = fontSize.sp)
     }
 }
+

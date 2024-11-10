@@ -2,10 +2,6 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-<<<<<<< HEAD
-      <SelectionState runConfigName="avance.app">
-        <option name="selectionMode" value="DROPDOWN" />
-=======
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
         <DropdownSelection timestamp="2024-10-17T19:10:46.414858100Z">
@@ -16,7 +12,6 @@
           </Target>
         </DropdownSelection>
         <DialogSelection />
->>>>>>> 125ae02a663cc95df0c4ded35894e3c2a040e12c
       </SelectionState>
     </selectionStates>
   </component>

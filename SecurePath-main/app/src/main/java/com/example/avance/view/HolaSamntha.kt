@@ -117,19 +117,27 @@ fun HolaSamantha(navController: NavController) { // Asegúrate de recibir el nav
             ) {
                 // Home Button
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(onClick = { /* Home action */ }, iconResId = R.drawable.ic_home)
+                    CustomIconButton(onClick = {
+                        navController.navigate("hola_samantha")
+                    }, iconResId = R.drawable.ic_home)
                     Text(text = "Inicio", fontSize = 12.sp, color = Color.Black)
                 }
 
                 // Search Button
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(onClick = { /* Search action */ }, iconResId = R.drawable.ic_search)
+                    CustomIconButton(onClick = {
+                        navController.navigate("search_todos")
+                    }, iconResId = R.drawable.ic_search)
                     Text(text = "Buscar", fontSize = 12.sp, color = Color.Black)
                 }
 
                 // Settings Button
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(onClick = { /* Settings action */ }, iconResId = R.drawable.ic_settings)
+                    CustomIconButton(onClick = {
+                        if (navController.currentDestination?.route != "settings") {
+                            navController.navigate("settings")
+                        }
+                    }, iconResId = R.drawable.ic_settings)
                     Text(text = "Configuración", fontSize = 12.sp, color = Color.Black)
                 }
             }

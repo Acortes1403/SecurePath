@@ -19,17 +19,23 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.avance.R
+import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormSelect5(navController: NavController, viewModel: FormularioViewModel = viewModel()) {
+fun FormSelect5(
+    navController: NavController,
+    viewModel: FormularioViewModel = viewModel(),
+    fontSizeViewModel: FontSizeViewModel = viewModel() // Obtenemos fontSize desde FontSizeViewModel
+) {
     val formData = viewModel.formData.value
+    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Parcela de Vegetación", color = Color.White) },
+                title = { Text("Parcela de Vegetación", color = Color.White, fontSize = fontSize.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFA4C639)
                 )
@@ -44,12 +50,12 @@ fun FormSelect5(navController: NavController, viewModel: FormularioViewModel = v
                 .verticalScroll(rememberScrollState())
         ) {
             // Campo de Código
-            FormTextField("Código", formData.commonName) { viewModel.updateCommonName(it) }
+            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Cuadrante
-            Text("Cuadrante", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Cuadrante", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
 
             // Primera fila de cuadrantes: A y B
@@ -57,10 +63,10 @@ fun FormSelect5(navController: NavController, viewModel: FormularioViewModel = v
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                QuadrantButton(label = "A", isSelected = formData.selectedObservation == "A") {
+                QuadrantButton(label = "A", isSelected = formData.selectedObservation == "A", fontSize) {
                     viewModel.updateSelectedObservation("A")
                 }
-                QuadrantButton(label = "B", isSelected = formData.selectedObservation == "B") {
+                QuadrantButton(label = "B", isSelected = formData.selectedObservation == "B", fontSize) {
                     viewModel.updateSelectedObservation("B")
                 }
             }
@@ -72,106 +78,81 @@ fun FormSelect5(navController: NavController, viewModel: FormularioViewModel = v
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                QuadrantButton(label = "C", isSelected = formData.selectedObservation == "C") {
-                    viewModel.updateSelectedObservation("C")
-                }
-                QuadrantButton(label = "D", isSelected = formData.selectedObservation == "D") {
-                    viewModel.updateSelectedObservation("D")
-                }
-                QuadrantButton(label = "E", isSelected = formData.selectedObservation == "E") {
-                    viewModel.updateSelectedObservation("E")
-                }
-                QuadrantButton(label = "F", isSelected = formData.selectedObservation == "F") {
-                    viewModel.updateSelectedObservation("F")
-                }
-                QuadrantButton(label = "G", isSelected = formData.selectedObservation == "G") {
-                    viewModel.updateSelectedObservation("G")
-                }
-                QuadrantButton(label = "H", isSelected = formData.selectedObservation == "H") {
-                    viewModel.updateSelectedObservation("H")
+                listOf("C", "D", "E", "F", "G", "H").forEach { label ->
+                    QuadrantButton(label = label, isSelected = formData.selectedObservation == label, fontSize) {
+                        viewModel.updateSelectedObservation(label)
+                    }
                 }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-// Sub-Cuadrante
-            Text(text = "Sub-Cuadrante", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            // Sub-Cuadrante
+            Text(text = "Sub-Cuadrante", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                QuadrantButton(label = "1", isSelected = formData.selectedSubQuadrant == "1") {
-                    viewModel.updateSelectedSubQuadrant("1")
-                }
-                QuadrantButton(label = "2", isSelected = formData.selectedSubQuadrant == "2") {
-                    viewModel.updateSelectedSubQuadrant("2")
-                }
-                QuadrantButton(label = "3", isSelected = formData.selectedSubQuadrant == "3") {
-                    viewModel.updateSelectedSubQuadrant("3")
-                }
-                QuadrantButton(label = "4", isSelected = formData.selectedSubQuadrant == "4") {
-                    viewModel.updateSelectedSubQuadrant("4")
+                listOf("1", "2", "3", "4").forEach { label ->
+                    QuadrantButton(label = label, isSelected = formData.selectedSubQuadrant == label, fontSize) {
+                        viewModel.updateSelectedSubQuadrant(label)
+                    }
                 }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Hábito de crecimiento
-            Text("Hábito de crecimiento", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Hábito de crecimiento", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                GrowthHabitButton(
-                    iconId = R.drawable.ic_arbusto,
-                    label = "Arbusto < 1mt",
-                    isSelected = formData.selectedGrowthHabit == "Arbusto",
-                    onClick = { viewModel.updateSelectedGrowthHabit("Arbusto") }
-                )
-                GrowthHabitButton(
-                    iconId = R.drawable.ic_arbolito,
-                    label = "Arbolito 1-3 mt",
-                    isSelected = formData.selectedGrowthHabit == "Arbolito",
-                    onClick = { viewModel.updateSelectedGrowthHabit("Arbolito") }
-                )
-                GrowthHabitButton(
-                    iconId = R.drawable.ic_arbol,
-                    label = "Árbol > 3mt",
-                    isSelected = formData.selectedGrowthHabit == "Árbol",
-                    onClick = { viewModel.updateSelectedGrowthHabit("Árbol") }
-                )
+                listOf(
+                    R.drawable.ic_arbusto to "Arbusto < 1mt",
+                    R.drawable.ic_arbolito to "Arbolito 1-3 mt",
+                    R.drawable.ic_arbol to "Árbol > 3mt"
+                ).forEach { (iconId, label) ->
+                    GrowthHabitButton(
+                        iconId = iconId,
+                        label = label,
+                        isSelected = formData.selectedGrowthHabit == label,
+                        fontSize = fontSize,
+                        onClick = { viewModel.updateSelectedGrowthHabit(label) }
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Campos de Texto
-            FormTextField("Nombre Común Especie", formData.commonName) { viewModel.updateCommonName(it) }
-            FormTextField("Nombre Científico", formData.scientificName) { viewModel.updateScientificName(it) }
-            FormTextField("Placa", formData.placa) { viewModel.updatePlaca(it) }
-            FormTextField("Circunferencia en cm (CL)", formData.circunference) { viewModel.updateCircunference(it) }
-            FormTextField("Distancia en mt", formData.distance) { viewModel.updateDistance(it) }
-            FormTextField("Estatura Biomonitor en mt", formData.biomonHeight) { viewModel.updateBiomonHeight(it) }
-            FormTextField("Altura en mt", formData.height) { viewModel.updateHeight(it) }
+            FormTextField("Nombre Común Especie", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+            FormTextField("Nombre Científico", formData.scientificName, fontSize) { viewModel.updateScientificName(it) }
+            FormTextField("Placa", formData.placa, fontSize) { viewModel.updatePlaca(it) }
+            FormTextField("Circunferencia en cm (CL)", formData.circunference, fontSize) { viewModel.updateCircunference(it) }
+            FormTextField("Distancia en mt", formData.distance, fontSize) { viewModel.updateDistance(it) }
+            FormTextField("Estatura Biomonitor en mt", formData.biomonHeight, fontSize) { viewModel.updateBiomonHeight(it) }
+            FormTextField("Altura en mt", formData.height, fontSize) { viewModel.updateHeight(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Evidencias
-            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Button(
                 onClick = { /* Acción para elegir archivos */ },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Elige archivo", color = Color.White)
+                Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Observaciones
-            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = formData.observationNotes,
@@ -179,7 +160,8 @@ fun FormSelect5(navController: NavController, viewModel: FormularioViewModel = v
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(120.dp),
-                placeholder = { Text("Observaciones") }
+                placeholder = { Text("Observaciones", fontSize = fontSize.sp) },
+                textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -193,13 +175,13 @@ fun FormSelect5(navController: NavController, viewModel: FormularioViewModel = v
                     onClick = { navController.popBackStack() },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
                 ) {
-                    Text("ATRAS", color = Color.White)
+                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
                     onClick = { /* Acción para enviar el formulario */ },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {
-                    Text("ENVIAR", color = Color.White)
+                    Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }
             }
         }
@@ -207,7 +189,7 @@ fun FormSelect5(navController: NavController, viewModel: FormularioViewModel = v
 }
 
 @Composable
-fun QuadrantButton(label: String, isSelected: Boolean, onClick: () -> Unit) {
+fun QuadrantButton(label: String, isSelected: Boolean, fontSize: Float, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .clickable(onClick = onClick)
@@ -219,12 +201,12 @@ fun QuadrantButton(label: String, isSelected: Boolean, onClick: () -> Unit) {
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(label, fontSize = 14.sp, color = if (isSelected) Color.Black else Color.Gray)
+        Text(label, fontSize = fontSize.sp, color = if (isSelected) Color.Black else Color.Gray)
     }
 }
 
 @Composable
-fun GrowthHabitButton(iconId: Int, label: String, isSelected: Boolean, onClick: () -> Unit) {
+fun GrowthHabitButton(iconId: Int, label: String, isSelected: Boolean, fontSize: Float, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .size(width = 100.dp, height = 120.dp)
@@ -243,6 +225,6 @@ fun GrowthHabitButton(iconId: Int, label: String, isSelected: Boolean, onClick: 
             modifier = Modifier.size(48.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(label, fontSize = 14.sp, color = Color.Black)
+        Text(label, fontSize = fontSize.sp, color = Color.Black)
     }
 }
