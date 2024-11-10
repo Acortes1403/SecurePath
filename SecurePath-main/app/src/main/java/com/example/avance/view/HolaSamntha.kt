@@ -132,7 +132,6 @@ fun HolaSamantha(navController: NavController) { // Asegúrate de recibir el nav
                 }
 
                 // Settings Button
-                //hola
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     CustomIconButton(onClick = {
                         if (navController.currentDestination?.route != "settings") {
