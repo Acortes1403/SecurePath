@@ -26,7 +26,8 @@ import com.example.avance.viewmodel.FontSizeViewModel
 // Función que representa la pantalla de configuración de la aplicación
 @Composable
 fun Settings(navController: NavController, fontSizeViewModel: FontSizeViewModel = viewModel()) {
-    var fontSize by remember { mutableFloatStateOf(fontSizeViewModel.fontSize.value) } // Estado para el tamaño de letra
+    val fontSize by fontSizeViewModel.fontSize.collectAsState()
+
 
     // Caja principal que ocupa toda la pantalla
     Box(modifier = Modifier.fillMaxSize()) {
@@ -119,12 +120,12 @@ fun Settings(navController: NavController, fontSizeViewModel: FontSizeViewModel 
             Slider(
                 value = fontSize,
                 onValueChange = {
-                    fontSize = it
                     fontSizeViewModel.updateFontSize(it) // Actualiza el tamaño de letra en el ViewModel
                 },
                 valueRange = 14f..30f,
                 modifier = Modifier.fillMaxWidth()
             )
+
             Text("Tamaño de letra actual: ${fontSize.toInt()} sp", fontSize = 16.sp, color = Color.Black)
 
             // Sección de "Acciones"
