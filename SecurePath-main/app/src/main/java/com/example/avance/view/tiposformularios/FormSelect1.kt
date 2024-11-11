@@ -26,9 +26,13 @@ import com.example.avance.viewmodel.FontSizeViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormSelect1(navController: NavController, viewModel: FormularioViewModel = viewModel(), fontSizeViewModel: FontSizeViewModel = viewModel()) {
+fun FormSelect1(
+    navController: NavController,
+    viewModel: FormularioViewModel = viewModel(),
+    fontSizeViewModel: FontSizeViewModel = viewModel()
+) {
     val formData = viewModel.formData.value
-    val fontSize by fontSizeViewModel.fontSize.collectAsState()  // Usa `collectAsState()` si `fontSize` es `StateFlow`
+    val fontSize by fontSizeViewModel.fontSize.collectAsState()  // Observa el tamaño de letra global
 
     Scaffold(
         topBar = {
@@ -49,6 +53,7 @@ fun FormSelect1(navController: NavController, viewModel: FormularioViewModel = v
         ) {
             Text("Tipo de Animal", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
@@ -86,6 +91,7 @@ fun FormSelect1(navController: NavController, viewModel: FormularioViewModel = v
 
             Text("Tipo de Observación", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
+
             Column(modifier = Modifier.fillMaxWidth()) {
                 ObservationRadioButton("La Vió", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
                 ObservationRadioButton("Huella", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
@@ -174,6 +180,3 @@ fun ObservationRadioButton(label: String, selectedObservation: String, fontSize:
         Text(label, fontSize = fontSize.sp)
     }
 }
-
-
-

@@ -20,10 +20,10 @@ import com.example.avance.viewmodel.FormularioViewModel
 fun FormSelect3(
     navController: NavController,
     viewModel: FormularioViewModel = viewModel(),
-    fontSizeViewModel: FontSizeViewModel = viewModel() // Usamos el fontSizeViewModel para obtener el tamaño de fuente
+    fontSizeViewModel: FontSizeViewModel = viewModel()
 ) {
     val formData = viewModel.formData.value
-    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Obtenemos el tamaño de fuente de fontSizeViewModel
+    val fontSize by fontSizeViewModel.fontSize.collectAsState()
 
     Scaffold(
         topBar = {
@@ -47,7 +47,7 @@ fun FormSelect3(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Tipo de Zona
+            // Zona
             Text("Zona", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
