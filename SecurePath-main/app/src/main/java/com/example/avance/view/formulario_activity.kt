@@ -14,7 +14,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.avance.R
 import com.example.avance.viewmodel.FontSizeViewModel
@@ -24,11 +23,11 @@ import com.example.avance.viewmodel.FormularioViewModel
 @Composable
 fun FormularioScreen(
     navController: NavController,
-    viewModel: FormularioViewModel = viewModel(),
-    fontSizeViewModel: FontSizeViewModel = viewModel() // Usa el ViewModel para el fontSize
+    viewModel: FormularioViewModel,
+    fontSizeViewModel: FontSizeViewModel
 ) {
     val formData = viewModel.formData.value
-    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
+    val fontSize by fontSizeViewModel.fontSize.collectAsState()
 
     Scaffold(
         topBar = {
@@ -60,7 +59,6 @@ fun FormularioScreen(
             FormTextField("Nombre", formData.name, fontSize = fontSize, onValueChange = viewModel::updateName)
             FormTextField("Fecha", formData.date, fontSize = fontSize, onValueChange = viewModel::updateDate)
 
-            // Campo de Localidad con botón de ícono
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
@@ -88,7 +86,6 @@ fun FormularioScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Sección de Estado del Tiempo
             Text("Estado del Tiempo", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Row(
@@ -102,7 +99,6 @@ fun FormularioScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Sección de Tipo de Registro
             Text("Tipo de Registro", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
@@ -117,7 +113,6 @@ fun FormularioScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Botón "Siguiente"
             Button(
                 onClick = {
                     when (formData.selectedRegistro) {
@@ -178,4 +173,3 @@ fun SelectableOption(label: String, selectedOption: String?, fontSize: Float, on
         Text(label, fontSize = fontSize.sp)
     }
 }
-
