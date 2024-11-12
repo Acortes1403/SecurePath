@@ -58,7 +58,7 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = "first_screen") {
         composable("first_screen") { FirstScreen(navController) }
-        composable("second_screen") { SecondScreen(navController) }
+        composable("second_screen") { AvanceTheme { SecondScreen(navController) } }
         composable("third_screen") { ThirdScreen(navController) }
         composable("olvidaste_cont_screen") { OlvidasteContScreen(navController) }
         composable("verificar_screen") { VerificarScreen(navController) }
