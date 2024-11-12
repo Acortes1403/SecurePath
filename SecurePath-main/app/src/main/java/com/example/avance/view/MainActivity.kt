@@ -28,24 +28,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.avance.R
-import com.example.avance.view.tiposformularios.FormSelect2
-import com.example.avance.view.tiposformularios.FormSelect1
-import com.example.avance.view.tiposformularios.FormSelect3
-import com.example.avance.view.tiposformularios.FormSelect4
-import com.example.avance.view.tiposformularios.FormSelect5
-import com.example.avance.view.tiposformularios.FormSelect6
-import com.example.avance.view.tiposformularios.FormSelect7
+import com.example.avance.view.tiposformularios.*
 import com.example.avance.viewmodel.FontSizeViewModel
-
+import com.example.avance.viewmodel.FormularioViewModel
 
 class MainActivity : ComponentActivity() {
+    private lateinit var fontSizeViewModel: FontSizeViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fontSizeViewModel = FontSizeViewModel()
+
         setContent {
             AvanceTheme {
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    Navigation()
+                    Navigation(fontSizeViewModel)
                 }
             }
         }
@@ -53,7 +52,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Navigation() {
+fun Navigation(fontSizeViewModel: FontSizeViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "first_screen") {
@@ -62,21 +61,46 @@ fun Navigation() {
         composable("third_screen") { ThirdScreen(navController) }
         composable("olvidaste_cont_screen") { OlvidasteContScreen(navController) }
         composable("verificar_screen") { VerificarScreen(navController) }
-        composable("hola_samantha") { HolaSamantha(navController) } // Asegúrate de pasar el navController
-        composable("perfil") { Perfil() } // Nueva pantalla de perfil
-        composable("formulario_activity") { FormularioScreen(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("form_1") { FormSelect1(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("form_2") { FormSelect2(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("form_3") { FormSelect3(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("form_4") { FormSelect4(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("form_5") { FormSelect5(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("form_6") { FormSelect6(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("form_7") { FormSelect7(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("settings") { Settings(navController, fontSizeViewModel = FontSizeViewModel()) }
-        composable("search_todos") { SearchTodos(navController, fontSizeViewModel = FontSizeViewModel()) }
+        composable("hola_samantha") { HolaSamantha(navController) }
+        composable("perfil") { Perfil() }
+        composable("formulario_activity") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormularioScreen(navController, formularioViewModel, fontSizeViewModel)
+        }
+
+        composable("form_1") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormSelect1(navController, formularioViewModel, fontSizeViewModel)
+        }
+        composable("form_2") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormSelect2(navController, formularioViewModel, fontSizeViewModel)
+        }
+        composable("form_3") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormSelect3(navController, formularioViewModel, fontSizeViewModel)
+        }
+        composable("form_4") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormSelect4(navController, formularioViewModel, fontSizeViewModel)
+        }
+        composable("form_5") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormSelect5(navController, formularioViewModel, fontSizeViewModel)
+        }
+        composable("form_6") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormSelect6(navController, formularioViewModel, fontSizeViewModel)
+        }
+        composable("form_7") {
+            val formularioViewModel: FormularioViewModel = viewModel()
+            FormSelect7(navController, formularioViewModel, fontSizeViewModel)
+        }
+
+        composable("settings") { Settings(navController, fontSizeViewModel) }
+        composable("search_todos") { SearchTodos(navController, fontSizeViewModel) }
     }
 }
-
 
 @Composable
 fun FirstScreen(navController: NavController) {
@@ -95,7 +119,6 @@ fun FirstScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom
         ) {
-            // Botón de Iniciar Sesión
             Button(
                 onClick = { navController.navigate("second_screen") },
                 colors = ButtonDefaults.buttonColors(
@@ -109,7 +132,6 @@ fun FirstScreen(navController: NavController) {
                 Text("Iniciar Sesión", fontSize = 20.sp)
             }
 
-            // Botón de Crear Cuenta
             Button(
                 onClick = { navController.navigate("third_screen") },
                 colors = ButtonDefaults.buttonColors(
