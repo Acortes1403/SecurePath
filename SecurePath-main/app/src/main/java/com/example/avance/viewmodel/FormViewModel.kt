@@ -7,7 +7,6 @@ import com.example.avance.dao.CamarasTrampaDao
 import com.example.avance.dao.FaunaBusquedalibreDao
 import com.example.avance.dao.FaunaConteoDao
 import com.example.avance.dao.FaunaTransectoDao
-import com.example.avance.dao.FormularioBaseDao
 import com.example.avance.dao.ParcelaVegetacionDao
 import com.example.avance.dao.ValidacionCoberturaDao
 import com.example.avance.dao.VariablesClimaticasDao
@@ -20,9 +19,6 @@ import com.example.avance.model.FormularioBase
 import com.example.avance.model.ParcelaVegetacion
 import com.example.avance.model.ValidacionCobertura
 import com.example.avance.model.VariablesClimaticas
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 
@@ -34,8 +30,6 @@ class FormularioViewModel(
     private val validacionCoberturaDao: ValidacionCoberturaDao,
     private val camarasTrampaDao: CamarasTrampaDao,
     private val variablesClimaticasDao: VariablesClimaticasDao,
-    private val formularioBaseDao: FormularioBaseDao,
-    private val dao: FormularioBaseDao
 ): ViewModel() {
     val formData = mutableStateOf(FormData())
 
@@ -43,7 +37,7 @@ class FormularioViewModel(
     fun updateName(value: String) { formData.value = formData.value.copy(name = value) }
     fun updateDate(value: String) { formData.value = formData.value.copy(date = value) }
     fun updateLocation(value: String) { formData.value = formData.value.copy(location = value) }
-    fun updateHora(value: String) { formData.value = formData.value.copy(hora = value) }
+    fun updateTime(value: String) { formData.value = formData.value.copy(time = value) }
     fun updateTransectNumber(value: String) { formData.value = formData.value.copy(transectNumber = value) }
     fun updateRegistro(value: String) { formData.value = formData.value.copy(tipoDeRegistro = value) }
     fun updateSelectedAnimal(animal: String) { formData.value = formData.value.copy(selectedAnimal = animal) }
@@ -294,25 +288,5 @@ class FormularioViewModel(
             // Insertar ambos datos en la base de datos mediante una transacción
             variablesClimaticasDao.insertFormularioWithVariables(formularioBase, variablesClimaticas)
         }
-    }
-    private val _formularios = MutableStateFlow<List<FormularioBase>>(emptyList())
-    val formularios: StateFlow<List<FormularioBase>> = _formularios
-    init {
-        fetchFormularios()
-    }
-    fun fetchFormularios() {
-        viewModelScope.launch {
-            _formularios.value = formularioBaseDao.getAllFormularios()
-        }
-    }
-
-    fun deleteFormulario(formulario: FormularioBase) {
-        viewModelScope.launch {
-            dao.deleteFormulario(formulario)
-            fetchFormularios() // Refrescamos la lista después de eliminar
-        }
-    }
-    fun getFormularioById(formId: Int): Flow<FormularioBase?> {
-        return dao.getFormularioById(formId)
     }
 }
