@@ -1,6 +1,8 @@
 package com.example.avance.view
 
+
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -29,19 +31,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
+import com.auth0.android.Auth0
+import com.auth0.android.authentication.AuthenticationAPIClient
+import com.auth0.android.authentication.AuthenticationException
+import com.auth0.android.callback.AuthenticationCallback
 import com.example.avance.R
 import com.example.avance.model.MyApp
 import com.example.avance.view.tiposformularios.*
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 import com.example.avance.viewmodel.FormularioViewModelFactory
+import com.auth0.android.result.Credentials
 
 class MainActivity : ComponentActivity() {
     private lateinit var fontSizeViewModel: FontSizeViewModel
     private lateinit var formularioViewModel: FormularioViewModel
+    private lateinit var auth0: Auth0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inicializar Auth0 con clientId y dominio desde strings.xml
+        auth0 = Auth0(
+            getString(R.string.com_auth0_client_id),
+            getString(R.string.com_auth0_domain)
+        )
+
 
         // Obtener instancia de AppDatabase desde MyApp
         val appDatabase = (application as MyApp).database
@@ -67,26 +82,53 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colorScheme.background) {
                     Navigation(
                         fontSizeViewModel = fontSizeViewModel,
-                        formularioViewModel = formularioViewModel
+                        formularioViewModel = formularioViewModel,
+                        mainActivity = this
                     )
                 }
             }
         }
     }
+
+    // Función para manejar la autenticación de Auth0
+    fun loginWithAuth0(
+        username: String,
+        password: String,
+        onSuccess: (Credentials) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        val authentication = AuthenticationAPIClient(auth0)
+        authentication
+            .login(username, password, "Username-Password-Authentication")
+            .setScope("openid profile email")
+            .start(object : AuthenticationCallback<Credentials> {
+                override fun onFailure(error: AuthenticationException) {
+                    Log.e("AuthError", "Error de autenticación: ${error.localizedMessage}")
+                    onError(error.localizedMessage ?: "Error desconocido")
+                }
+
+                override fun onSuccess(result: Credentials) {
+                    onSuccess(result)
+                }
+            })
+    }
 }
+
+
 
 // Navigation.kt
 @Composable
 fun Navigation(
     fontSizeViewModel: FontSizeViewModel,
-    formularioViewModel: FormularioViewModel
+    formularioViewModel: FormularioViewModel,
+    mainActivity: MainActivity
 ) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "first_screen") {
         composable("first_screen") { FirstScreen(navController) }
-        composable("second_screen") { AvanceTheme { SecondScreen(navController) } }
-        composable("third_screen") { ThirdScreen(navController) }
+        composable("second_screen") { AvanceTheme { SecondScreen(navController, mainActivity) } }
+        composable("third_screen") { SecondScreen(navController, mainActivity) }
         composable("olvidaste_cont_screen") { OlvidasteContScreen(navController) }
         composable("verificar_screen") { VerificarScreen(navController) }
         composable("hola_samantha") { HolaSamantha(navController) }

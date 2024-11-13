@@ -15,9 +15,15 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        // Configuración de Auth0 en el archivo de manifiesto
+        manifestPlaceholders.clear()
+        manifestPlaceholders["auth0Domain"] = "@string/com_auth0_domain"
+        manifestPlaceholders["auth0Scheme"] = "https"
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+
         }
     }
 
@@ -67,6 +73,13 @@ dependencies {
     implementation(libs.androidx.room.ktx) // Añadir esta línea
     implementation(libs.androidx.room.runtime) // Usa la última versión disponible
     ksp(libs.androidx.room.compiler)
+
+    implementation("androidx.navigation:navigation-compose:2.4.1")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.4.1")
+
+    // Dependencia de Auth0
+    implementation("com.auth0.android:auth0:2.5.0") // Reemplazo directo si no existe libs.auth0
+
 
 
     testImplementation(libs.junit)
