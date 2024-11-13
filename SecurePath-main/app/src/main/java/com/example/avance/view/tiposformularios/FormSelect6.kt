@@ -50,25 +50,25 @@ fun FormSelect6(
             Column {
                 SelectableOptionS1(
                     label = "Bosque",
-                    selectedOption = formData.zone,
+                    selectedOption = formData.selectedZone,
                     onSelected = { viewModel.updateZone("Bosque") },
                     fontSize = fontSize
                 )
                 SelectableOptionS1(
                     label = "Arreglo Agroforestal",
-                    selectedOption = formData.zone,
+                    selectedOption = formData.selectedZone,
                     onSelected = { viewModel.updateZone("Arreglo Agroforestal") },
                     fontSize = fontSize
                 )
                 SelectableOptionS1(
                     label = "Cultivos Transitorios",
-                    selectedOption = formData.zone,
+                    selectedOption = formData.selectedZone,
                     onSelected = { viewModel.updateZone("Cultivos Transitorios") },
                     fontSize = fontSize
                 )
                 SelectableOptionS1(
                     label = "Cultivos Permanentes",
-                    selectedOption = formData.zone,
+                    selectedOption = formData.selectedZone,
                     onSelected = { viewModel.updateZone("Cultivos Permanentes") },
                     fontSize = fontSize
                 )
@@ -149,8 +149,8 @@ fun FormSelect6(
             Spacer(modifier = Modifier.height(8.dp))
             FormTextField0(
                 label = "Observaciones",
-                value = formData.observations,
-                onValueChange = { viewModel.updateObservations(it) },
+                value = formData.observationNotes,
+                onValueChange = { viewModel.updateObservationNotes(it) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(120.dp),
@@ -171,7 +171,10 @@ fun FormSelect6(
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
-                    onClick = { /* Acción para enviar el formulario */ },
+                    onClick = {
+                        viewModel.saveCamarasTrampa() //Boton para guardar datos de formulario y camaras trampa
+                        navController.popBackStack()
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)

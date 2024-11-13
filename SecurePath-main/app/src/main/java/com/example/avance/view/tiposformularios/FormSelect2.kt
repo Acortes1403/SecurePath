@@ -43,7 +43,7 @@ fun FormSelect2(
                 .verticalScroll(rememberScrollState())
         ) {
             // Campo de Código
-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+            FormTextField("Código", formData.codigof4, fontSize) { viewModel.updateCommonName(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -51,10 +51,10 @@ fun FormSelect2(
             Text("Zona", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("Bosque", formData.zone, fontSize) { viewModel.updateZone(it) }
-                ObservationRadioButton("Arreglo Agroforestal", formData.zone, fontSize) { viewModel.updateZone(it) }
-                ObservationRadioButton("Cultivos Transitorios", formData.zone, fontSize) { viewModel.updateZone(it) }
-                ObservationRadioButton("Cultivos Permanentes", formData.zone, fontSize) { viewModel.updateZone(it) }
+                ObservationRadioButton("Bosque", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
+                ObservationRadioButton("Arreglo Agroforestal", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
+                ObservationRadioButton("Cultivos Transitorios", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
+                ObservationRadioButton("Cultivos Permanentes", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -123,7 +123,10 @@ fun FormSelect2(
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
-                    onClick = { /* Acción para enviar el formulario */ },
+                    onClick = {
+                        viewModel.saveFaunaConteo()
+                        navController.popBackStack()
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)

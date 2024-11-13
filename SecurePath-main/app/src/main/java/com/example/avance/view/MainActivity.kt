@@ -28,31 +28,59 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.avance.R
+import com.example.avance.model.MyApp
 import com.example.avance.view.tiposformularios.*
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
+import com.example.avance.viewmodel.FormularioViewModelFactory
 
 class MainActivity : ComponentActivity() {
     private lateinit var fontSizeViewModel: FontSizeViewModel
+    private lateinit var formularioViewModel: FormularioViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fontSizeViewModel = FontSizeViewModel()
 
+        // Obtener instancia de AppDatabase desde MyApp
+        val appDatabase = (application as MyApp).database
+
+        // Crear instancia de FormularioViewModelFactory
+        val viewModelFactory = FormularioViewModelFactory(
+            faunaTransectoDao = appDatabase.faunaTransectoDao(),
+            faunaConteoDao = appDatabase.faunaConteoDao(),
+            faunaBusquedalibreDao = appDatabase.faunaBusquedalibreDao(),
+            parcelaVegetacionDao = appDatabase.parcelaVegetacionDao(),
+            validacionCoberturaDao = appDatabase.validacionCoberturaDao(),
+            camarasTrampaDao = appDatabase.camarasTrampaDao(),
+            variablesClimaticasDao = appDatabase.variablesClimaticasDao()
+        )
+
+        // Crear el ViewModel utilizando ViewModelProvider y el factory
+        formularioViewModel = ViewModelProvider(this, viewModelFactory)[FormularioViewModel::class.java]
+        fontSizeViewModel = FontSizeViewModel() // O crea este ViewModel según cómo lo uses
+
+        // Pasar `formularioViewModel` a setContent para que esté disponible en los Composables
         setContent {
             AvanceTheme {
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    Navigation(fontSizeViewModel)
+                    Navigation(
+                        fontSizeViewModel = fontSizeViewModel,
+                        formularioViewModel = formularioViewModel
+                    )
                 }
             }
         }
     }
 }
 
+// Navigation.kt
 @Composable
-fun Navigation(fontSizeViewModel: FontSizeViewModel) {
+fun Navigation(
+    fontSizeViewModel: FontSizeViewModel,
+    formularioViewModel: FormularioViewModel
+) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "first_screen") {
@@ -63,37 +91,30 @@ fun Navigation(fontSizeViewModel: FontSizeViewModel) {
         composable("verificar_screen") { VerificarScreen(navController) }
         composable("hola_samantha") { HolaSamantha(navController) }
         composable("perfil") { Perfil() }
+
+        // Pasar el mismo formularioViewModel a todos los formularios
         composable("formulario_activity") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormularioScreen(navController, formularioViewModel, fontSizeViewModel)
         }
-
         composable("form_1") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormSelect1(navController, formularioViewModel, fontSizeViewModel)
         }
         composable("form_2") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormSelect2(navController, formularioViewModel, fontSizeViewModel)
         }
         composable("form_3") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormSelect3(navController, formularioViewModel, fontSizeViewModel)
         }
         composable("form_4") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormSelect4(navController, formularioViewModel, fontSizeViewModel)
         }
         composable("form_5") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormSelect5(navController, formularioViewModel, fontSizeViewModel)
         }
         composable("form_6") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormSelect6(navController, formularioViewModel, fontSizeViewModel)
         }
         composable("form_7") {
-            val formularioViewModel: FormularioViewModel = viewModel()
             FormSelect7(navController, formularioViewModel, fontSizeViewModel)
         }
 
@@ -101,6 +122,7 @@ fun Navigation(fontSizeViewModel: FontSizeViewModel) {
         composable("search_todos") { SearchTodos(navController, fontSizeViewModel) }
     }
 }
+
 
 @Composable
 fun FirstScreen(navController: NavController) {
