@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp) // esto fue lo que agregue relacionado con el kotlin
 }
 
 android {
@@ -60,8 +61,13 @@ dependencies {
     implementation(libs.androidx.material3)
 
     // Agregar dependencias de navegación
-    implementation("androidx.navigation:navigation-compose:2.4.1") // para Jetpack Compose
-    implementation("androidx.navigation:navigation-runtime-ktx:2.4.1") // Añadir esta línea
+    implementation(libs.androidx.navigation.compose) // para Jetpack Compose
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx) // Añadir esta línea
+    implementation(libs.androidx.room.runtime) // Usa la última versión disponible
+    ksp(libs.androidx.room.compiler)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -71,3 +77,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+

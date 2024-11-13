@@ -102,20 +102,20 @@ fun FormularioScreen(
             Text("Tipo de Registro", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                SelectableOption("Fauna en Transectos", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Transectos") }
-                SelectableOption("Fauna en Punto de Conteo", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
-                SelectableOption("Fauna Búsqueda Libre", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
-                SelectableOption("Validación de Cobertura", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Validación de Cobertura") }
-                SelectableOption("Parcela de Vegetación", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Parcela de Vegetación") }
-                SelectableOption("Cámaras Trampa", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Cámaras Trampa") }
-                SelectableOption("Variables Climáticas", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Variables Climáticas") }
+                SelectableOption("Fauna en Transectos", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna en Transectos") }
+                SelectableOption("Fauna en Punto de Conteo", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
+                SelectableOption("Fauna Búsqueda Libre", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
+                SelectableOption("Validación de Cobertura", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Validación de Cobertura") }
+                SelectableOption("Parcela de Vegetación", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Parcela de Vegetación") }
+                SelectableOption("Cámaras Trampa", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Cámaras Trampa") }
+                SelectableOption("Variables Climáticas", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Variables Climáticas") }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
                 onClick = {
-                    when (formData.selectedRegistro) {
+                    when (formData.tipoDeRegistro) {
                         "Fauna en Transectos" -> navController.navigate("form_1")
                         "Fauna en Punto de Conteo" -> navController.navigate("form_2")
                         "Fauna Búsqueda Libre" -> navController.navigate("form_3")
