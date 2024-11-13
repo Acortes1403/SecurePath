@@ -50,7 +50,7 @@ fun FormSelect5(
                 .verticalScroll(rememberScrollState())
         ) {
             // Campo de Código
-            FormTextField("Código", formData.codigof4, fontSize) { viewModel.updateCommonName(it) }
+            FormTextField("Código", formData.codigof4, fontSize) { viewModel.updateCodigof4(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -78,10 +78,23 @@ fun FormSelect5(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                listOf("C", "D", "E", "F", "G", "H").forEach { label ->
-                    QuadrantButton(label = label, isSelected = formData.selectedQuadrant == label, fontSize) {
-                        viewModel.updateSelectedObservation(label)
-                    }
+                QuadrantButton(label = "C", isSelected = formData.selectedQuadrant == "C", fontSize) {
+                    viewModel.updateSelectedQuadrant("C")
+                }
+                QuadrantButton(label = "D", isSelected = formData.selectedQuadrant == "D", fontSize) {
+                    viewModel.updateSelectedQuadrant("D")
+                }
+                QuadrantButton(label = "E", isSelected = formData.selectedQuadrant == "E", fontSize) {
+                    viewModel.updateSelectedQuadrant("E")
+                }
+                QuadrantButton(label = "F", isSelected = formData.selectedQuadrant == "F", fontSize) {
+                    viewModel.updateSelectedQuadrant("F")
+                }
+                QuadrantButton(label = "G", isSelected = formData.selectedQuadrant == "G", fontSize) {
+                    viewModel.updateSelectedQuadrant("G")
+                }
+                QuadrantButton(label = "H", isSelected = formData.selectedQuadrant == "H", fontSize) {
+                    viewModel.updateSelectedQuadrant("H")
                 }
             }
 
