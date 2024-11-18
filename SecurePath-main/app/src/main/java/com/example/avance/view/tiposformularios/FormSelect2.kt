@@ -125,7 +125,7 @@ fun FormSelect2(
                 Button(
                     onClick = {
                         viewModel.saveFaunaConteo()
-                        navController.popBackStack()
+                        navController.navigate("hola_samantha")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {

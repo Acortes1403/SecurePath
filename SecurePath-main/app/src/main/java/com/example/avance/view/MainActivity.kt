@@ -31,6 +31,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationAPIClient
 import com.auth0.android.authentication.AuthenticationException
@@ -51,11 +53,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         // Inicializar Auth0 con clientId y dominio desde strings.xml
+        /*
         auth0 = Auth0(
             getString(R.string.com_auth0_client_id),
             getString(R.string.com_auth0_domain)
-        )
+        ) */
 
 
         // Obtener instancia de AppDatabase desde MyApp
@@ -69,7 +73,9 @@ class MainActivity : ComponentActivity() {
             parcelaVegetacionDao = appDatabase.parcelaVegetacionDao(),
             validacionCoberturaDao = appDatabase.validacionCoberturaDao(),
             camarasTrampaDao = appDatabase.camarasTrampaDao(),
-            variablesClimaticasDao = appDatabase.variablesClimaticasDao()
+            variablesClimaticasDao = appDatabase.variablesClimaticasDao(),
+            formularioBaseDao = appDatabase.formularioBaseDao(),
+            dao = appDatabase.formularioBaseDao()
         )
 
         // Crear el ViewModel utilizando ViewModelProvider y el factory
@@ -135,6 +141,13 @@ fun Navigation(
         composable("perfil") { Perfil() }
 
         // Pasar el mismo formularioViewModel a todos los formularios
+        composable(
+            route = "FormularioActivity/{formId}",
+            arguments = listOf(navArgument("formId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val formId = backStackEntry.arguments?.getInt("formId") ?: 0
+            FormularioActivity(viewModel = formularioViewModel, formId = formId, navController = navController)
+        }
         composable("formulario_activity") {
             FormularioScreen(navController, formularioViewModel, fontSizeViewModel)
         }
@@ -161,9 +174,11 @@ fun Navigation(
         }
 
         composable("settings") { Settings(navController, fontSizeViewModel) }
-        composable("search_todos") { SearchTodos(navController, fontSizeViewModel) }
+        composable("search_todos") { SearchTodos(navController, fontSizeViewModel, formularioViewModel) }
     }
 }
+
+
 
 
 @Composable

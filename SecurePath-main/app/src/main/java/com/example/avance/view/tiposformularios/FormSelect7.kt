@@ -100,7 +100,7 @@ fun FormSelect7(
                 Button(
                     onClick = {
                         viewModel.saveVariablesClimaticas() //Boton para guardar datos de formulario y variaciones climaticas
-                        navController.popBackStack()
+                        navController.navigate("hola_samantha")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {

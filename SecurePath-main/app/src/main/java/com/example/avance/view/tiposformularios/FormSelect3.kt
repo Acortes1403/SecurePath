@@ -125,7 +125,7 @@ fun FormSelect3(
                 Button(
                     onClick = {
                         viewModel.saveFaunaBusquedalibre() //Boton para guardar datos de formulario y faunaBusquedalibre
-                        navController.popBackStack()
+                        navController.navigate("hola_samantha")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {

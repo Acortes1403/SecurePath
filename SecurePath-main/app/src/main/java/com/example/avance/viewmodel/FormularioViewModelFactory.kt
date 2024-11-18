@@ -7,6 +7,7 @@ import com.example.avance.dao.CamarasTrampaDao
 import com.example.avance.dao.FaunaBusquedalibreDao
 import com.example.avance.dao.FaunaConteoDao
 import com.example.avance.dao.FaunaTransectoDao
+import com.example.avance.dao.FormularioBaseDao
 import com.example.avance.dao.ParcelaVegetacionDao
 import com.example.avance.dao.ValidacionCoberturaDao
 import com.example.avance.dao.VariablesClimaticasDao
@@ -19,7 +20,9 @@ class FormularioViewModelFactory(
     private val parcelaVegetacionDao: ParcelaVegetacionDao,
     private val validacionCoberturaDao: ValidacionCoberturaDao,
     private val camarasTrampaDao: CamarasTrampaDao,
-    private val variablesClimaticasDao: VariablesClimaticasDao
+    private val variablesClimaticasDao: VariablesClimaticasDao,
+    private val formularioBaseDao: FormularioBaseDao,
+    private val dao: FormularioBaseDao
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -32,7 +35,8 @@ class FormularioViewModelFactory(
                 validacionCoberturaDao,
                 camarasTrampaDao,
                 variablesClimaticasDao,
-
+                formularioBaseDao,
+                dao
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

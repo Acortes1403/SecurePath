@@ -143,7 +143,7 @@ fun FormSelect4(
                 Button(
                     onClick = {
                         viewModel.saveValidacionCobertura() //Boton para guardar datos de formulario y ValidacionCobertura
-                        navController.popBackStack()
+                        navController.navigate("hola_samantha")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {

@@ -193,7 +193,7 @@ fun FormSelect5(
                 Button(
                     onClick = {
                         viewModel.saveParcelaVegetacion() //Boton para guardar datos de formulario y parcela vegetacion
-                        navController.popBackStack()
+                        navController.navigate("hola_samantha")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {

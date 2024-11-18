@@ -113,7 +113,7 @@ fun FormSelect1(
                 Button(
                     onClick = {
                         viewModel.saveFaunaTransecto()
-                        navController.popBackStack()
+                        navController.navigate("hola_samantha")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {

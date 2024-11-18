@@ -173,7 +173,7 @@ fun FormSelect6(
                 Button(
                     onClick = {
                         viewModel.saveCamarasTrampa() //Boton para guardar datos de formulario y camaras trampa
-                        navController.popBackStack()
+                        navController.navigate("hola_samantha")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {

@@ -14,4 +14,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun validacionCoberturaDao(): ValidacionCoberturaDao
     abstract fun camarasTrampaDao(): CamarasTrampaDao
     abstract fun variablesClimaticasDao(): VariablesClimaticasDao
+    abstract fun formularioBaseDao(): FormularioBaseDao
 }
