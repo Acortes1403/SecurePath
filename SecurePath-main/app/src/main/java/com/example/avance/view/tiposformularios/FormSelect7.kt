@@ -50,25 +50,25 @@ fun FormSelect7(
             Column {
                 RadioButtonWithLabel(
                     label = "Bosque",
-                    selected = formData.zone == "Bosque",
+                    selected = formData.selectedZone == "Bosque",
                     fontSize = fontSize,
                     onClick = { viewModel.updateZone("Bosque") }
                 )
                 RadioButtonWithLabel(
                     label = "Arreglo Agroforestal",
-                    selected = formData.zone == "Arreglo Agroforestal",
+                    selected = formData.selectedZone == "Arreglo Agroforestal",
                     fontSize = fontSize,
                     onClick = { viewModel.updateZone("Arreglo Agroforestal") }
                 )
                 RadioButtonWithLabel(
                     label = "Cultivos Transitorios",
-                    selected = formData.zone == "Cultivos Transitorios",
+                    selected = formData.selectedZone == "Cultivos Transitorios",
                     fontSize = fontSize,
                     onClick = { viewModel.updateZone("Cultivos Transitorios") }
                 )
                 RadioButtonWithLabel(
                     label = "Cultivos Permanentes",
-                    selected = formData.zone == "Cultivos Permanentes",
+                    selected = formData.selectedZone == "Cultivos Permanentes",
                     fontSize = fontSize,
                     onClick = { viewModel.updateZone("Cultivos Permanentes") }
                 )
@@ -77,12 +77,12 @@ fun FormSelect7(
             Spacer(modifier = Modifier.height(16.dp))
 
             // Campos de Texto
-            FormTextField(label = "Pluviosidad (mm)", value = formData.rainfall, fontSize = fontSize) { viewModel.updateRainfall(it) }
-            FormTextField(label = "Temperatura máxima", value = formData.maxTemperature, fontSize = fontSize) { viewModel.updateMaxTemperature(it) }
-            FormTextField(label = "Humedad máxima", value = formData.maxHumidity, fontSize = fontSize) { viewModel.updateMaxHumidity(it) }
-            FormTextField(label = "Temperatura mínima", value = formData.minTemperature, fontSize = fontSize) { viewModel.updateMinTemperature(it) }
-            FormTextField(label = "Humedad mínima", value = formData.minHumidity, fontSize = fontSize) { viewModel.updateMinHumidity(it) }
-            FormTextField(label = "Nivel Quebrada (mt)", value = formData.creekLevel, fontSize = fontSize) { viewModel.updateCreekLevel(it) }
+            FormTextField(label = "Pluviosidad (mm)", value = formData.pluviosidad, fontSize = fontSize) { viewModel.updateRainfall(it) }
+            FormTextField(label = "Temperatura máxima", value = formData.temperaturaMaxima, fontSize = fontSize) { viewModel.updateMaxTemperature(it) }
+            FormTextField(label = "Humedad máxima", value = formData.humedadMaxima, fontSize = fontSize) { viewModel.updateMaxHumidity(it) }
+            FormTextField(label = "Temperatura mínima", value = formData.temperaturaMinima, fontSize = fontSize) { viewModel.updateMinTemperature(it) }
+            FormTextField(label = "Humedad mínima", value = formData.humedadMinima, fontSize = fontSize) { viewModel.updateMinHumidity(it) }
+            FormTextField(label = "Nivel Quebrada (mt)", value = formData.nivelQuebrada, fontSize = fontSize) { viewModel.updateCreekLevel(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -98,7 +98,10 @@ fun FormSelect7(
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
-                    onClick = { /* Acción para enviar el formulario */ },
+                    onClick = {
+                        viewModel.saveVariablesClimaticas() //Boton para guardar datos de formulario y variaciones climaticas
+                        navController.navigate("hola_samantha")
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)

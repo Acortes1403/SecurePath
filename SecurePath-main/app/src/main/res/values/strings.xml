@@ -1,3 +1,8 @@
 <resources>
+    <!-- Nombre de la aplicación -->
     <string name="app_name">avance</string>
+
+    <!-- Configuración de Auth0 -->
+    <string name="com_auth0_domain">dev-5yb4cr2a2s56u8ju.us.auth0.com</string>
+    <string name="com_auth0_client_id">a51We5YebNlOhzVIRK6ucqKyDj0WtLGS</string>
 </resources>

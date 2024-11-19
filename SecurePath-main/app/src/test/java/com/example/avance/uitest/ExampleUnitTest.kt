@@ -1,4 +1,4 @@
-package com.example.avance
+package com.example.avance.uitest
 
 import org.junit.Test
 

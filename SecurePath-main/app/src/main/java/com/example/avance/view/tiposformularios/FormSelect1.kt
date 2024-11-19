@@ -111,7 +111,10 @@ fun FormSelect1(
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
-                    onClick = { /* Acción para enviar el formulario */ },
+                    onClick = {
+                        viewModel.saveFaunaTransecto()
+                        navController.navigate("hola_samantha")
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)

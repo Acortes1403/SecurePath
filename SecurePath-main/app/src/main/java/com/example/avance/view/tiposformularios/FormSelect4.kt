@@ -43,7 +43,7 @@ fun FormSelect4(
                 .verticalScroll(rememberScrollState())
         ) {
             // Campo de Código
-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+            FormTextField("Código", formData.codigof4, fontSize) { viewModel.updateCodigof4(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -51,8 +51,8 @@ fun FormSelect4(
             Text("Seguimiento", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("Si", formData.yesandno, fontSize) { viewModel.updateYesNo(it) }
-                ObservationRadioButton("No", formData.yesandno, fontSize) { viewModel.updateYesNo(it) }
+                ObservationRadioButton("Si", formData.yesandno1, fontSize) { viewModel.updateYesNo1(it) }
+                ObservationRadioButton("No", formData.yesandno1, fontSize) { viewModel.updateYesNo1(it) }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -61,8 +61,8 @@ fun FormSelect4(
             Text("Cambió", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("Si", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("No", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+                ObservationRadioButton("Si", formData.yesandno2, fontSize) { viewModel.updateYesNo2(it) }
+                ObservationRadioButton("No", formData.yesandno2, fontSize) { viewModel.updateYesNo2(it) }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -141,7 +141,10 @@ fun FormSelect4(
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
-                    onClick = { /* Acción para enviar el formulario */ },
+                    onClick = {
+                        viewModel.saveValidacionCobertura() //Boton para guardar datos de formulario y ValidacionCobertura
+                        navController.navigate("hola_samantha")
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
