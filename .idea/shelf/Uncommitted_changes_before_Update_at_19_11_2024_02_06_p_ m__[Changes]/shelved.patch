@@ -1,0 +1,16 @@
+Index: SecurePath-main/app/src/test/java/com/example/avance/ExampleUnitTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SecurePath-main/app/src/test/java/com/example/avance/ExampleUnitTest.kt b/SecurePath-main/app/src/test/java/com/example/avance/uitest/ExampleUnitTest.kt
+rename from SecurePath-main/app/src/test/java/com/example/avance/ExampleUnitTest.kt
+rename to SecurePath-main/app/src/test/java/com/example/avance/uitest/ExampleUnitTest.kt
+--- a/SecurePath-main/app/src/test/java/com/example/avance/ExampleUnitTest.kt	(revision 076883791146b0fc5ba75690b6e631ab8de2795e)
++++ b/SecurePath-main/app/src/test/java/com/example/avance/uitest/ExampleUnitTest.kt	(date 1732046442270)
+@@ -1,4 +1,4 @@
+-package com.example.avance
++package com.example.avance.uitest
+ 
+ import org.junit.Test
+ 
