@@ -1,0 +1,1885 @@
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.avance.view\r\n\r\nimport android.os.Bundle\r\nimport androidx.activity.ComponentActivity\r\nimport androidx.activity.compose.setContent\r\nimport androidx.compose.foundation.layout.Box\r\nimport androidx.compose.foundation.layout.fillMaxSize\r\nimport androidx.compose.material3.MaterialTheme\r\nimport androidx.compose.material3.Surface\r\nimport androidx.compose.runtime.Composable\r\nimport androidx.navigation.NavController\r\nimport androidx.navigation.compose.NavHost\r\nimport androidx.navigation.compose.composable\r\nimport androidx.navigation.compose.rememberNavController\r\nimport com.example.avance.ui.theme.AvanceTheme\r\nimport androidx.compose.ui.Modifier\r\nimport androidx.compose.foundation.Image\r\nimport androidx.compose.foundation.layout.Arrangement\r\nimport androidx.compose.foundation.layout.Column\r\nimport androidx.compose.foundation.layout.offset\r\nimport androidx.compose.foundation.layout.padding\r\nimport androidx.compose.material3.Button\r\nimport androidx.compose.material3.ButtonDefaults\r\nimport androidx.compose.material3.Text\r\nimport androidx.compose.ui.layout.ContentScale\r\nimport androidx.compose.ui.res.painterResource\r\nimport androidx.compose.ui.unit.dp\r\nimport androidx.compose.ui.Alignment\r\nimport androidx.compose.ui.graphics.Color\r\nimport androidx.compose.ui.unit.sp\r\nimport androidx.lifecycle.viewmodel.compose.viewModel\r\nimport com.example.avance.R\r\nimport com.example.avance.view.tiposformularios.*\r\nimport com.example.avance.viewmodel.FontSizeViewModel\r\nimport com.example.avance.viewmodel.FormularioViewModel\r\n\r\nclass MainActivity : ComponentActivity() {\r\n    private lateinit var fontSizeViewModel: FontSizeViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        fontSizeViewModel = FontSizeViewModel()\r\n\r\n        setContent {\r\n            AvanceTheme {\r\n                Surface(color = MaterialTheme.colorScheme.background) {\r\n                    Navigation(fontSizeViewModel)\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n@Composable\r\nfun Navigation(fontSizeViewModel: FontSizeViewModel) {\r\n    val navController = rememberNavController()\r\n\r\n    NavHost(navController = navController, startDestination = \"first_screen\") {\r\n        composable(\"first_screen\") { FirstScreen(navController) }\r\n        composable(\"second_screen\") { SecondScreen(navController) }\r\n        composable(\"third_screen\") { ThirdScreen(navController) }\r\n        composable(\"olvidaste_cont_screen\") { OlvidasteContScreen(navController) }\r\n        composable(\"verificar_screen\") { VerificarScreen(navController) }\r\n        composable(\"hola_samantha\") { HolaSamantha(navController) }\r\n        composable(\"perfil\") { Perfil() }\r\n        composable(\"formulario_activity\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormularioScreen(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n\r\n        composable(\"form_1\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormSelect1(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n        composable(\"form_2\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormSelect2(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n        composable(\"form_3\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormSelect3(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n        composable(\"form_4\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormSelect4(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n        composable(\"form_5\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormSelect5(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n        composable(\"form_6\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormSelect6(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n        composable(\"form_7\") {\r\n            val formularioViewModel: FormularioViewModel = viewModel()\r\n            FormSelect7(navController, formularioViewModel, fontSizeViewModel)\r\n        }\r\n\r\n        composable(\"settings\") { Settings(navController, fontSizeViewModel) }\r\n        composable(\"search_todos\") { SearchTodos(navController, fontSizeViewModel) }\r\n    }\r\n}\r\n\r\n@Composable\r\nfun FirstScreen(navController: NavController) {\r\n    Box(modifier = Modifier.fillMaxSize()) {\r\n        Image(\r\n            painter = painterResource(id = R.drawable.captura_de_pantalla_2024_10_16_165923),\r\n            contentDescription = null,\r\n            contentScale = ContentScale.Crop,\r\n            modifier = Modifier.fillMaxSize()\r\n        )\r\n\r\n        Column(\r\n            modifier = Modifier\r\n                .fillMaxSize()\r\n                .padding(16.dp),\r\n            horizontalAlignment = Alignment.CenterHorizontally,\r\n            verticalArrangement = Arrangement.Bottom\r\n        ) {\r\n            Button(\r\n                onClick = { navController.navigate(\"second_screen\") },\r\n                colors = ButtonDefaults.buttonColors(\r\n                    containerColor = Color(0xFF4A5E23),\r\n                    contentColor = Color.White\r\n                ),\r\n                modifier = Modifier\r\n                    .padding(bottom = 8.dp)\r\n                    .offset(y = (-70).dp)\r\n            ) {\r\n                Text(\"Iniciar Sesión\", fontSize = 20.sp)\r\n            }\r\n\r\n            Button(\r\n                onClick = { navController.navigate(\"third_screen\") },\r\n                colors = ButtonDefaults.buttonColors(\r\n                    containerColor = Color.Transparent,\r\n                    contentColor = Color.Black\r\n                ),\r\n                modifier = Modifier\r\n                    .padding(bottom = 8.dp)\r\n                    .offset(y = (-70).dp)\r\n            ) {\r\n                Text(\"Crear Cuenta\", fontSize = 20.sp)\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ b/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt	(date 1731373768660)
+@@ -32,7 +32,7 @@
+ import com.example.avance.R
+ import com.example.avance.view.tiposformularios.*
+ import com.example.avance.viewmodel.FontSizeViewModel
+-import com.example.avance.viewmodel.FormularioViewModel
++import com.example.avance.viewmodel.FormViewModel
+ 
+ class MainActivity : ComponentActivity() {
+     private lateinit var fontSizeViewModel: FontSizeViewModel
+@@ -64,37 +64,8 @@
+         composable("hola_samantha") { HolaSamantha(navController) }
+         composable("perfil") { Perfil() }
+         composable("formulario_activity") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormularioScreen(navController, formularioViewModel, fontSizeViewModel)
+-        }
+-
+-        composable("form_1") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormSelect1(navController, formularioViewModel, fontSizeViewModel)
+-        }
+-        composable("form_2") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormSelect2(navController, formularioViewModel, fontSizeViewModel)
+-        }
+-        composable("form_3") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormSelect3(navController, formularioViewModel, fontSizeViewModel)
+-        }
+-        composable("form_4") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormSelect4(navController, formularioViewModel, fontSizeViewModel)
+-        }
+-        composable("form_5") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormSelect5(navController, formularioViewModel, fontSizeViewModel)
+-        }
+-        composable("form_6") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormSelect6(navController, formularioViewModel, fontSizeViewModel)
+-        }
+-        composable("form_7") {
+-            val formularioViewModel: FormularioViewModel = viewModel()
+-            FormSelect7(navController, formularioViewModel, fontSizeViewModel)
++            val formularioViewModel: FormViewModel = viewModel()
++            FormularioConsolidado(navController, formularioViewModel, fontSizeViewModel)
+         }
+ 
+         composable("settings") { Settings(navController, fontSizeViewModel) }
+Index: SecurePath-main/app/src/main/java/com/example/avance/model/FormModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.avance.model\r\n\r\ndata class FormData(\r\n    //Formulario general\r\n    var name: String = \"\",\r\n    var date: String = \"\",\r\n    var location: String = \"\",\r\n    var time: String = \"\",\r\n    var transectNumber: String = \"\",\r\n    //Formulario 1 - 2 - 3\r\n    var selectedAnimal: String? = null,\r\n    var selectedObservation: String = \"La Vió\",\r\n    var commonName: String = \"\",\r\n    var scientificName: String = \"\",\r\n    var individualCount: String = \"\",\r\n    var observationNotes: String = \"\",\r\n    //Formulario 4\r\n    var selectedRegistro: String = \"\",\r\n    val selectedGrowthHabit: String? = null,\r\n    val placa: String = \"\",\r\n    val circunference: String = \"\",\r\n    val distance: String = \"\",\r\n    val biomonHeight: String = \"\",\r\n    val height: String = \"\",\r\n    //Formulario 5\r\n    val selectedSubQuadrant: String = \"\",\r\n    val zone: String = \"\",\r\n    val cameraName: String = \"\",\r\n    val cameraPlate: String = \"\",\r\n    val guayaPlate: String = \"\",\r\n    val pathWidth: String = \"\",\r\n    val installationDate: String = \"\",\r\n    val targetDistance: String = \"\",\r\n    val lensHeight: String = \"\",\r\n    //Formulario 6\r\n    val isProgrammed: Boolean = false,\r\n    val hasMemory: Boolean = false,\r\n    val hasGateTest: Boolean = false,\r\n    val isInstalled: Boolean = false,\r\n    val hasCameraSign: Boolean = false,\r\n    val isOn: Boolean = false,\r\n    //Formulario 7\r\n    val rainfall: String = \"\",\r\n    val maxTemperature: String = \"\",\r\n    val minTemperature: String = \"\",\r\n    val maxHumidity: String = \"\",\r\n    val minHumidity: String = \"\",\r\n    val creekLevel: String = \"\",\r\n    val observations: String = \"\",\r\n    val observationType: String = \"\",\r\n    val yesandno: String = \"\",\r\n    val disturbance: String = \"\"\r\n    \r\n\r\n)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/model/FormModel.kt b/SecurePath-main/app/src/main/java/com/example/avance/model/FormModel.kt
+--- a/SecurePath-main/app/src/main/java/com/example/avance/model/FormModel.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ b/SecurePath-main/app/src/main/java/com/example/avance/model/FormModel.kt	(date 1731373768660)
+@@ -1,55 +1,49 @@
+ package com.example.avance.model
+ 
+-data class FormData(
+-    //Formulario general
++data class FormModel(
+     var name: String = "",
+     var date: String = "",
+     var location: String = "",
+     var time: String = "",
+     var transectNumber: String = "",
+-    //Formulario 1 - 2 - 3
++    var selectedRegistro: String = "",
+     var selectedAnimal: String? = null,
+     var selectedObservation: String = "La Vió",
+     var commonName: String = "",
+     var scientificName: String = "",
+     var individualCount: String = "",
+     var observationNotes: String = "",
+-    //Formulario 4
+-    var selectedRegistro: String = "",
+-    val selectedGrowthHabit: String? = null,
+-    val placa: String = "",
+-    val circunference: String = "",
+-    val distance: String = "",
+-    val biomonHeight: String = "",
+-    val height: String = "",
+-    //Formulario 5
+-    val selectedSubQuadrant: String = "",
+-    val zone: String = "",
+-    val cameraName: String = "",
+-    val cameraPlate: String = "",
+-    val guayaPlate: String = "",
+-    val pathWidth: String = "",
+-    val installationDate: String = "",
+-    val targetDistance: String = "",
+-    val lensHeight: String = "",
+-    //Formulario 6
+-    val isProgrammed: Boolean = false,
+-    val hasMemory: Boolean = false,
+-    val hasGateTest: Boolean = false,
+-    val isInstalled: Boolean = false,
+-    val hasCameraSign: Boolean = false,
+-    val isOn: Boolean = false,
+-    //Formulario 7
+-    val rainfall: String = "",
+-    val maxTemperature: String = "",
+-    val minTemperature: String = "",
+-    val maxHumidity: String = "",
+-    val minHumidity: String = "",
+-    val creekLevel: String = "",
+-    val observations: String = "",
+-    val observationType: String = "",
+-    val yesandno: String = "",
+-    val disturbance: String = ""
+-    
+-
+-)
++    var selectedGrowthHabit: String? = null,
++    var placa: String = "",
++    var circunference: String = "",
++    var distance: String = "",
++    var biomonHeight: String = "",
++    var height: String = "",
++    var selectedSubQuadrant: String = "",
++    var zone: String = "",
++    var cameraName: String = "",
++    var cameraPlate: String = "",
++    var guayaPlate: String = "",
++    var pathWidth: String = "",
++    var installationDate: String = "",
++    var targetDistance: String = "",
++    var lensHeight: String = "",
++    var isProgrammed: Boolean = false,
++    var hasMemory: Boolean = false,
++    var hasGateTest: Boolean = false,
++    var isInstalled: Boolean = false,
++    var hasCameraSign: Boolean = false,
++    var isOn: Boolean = false,
++    var rainfall: String = "",
++    var maxTemperature: String = "",
++    var minTemperature: String = "",
++    var maxHumidity: String = "",
++    var minHumidity: String = "",
++    var creekLevel: String = "",
++    var observations: String = "",
++    var observationType: String = "",
++    var yesandno: String = "",
++    var disturbance: String = "",
++    var weather: String = "",              // Stores the selected weather option
++    var selectedEpoca: String = "",         // Stores the selected season option (e.g., "VERANO" or "INVIERNO")
++)
+\ No newline at end of file
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect1.kt
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect1.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect1.kt
+deleted file mode 100644
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect1.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ /dev/null	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
+@@ -1,182 +0,0 @@
+-package com.example.avance.view.tiposformularios
+-
+-import androidx.compose.foundation.Image
+-import androidx.compose.foundation.border
+-import androidx.compose.foundation.clickable
+-import androidx.compose.foundation.layout.*
+-import androidx.compose.foundation.rememberScrollState
+-import androidx.compose.foundation.shape.RoundedCornerShape
+-import androidx.compose.foundation.text.KeyboardOptions
+-import androidx.compose.foundation.verticalScroll
+-import androidx.compose.material3.*
+-import androidx.compose.runtime.*
+-import androidx.compose.ui.Alignment
+-import androidx.compose.ui.Modifier
+-import androidx.compose.ui.graphics.Color
+-import androidx.compose.ui.res.painterResource
+-import androidx.compose.ui.text.font.FontWeight
+-import androidx.compose.ui.text.input.KeyboardType
+-import androidx.compose.ui.unit.dp
+-import androidx.compose.ui.unit.sp
+-import androidx.lifecycle.viewmodel.compose.viewModel
+-import androidx.navigation.NavController
+-import com.example.avance.R
+-import com.example.avance.viewmodel.FormularioViewModel
+-import com.example.avance.viewmodel.FontSizeViewModel
+-
+-@OptIn(ExperimentalMaterial3Api::class)
+-@Composable
+-fun FormSelect1(
+-    navController: NavController,
+-    viewModel: FormularioViewModel = viewModel(),
+-    fontSizeViewModel: FontSizeViewModel = viewModel()
+-) {
+-    val formData = viewModel.formData.value
+-    val fontSize by fontSizeViewModel.fontSize.collectAsState()  // Observa el tamaño de letra global
+-
+-    Scaffold(
+-        topBar = {
+-            TopAppBar(
+-                title = { Text("Faunas en Transecto", color = Color.White, fontSize = fontSize.sp) },
+-                colors = TopAppBarDefaults.topAppBarColors(
+-                    containerColor = Color(0xFFA4C639)
+-                )
+-            )
+-        }
+-    ) { padding ->
+-        Column(
+-            modifier = Modifier
+-                .fillMaxSize()
+-                .padding(padding)
+-                .padding(16.dp)
+-                .verticalScroll(rememberScrollState())
+-        ) {
+-            Text("Tipo de Animal", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceAround
+-            ) {
+-                AnimalButton(
+-                    iconId = R.drawable.ic_mammal,
+-                    label = "Mamífero",
+-                    isSelected = formData.selectedAnimal == "Mamífero",
+-                    onClick = { viewModel.updateSelectedAnimal("Mamífero") },
+-                    fontSize = fontSize
+-                )
+-                AnimalButton(
+-                    iconId = R.drawable.ic_bird,
+-                    label = "Ave",
+-                    isSelected = formData.selectedAnimal == "Ave",
+-                    onClick = { viewModel.updateSelectedAnimal("Ave") },
+-                    fontSize = fontSize
+-                )
+-                AnimalButton(
+-                    iconId = R.drawable.ic_reptile,
+-                    label = "Reptil",
+-                    isSelected = formData.selectedAnimal == "Reptil",
+-                    onClick = { viewModel.updateSelectedAnimal("Reptil") },
+-                    fontSize = fontSize
+-                )
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            FormTextField("Nombre Común", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-            FormTextField("Nombre Científico", formData.scientificName, fontSize) { viewModel.updateScientificName(it) }
+-            FormTextField("Número de Individuos", formData.individualCount, fontSize, isNumeric = true) { viewModel.updateIndividualCount(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            Text("Tipo de Observación", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-
+-            Column(modifier = Modifier.fillMaxWidth()) {
+-                ObservationRadioButton("La Vió", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Huella", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Rastro", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Cacería", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Le Dijeron", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-            }
+-
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceBetween
+-            ) {
+-                Button(
+-                    onClick = { navController.popBackStack() },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+-                ) {
+-                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
+-                }
+-                Button(
+-                    onClick = { /* Acción para enviar el formulario */ },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+-                ) {
+-                    Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
+-                }
+-            }
+-        }
+-    }
+-}
+-
+-@Composable
+-fun AnimalButton(iconId: Int, label: String, isSelected: Boolean, onClick: () -> Unit, fontSize: Float) {
+-    Column(
+-        modifier = Modifier
+-            .size(width = 100.dp, height = 120.dp)
+-            .clickable(onClick = onClick)
+-            .border(
+-                width = 2.dp,
+-                color = if (isSelected) Color(0xFFA4C639) else Color.Gray,
+-                shape = RoundedCornerShape(8.dp)
+-            )
+-            .padding(8.dp),
+-        horizontalAlignment = Alignment.CenterHorizontally
+-    ) {
+-        Image(
+-            painter = painterResource(id = iconId),
+-            contentDescription = label,
+-            modifier = Modifier.size(48.dp)
+-        )
+-        Spacer(modifier = Modifier.height(8.dp))
+-        Text(label, fontSize = fontSize.sp, color = Color.Black)
+-    }
+-}
+-
+-@Composable
+-fun FormTextField(label: String, value: String, fontSize: Float, isNumeric: Boolean = false, onValueChange: (String) -> Unit) {
+-    TextField(
+-        value = value,
+-        onValueChange = onValueChange,
+-        label = { Text(label, fontSize = fontSize.sp) },
+-        modifier = Modifier
+-            .fillMaxWidth()
+-            .padding(vertical = 4.dp),
+-        singleLine = true,
+-        keyboardOptions = if (isNumeric) {
+-            KeyboardOptions(keyboardType = KeyboardType.Number)
+-        } else {
+-            KeyboardOptions.Default
+-        },
+-        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+-    )
+-}
+-
+-@Composable
+-fun ObservationRadioButton(label: String, selectedObservation: String, fontSize: Float, onSelected: (String) -> Unit) {
+-    Row(
+-        verticalAlignment = Alignment.CenterVertically,
+-        modifier = Modifier
+-            .clickable { onSelected(label) }
+-            .padding(vertical = 4.dp)
+-            .fillMaxWidth()
+-    ) {
+-        RadioButton(
+-            selected = (label == selectedObservation),
+-            onClick = { onSelected(label) }
+-        )
+-        Text(label, fontSize = fontSize.sp)
+-    }
+-}
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect2.kt
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect2.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect2.kt
+deleted file mode 100644
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect2.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ /dev/null	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
+@@ -1,134 +0,0 @@
+-package com.example.avance.view.tiposformularios
+-
+-import androidx.compose.foundation.layout.*
+-import androidx.compose.foundation.rememberScrollState
+-import androidx.compose.foundation.verticalScroll
+-import androidx.compose.material3.*
+-import androidx.compose.runtime.*
+-import androidx.compose.ui.Modifier
+-import androidx.compose.ui.graphics.Color
+-import androidx.compose.ui.text.font.FontWeight
+-import androidx.compose.ui.unit.dp
+-import androidx.compose.ui.unit.sp
+-import androidx.lifecycle.viewmodel.compose.viewModel
+-import androidx.navigation.NavController
+-import com.example.avance.viewmodel.FontSizeViewModel
+-import com.example.avance.viewmodel.FormularioViewModel
+-
+-@OptIn(ExperimentalMaterial3Api::class)
+-@Composable
+-fun FormSelect2(
+-    navController: NavController,
+-    viewModel: FormularioViewModel = viewModel(),
+-    fontSizeViewModel: FontSizeViewModel = viewModel()
+-) {
+-    val formData = viewModel.formData.value
+-    val fontSize by fontSizeViewModel.fontSize.collectAsState()
+-
+-    Scaffold(
+-        topBar = {
+-            TopAppBar(
+-                title = { Text("Fauna en Punto de Conteo", color = Color.White, fontSize = fontSize.sp) },
+-                colors = TopAppBarDefaults.topAppBarColors(
+-                    containerColor = Color(0xFFA4C639)
+-                )
+-            )
+-        }
+-    ) { padding ->
+-        Column(
+-            modifier = Modifier
+-                .fillMaxSize()
+-                .padding(padding)
+-                .padding(16.dp)
+-                .verticalScroll(rememberScrollState())
+-        ) {
+-            // Campo de Código
+-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Zona
+-            Text("Zona", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                ObservationRadioButton("Bosque", formData.zone, fontSize) { viewModel.updateZone(it) }
+-                ObservationRadioButton("Arreglo Agroforestal", formData.zone, fontSize) { viewModel.updateZone(it) }
+-                ObservationRadioButton("Cultivos Transitorios", formData.zone, fontSize) { viewModel.updateZone(it) }
+-                ObservationRadioButton("Cultivos Permanentes", formData.zone, fontSize) { viewModel.updateZone(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Nombre Común
+-            FormTextField("Nombre Común", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-
+-            // Nombre Científico
+-            FormTextField("Nombre Científico", formData.scientificName, fontSize) { viewModel.updateScientificName(it) }
+-
+-            // Número de Individuos
+-            FormTextField("Número de Individuos", formData.individualCount, fontSize, isNumeric = true) { viewModel.updateIndividualCount(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Tipo de Observación
+-            Text("Tipo de Observación", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column(modifier = Modifier.fillMaxWidth()) {
+-                ObservationRadioButton("La Vió", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Huella", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Rastro", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Cacería", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Le Dijeron", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Evidencias
+-            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Button(
+-                onClick = { /* Acción para elegir archivos */ },
+-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+-                modifier = Modifier.fillMaxWidth()
+-            ) {
+-                Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Observaciones
+-            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            TextField(
+-                value = formData.observationNotes,
+-                onValueChange = { viewModel.updateObservationNotes(it) },
+-                modifier = Modifier
+-                    .fillMaxWidth()
+-                    .height(120.dp),
+-                placeholder = { Text("Observaciones", fontSize = fontSize.sp) },
+-                textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+-            )
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Botones de Acción
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceBetween
+-            ) {
+-                Button(
+-                    onClick = { navController.popBackStack() },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+-                ) {
+-                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
+-                }
+-                Button(
+-                    onClick = { /* Acción para enviar el formulario */ },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+-                ) {
+-                    Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
+-                }
+-            }
+-        }
+-    }
+-}
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect4.kt
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect4.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect4.kt
+deleted file mode 100644
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect4.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ /dev/null	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
+@@ -1,152 +0,0 @@
+-package com.example.avance.view.tiposformularios
+-
+-import androidx.compose.foundation.layout.*
+-import androidx.compose.foundation.rememberScrollState
+-import androidx.compose.foundation.verticalScroll
+-import androidx.compose.material3.*
+-import androidx.compose.runtime.*
+-import androidx.compose.ui.Modifier
+-import androidx.compose.ui.graphics.Color
+-import androidx.compose.ui.text.font.FontWeight
+-import androidx.compose.ui.unit.dp
+-import androidx.compose.ui.unit.sp
+-import androidx.lifecycle.viewmodel.compose.viewModel
+-import androidx.navigation.NavController
+-import com.example.avance.viewmodel.FontSizeViewModel
+-import com.example.avance.viewmodel.FormularioViewModel
+-
+-@OptIn(ExperimentalMaterial3Api::class)
+-@Composable
+-fun FormSelect4(
+-    navController: NavController,
+-    viewModel: FormularioViewModel = viewModel(),
+-    fontSizeViewModel: FontSizeViewModel = viewModel() // Obtenemos fontSize desde FontSizeViewModel
+-) {
+-    val formData = viewModel.formData.value
+-    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
+-
+-    Scaffold(
+-        topBar = {
+-            TopAppBar(
+-                title = { Text("Validación de Cobertura", color = Color.White, fontSize = fontSize.sp) },
+-                colors = TopAppBarDefaults.topAppBarColors(
+-                    containerColor = Color(0xFFA4C639)
+-                )
+-            )
+-        }
+-    ) { padding ->
+-        Column(
+-            modifier = Modifier
+-                .fillMaxSize()
+-                .padding(padding)
+-                .padding(16.dp)
+-                .verticalScroll(rememberScrollState())
+-        ) {
+-            // Campo de Código
+-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Sección de Seguimiento
+-            Text("Seguimiento", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                ObservationRadioButton("Si", formData.yesandno, fontSize) { viewModel.updateYesNo(it) }
+-                ObservationRadioButton("No", formData.yesandno, fontSize) { viewModel.updateYesNo(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Sección de Cambios
+-            Text("Cambió", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                ObservationRadioButton("Si", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("No", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Sección de Cobertura
+-            Text("Cobertura", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                ObservationRadioButton("BD", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("RA", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("RB", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("PA", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("PL", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("CP", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("CT", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("VH", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("TD", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-                ObservationRadioButton("IF", formData.observationType, fontSize) { viewModel.updateObservationType(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Disturbio
+-            Text("Disturbio", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                ObservationRadioButton("Inundación", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-                ObservationRadioButton("Quema", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-                ObservationRadioButton("Tala", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-                ObservationRadioButton("Erosión", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-                ObservationRadioButton("Minería", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-                ObservationRadioButton("Carretera", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-                ObservationRadioButton("Más plantas acuáticas", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-                ObservationRadioButton("Otro", formData.disturbance, fontSize) { viewModel.updateDisturbance(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Evidencias
+-            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Button(
+-                onClick = { /* Acción para elegir archivos */ },
+-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+-                modifier = Modifier.fillMaxWidth()
+-            ) {
+-                Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Observaciones
+-            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            TextField(
+-                value = formData.observationNotes,
+-                onValueChange = { viewModel.updateObservationNotes(it) },
+-                modifier = Modifier
+-                    .fillMaxWidth()
+-                    .height(120.dp),
+-                placeholder = { Text("Observaciones", fontSize = fontSize.sp) },
+-                textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+-            )
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Botones de Acción
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceBetween
+-            ) {
+-                Button(
+-                    onClick = { navController.popBackStack() },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+-                ) {
+-                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
+-                }
+-                Button(
+-                    onClick = { /* Acción para enviar el formulario */ },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+-                ) {
+-                    Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
+-                }
+-            }
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect6.kt
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect6.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect6.kt
+deleted file mode 100644
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect6.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ /dev/null	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
+@@ -1,235 +0,0 @@
+-package com.example.avance.view.tiposformularios
+-
+-import androidx.compose.foundation.clickable
+-import androidx.compose.foundation.layout.*
+-import androidx.compose.foundation.rememberScrollState
+-import androidx.compose.foundation.verticalScroll
+-import androidx.compose.material3.*
+-import androidx.compose.runtime.*
+-import androidx.compose.ui.Alignment
+-import androidx.compose.ui.Modifier
+-import androidx.compose.ui.graphics.Color
+-import androidx.compose.ui.text.font.FontWeight
+-import androidx.compose.ui.unit.dp
+-import androidx.compose.ui.unit.sp
+-import androidx.lifecycle.viewmodel.compose.viewModel
+-import androidx.navigation.NavController
+-import com.example.avance.viewmodel.FontSizeViewModel
+-import com.example.avance.viewmodel.FormularioViewModel
+-
+-@OptIn(ExperimentalMaterial3Api::class)
+-@Composable
+-fun FormSelect6(
+-    navController: NavController,
+-    viewModel: FormularioViewModel = viewModel(),
+-    fontSizeViewModel: FontSizeViewModel = viewModel() // Obtenemos fontSize desde FontSizeViewModel
+-) {
+-    val formData = viewModel.formData.value
+-    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
+-
+-    Scaffold(
+-        topBar = {
+-            TopAppBar(
+-                title = { Text("Cámaras Trampa", color = Color.White, fontSize = fontSize.sp) },
+-                colors = TopAppBarDefaults.topAppBarColors(
+-                    containerColor = Color(0xFFA4C639)
+-                )
+-            )
+-        }
+-    ) { padding ->
+-        Column(
+-            modifier = Modifier
+-                .fillMaxSize()
+-                .padding(padding)
+-                .padding(16.dp)
+-                .verticalScroll(rememberScrollState())
+-        ) {
+-            // Zona
+-            Text("Zona", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                SelectableOptionS1(
+-                    label = "Bosque",
+-                    selectedOption = formData.zone,
+-                    onSelected = { viewModel.updateZone("Bosque") },
+-                    fontSize = fontSize
+-                )
+-                SelectableOptionS1(
+-                    label = "Arreglo Agroforestal",
+-                    selectedOption = formData.zone,
+-                    onSelected = { viewModel.updateZone("Arreglo Agroforestal") },
+-                    fontSize = fontSize
+-                )
+-                SelectableOptionS1(
+-                    label = "Cultivos Transitorios",
+-                    selectedOption = formData.zone,
+-                    onSelected = { viewModel.updateZone("Cultivos Transitorios") },
+-                    fontSize = fontSize
+-                )
+-                SelectableOptionS1(
+-                    label = "Cultivos Permanentes",
+-                    selectedOption = formData.zone,
+-                    onSelected = { viewModel.updateZone("Cultivos Permanentes") },
+-                    fontSize = fontSize
+-                )
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Campos de Texto
+-            FormTextField("Nombre Cámara", formData.cameraName, fontSize) { viewModel.updateCameraName(it) }
+-            FormTextField("Placa Cámara", formData.cameraPlate, fontSize) { viewModel.updateCameraPlate(it) }
+-            FormTextField("Placa Guaya", formData.guayaPlate, fontSize) { viewModel.updateGuayaPlate(it) }
+-            FormTextField("Ancho Camino mt", formData.pathWidth, fontSize) { viewModel.updatePathWidth(it) }
+-            FormTextField("Fecha de Instalación", formData.installationDate, fontSize) { viewModel.updateInstallationDate(it) }
+-            FormTextField("Distancia al objetivo mt", formData.targetDistance, fontSize) { viewModel.updateTargetDistance(it) }
+-            FormTextField("Altura del lente mt", formData.lensHeight, fontSize) { viewModel.updateLensHeight(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Lista de chequeo
+-            Text("Lista de chequeo", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                CheckboxWithLabel(
+-                    label = "Programada",
+-                    checked = formData.isProgrammed,
+-                    onCheckedChange = { viewModel.updateIsProgrammed(it) },
+-                    fontSize = fontSize
+-                )
+-                CheckboxWithLabel(
+-                    label = "Memoria",
+-                    checked = formData.hasMemory,
+-                    onCheckedChange = { viewModel.updateHasMemory(it) },
+-                    fontSize = fontSize
+-                )
+-                CheckboxWithLabel(
+-                    label = "Prueba de gateo",
+-                    checked = formData.hasGateTest,
+-                    onCheckedChange = { viewModel.updateHasGateTest(it) },
+-                    fontSize = fontSize
+-                )
+-                CheckboxWithLabel(
+-                    label = "Instalada",
+-                    checked = formData.isInstalled,
+-                    onCheckedChange = { viewModel.updateIsInstalled(it) },
+-                    fontSize = fontSize
+-                )
+-                CheckboxWithLabel(
+-                    label = "Letrero de cámara",
+-                    checked = formData.hasCameraSign,
+-                    onCheckedChange = { viewModel.updateHasCameraSign(it) },
+-                    fontSize = fontSize
+-                )
+-                CheckboxWithLabel(
+-                    label = "Prendida",
+-                    checked = formData.isOn,
+-                    onCheckedChange = { viewModel.updateIsOn(it) },
+-                    fontSize = fontSize
+-                )
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Evidencias
+-            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Button(
+-                onClick = { /* Acción para elegir archivos */ },
+-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+-                modifier = Modifier.fillMaxWidth()
+-            ) {
+-                Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Observaciones
+-            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            FormTextField0(
+-                label = "Observaciones",
+-                value = formData.observations,
+-                onValueChange = { viewModel.updateObservations(it) },
+-                modifier = Modifier
+-                    .fillMaxWidth()
+-                    .height(120.dp),
+-                fontSize = fontSize
+-            )
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Botones de Acción
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceBetween
+-            ) {
+-                Button(
+-                    onClick = { navController.popBackStack() },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+-                ) {
+-                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
+-                }
+-                Button(
+-                    onClick = { /* Acción para enviar el formulario */ },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+-                ) {
+-                    Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
+-                }
+-            }
+-        }
+-    }
+-}
+-
+-@Composable
+-fun CheckboxWithLabel(label: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit, fontSize: Float) {
+-    Row(
+-        verticalAlignment = Alignment.CenterVertically,
+-        modifier = Modifier
+-            .fillMaxWidth()
+-            .padding(vertical = 4.dp)
+-            .clickable { onCheckedChange(!checked) }
+-    ) {
+-        Checkbox(
+-            checked = checked,
+-            onCheckedChange = onCheckedChange
+-        )
+-        Spacer(modifier = Modifier.width(8.dp))
+-        Text(text = label, fontSize = fontSize.sp)
+-    }
+-}
+-
+-@Composable
+-fun FormTextField0(
+-    label: String,
+-    value: String,
+-    onValueChange: (String) -> Unit,
+-    modifier: Modifier = Modifier,
+-    fontSize: Float // Agregamos fontSize como parámetro
+-) {
+-    TextField(
+-        value = value,
+-        onValueChange = onValueChange,
+-        label = { Text(label, fontSize = fontSize.sp) },
+-        modifier = modifier,
+-        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+-    )
+-}
+-
+-@Composable
+-fun SelectableOptionS1(label: String, selectedOption: String, onSelected: () -> Unit, fontSize: Float) {
+-    Row(
+-        verticalAlignment = Alignment.CenterVertically,
+-        modifier = Modifier
+-            .fillMaxWidth()
+-            .padding(vertical = 4.dp)
+-            .clickable { onSelected() }
+-    ) {
+-        RadioButton(
+-            selected = selectedOption == label,
+-            onClick = onSelected
+-        )
+-        Spacer(modifier = Modifier.width(8.dp))
+-        Text(text = label, fontSize = fontSize.sp)
+-    }
+-}
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect3.kt
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect3.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect3.kt
+deleted file mode 100644
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect3.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ /dev/null	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
+@@ -1,134 +0,0 @@
+-package com.example.avance.view.tiposformularios
+-
+-import androidx.compose.foundation.layout.*
+-import androidx.compose.foundation.rememberScrollState
+-import androidx.compose.foundation.verticalScroll
+-import androidx.compose.material3.*
+-import androidx.compose.runtime.*
+-import androidx.compose.ui.Modifier
+-import androidx.compose.ui.graphics.Color
+-import androidx.compose.ui.text.font.FontWeight
+-import androidx.compose.ui.unit.dp
+-import androidx.compose.ui.unit.sp
+-import androidx.lifecycle.viewmodel.compose.viewModel
+-import androidx.navigation.NavController
+-import com.example.avance.viewmodel.FontSizeViewModel
+-import com.example.avance.viewmodel.FormularioViewModel
+-
+-@OptIn(ExperimentalMaterial3Api::class)
+-@Composable
+-fun FormSelect3(
+-    navController: NavController,
+-    viewModel: FormularioViewModel = viewModel(),
+-    fontSizeViewModel: FontSizeViewModel = viewModel()
+-) {
+-    val formData = viewModel.formData.value
+-    val fontSize by fontSizeViewModel.fontSize.collectAsState()
+-
+-    Scaffold(
+-        topBar = {
+-            TopAppBar(
+-                title = { Text("Fauna Búsqueda Libre", color = Color.White, fontSize = fontSize.sp) },
+-                colors = TopAppBarDefaults.topAppBarColors(
+-                    containerColor = Color(0xFFA4C639)
+-                )
+-            )
+-        }
+-    ) { padding ->
+-        Column(
+-            modifier = Modifier
+-                .fillMaxSize()
+-                .padding(padding)
+-                .padding(16.dp)
+-                .verticalScroll(rememberScrollState())
+-        ) {
+-            // Campo de Código
+-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Zona
+-            Text("Zona", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                ObservationRadioButton("Bosque", formData.zone, fontSize) { viewModel.updateZone(it) }
+-                ObservationRadioButton("Arreglo Agroforestal", formData.zone, fontSize) { viewModel.updateZone(it) }
+-                ObservationRadioButton("Cultivos Transitorios", formData.zone, fontSize) { viewModel.updateZone(it) }
+-                ObservationRadioButton("Cultivos Permanentes", formData.zone, fontSize) { viewModel.updateZone(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Nombre Común
+-            FormTextField("Nombre Común", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-
+-            // Nombre Científico
+-            FormTextField("Nombre Científico", formData.scientificName, fontSize) { viewModel.updateScientificName(it) }
+-
+-            // Número de Individuos
+-            FormTextField("Número de Individuos", formData.individualCount, fontSize, isNumeric = true) { viewModel.updateIndividualCount(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Tipo de Observación
+-            Text("Tipo de Observación", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column(modifier = Modifier.fillMaxWidth()) {
+-                ObservationRadioButton("La Vió", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Huella", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Rastro", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Cacería", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-                ObservationRadioButton("Le Dijeron", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Evidencias
+-            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Button(
+-                onClick = { /* Acción para elegir archivos */ },
+-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+-                modifier = Modifier.fillMaxWidth()
+-            ) {
+-                Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Observaciones
+-            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            TextField(
+-                value = formData.observationNotes,
+-                onValueChange = { viewModel.updateObservationNotes(it) },
+-                modifier = Modifier
+-                    .fillMaxWidth()
+-                    .height(120.dp),
+-                placeholder = { Text("Observaciones", fontSize = fontSize.sp) },
+-                textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+-            )
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Botones de Acción
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceBetween
+-            ) {
+-                Button(
+-                    onClick = { navController.popBackStack() },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+-                ) {
+-                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
+-                }
+-                Button(
+-                    onClick = { /* Acción para enviar el formulario */ },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+-                ) {
+-                    Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
+-                }
+-            }
+-        }
+-    }
+-}
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect5.kt
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect5.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect5.kt
+deleted file mode 100644
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect5.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ /dev/null	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
+@@ -1,230 +0,0 @@
+-package com.example.avance.view.tiposformularios
+-
+-import androidx.compose.foundation.Image
+-import androidx.compose.foundation.border
+-import androidx.compose.foundation.clickable
+-import androidx.compose.foundation.layout.*
+-import androidx.compose.foundation.rememberScrollState
+-import androidx.compose.foundation.shape.RoundedCornerShape
+-import androidx.compose.foundation.verticalScroll
+-import androidx.compose.material3.*
+-import androidx.compose.runtime.*
+-import androidx.compose.ui.Alignment
+-import androidx.compose.ui.Modifier
+-import androidx.compose.ui.graphics.Color
+-import androidx.compose.ui.res.painterResource
+-import androidx.compose.ui.text.font.FontWeight
+-import androidx.compose.ui.unit.dp
+-import androidx.compose.ui.unit.sp
+-import androidx.lifecycle.viewmodel.compose.viewModel
+-import androidx.navigation.NavController
+-import com.example.avance.R
+-import com.example.avance.viewmodel.FontSizeViewModel
+-import com.example.avance.viewmodel.FormularioViewModel
+-
+-@OptIn(ExperimentalMaterial3Api::class)
+-@Composable
+-fun FormSelect5(
+-    navController: NavController,
+-    viewModel: FormularioViewModel = viewModel(),
+-    fontSizeViewModel: FontSizeViewModel = viewModel() // Obtenemos fontSize desde FontSizeViewModel
+-) {
+-    val formData = viewModel.formData.value
+-    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
+-
+-    Scaffold(
+-        topBar = {
+-            TopAppBar(
+-                title = { Text("Parcela de Vegetación", color = Color.White, fontSize = fontSize.sp) },
+-                colors = TopAppBarDefaults.topAppBarColors(
+-                    containerColor = Color(0xFFA4C639)
+-                )
+-            )
+-        }
+-    ) { padding ->
+-        Column(
+-            modifier = Modifier
+-                .fillMaxSize()
+-                .padding(padding)
+-                .padding(16.dp)
+-                .verticalScroll(rememberScrollState())
+-        ) {
+-            // Campo de Código
+-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Cuadrante
+-            Text("Cuadrante", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-
+-            // Primera fila de cuadrantes: A y B
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceEvenly
+-            ) {
+-                QuadrantButton(label = "A", isSelected = formData.selectedObservation == "A", fontSize) {
+-                    viewModel.updateSelectedObservation("A")
+-                }
+-                QuadrantButton(label = "B", isSelected = formData.selectedObservation == "B", fontSize) {
+-                    viewModel.updateSelectedObservation("B")
+-                }
+-            }
+-
+-            Spacer(modifier = Modifier.height(8.dp))
+-
+-            // Segunda fila de cuadrantes: C, D, E, F, G, H
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceEvenly
+-            ) {
+-                listOf("C", "D", "E", "F", "G", "H").forEach { label ->
+-                    QuadrantButton(label = label, isSelected = formData.selectedObservation == label, fontSize) {
+-                        viewModel.updateSelectedObservation(label)
+-                    }
+-                }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Sub-Cuadrante
+-            Text(text = "Sub-Cuadrante", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceAround
+-            ) {
+-                listOf("1", "2", "3", "4").forEach { label ->
+-                    QuadrantButton(label = label, isSelected = formData.selectedSubQuadrant == label, fontSize) {
+-                        viewModel.updateSelectedSubQuadrant(label)
+-                    }
+-                }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Hábito de crecimiento
+-            Text("Hábito de crecimiento", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceAround
+-            ) {
+-                listOf(
+-                    R.drawable.ic_arbusto to "Arbusto < 1mt",
+-                    R.drawable.ic_arbolito to "Arbolito 1-3 mt",
+-                    R.drawable.ic_arbol to "Árbol > 3mt"
+-                ).forEach { (iconId, label) ->
+-                    GrowthHabitButton(
+-                        iconId = iconId,
+-                        label = label,
+-                        isSelected = formData.selectedGrowthHabit == label,
+-                        fontSize = fontSize,
+-                        onClick = { viewModel.updateSelectedGrowthHabit(label) }
+-                    )
+-                }
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Campos de Texto
+-            FormTextField("Nombre Común Especie", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+-            FormTextField("Nombre Científico", formData.scientificName, fontSize) { viewModel.updateScientificName(it) }
+-            FormTextField("Placa", formData.placa, fontSize) { viewModel.updatePlaca(it) }
+-            FormTextField("Circunferencia en cm (CL)", formData.circunference, fontSize) { viewModel.updateCircunference(it) }
+-            FormTextField("Distancia en mt", formData.distance, fontSize) { viewModel.updateDistance(it) }
+-            FormTextField("Estatura Biomonitor en mt", formData.biomonHeight, fontSize) { viewModel.updateBiomonHeight(it) }
+-            FormTextField("Altura en mt", formData.height, fontSize) { viewModel.updateHeight(it) }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Evidencias
+-            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Button(
+-                onClick = { /* Acción para elegir archivos */ },
+-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+-                modifier = Modifier.fillMaxWidth()
+-            ) {
+-                Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
+-            }
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Observaciones
+-            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            TextField(
+-                value = formData.observationNotes,
+-                onValueChange = { viewModel.updateObservationNotes(it) },
+-                modifier = Modifier
+-                    .fillMaxWidth()
+-                    .height(120.dp),
+-                placeholder = { Text("Observaciones", fontSize = fontSize.sp) },
+-                textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+-            )
+-
+-            Spacer(modifier = Modifier.height(16.dp))
+-
+-            // Botones de Acción
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceBetween
+-            ) {
+-                Button(
+-                    onClick = { navController.popBackStack() },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+-                ) {
+-                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
+-                }
+-                Button(
+-                    onClick = { /* Acción para enviar el formulario */ },
+-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+-                ) {
+-                    Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
+-                }
+-            }
+-        }
+-    }
+-}
+-
+-@Composable
+-fun QuadrantButton(label: String, isSelected: Boolean, fontSize: Float, onClick: () -> Unit) {
+-    Column(
+-        modifier = Modifier
+-            .clickable(onClick = onClick)
+-            .border(
+-                width = 2.dp,
+-                color = if (isSelected) Color(0xFFA4C639) else Color.Gray,
+-                shape = RoundedCornerShape(8.dp)
+-            )
+-            .padding(8.dp),
+-        horizontalAlignment = Alignment.CenterHorizontally
+-    ) {
+-        Text(label, fontSize = fontSize.sp, color = if (isSelected) Color.Black else Color.Gray)
+-    }
+-}
+-
+-@Composable
+-fun GrowthHabitButton(iconId: Int, label: String, isSelected: Boolean, fontSize: Float, onClick: () -> Unit) {
+-    Column(
+-        modifier = Modifier
+-            .size(width = 100.dp, height = 120.dp)
+-            .clickable(onClick = onClick)
+-            .border(
+-                width = 2.dp,
+-                color = if (isSelected) Color(0xFFA4C639) else Color.Gray,
+-                shape = RoundedCornerShape(8.dp)
+-            )
+-            .padding(8.dp),
+-        horizontalAlignment = Alignment.CenterHorizontally
+-    ) {
+-        Image(
+-            painter = painterResource(id = iconId),
+-            contentDescription = label,
+-            modifier = Modifier.size(48.dp)
+-        )
+-        Spacer(modifier = Modifier.height(8.dp))
+-        Text(label, fontSize = fontSize.sp, color = Color.Black)
+-    }
+-}
+Index: SecurePath-main/app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n    alias(libs.plugins.kotlin.android)\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.example.avance\"\r\n    compileSdk = 34\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.example.avance\"\r\n        minSdk = 24\r\n        targetSdk = 34\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n        vectorDrawables {\r\n            useSupportLibrary = true\r\n        }\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n    buildFeatures {\r\n        compose = true\r\n    }\r\n    composeOptions {\r\n        kotlinCompilerExtensionVersion = \"1.5.1\"\r\n    }\r\n    packaging {\r\n        resources {\r\n            excludes += \"/META-INF/{AL2.0,LGPL2.1}\"\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation(libs.androidx.core.ktx)\r\n    implementation(libs.androidx.lifecycle.runtime.ktx)\r\n    implementation(libs.androidx.activity.compose)\r\n    implementation(platform(libs.androidx.compose.bom))\r\n    implementation(libs.androidx.ui)\r\n    implementation(libs.androidx.ui.graphics)\r\n    implementation(libs.androidx.ui.tooling.preview)\r\n    implementation(libs.androidx.material3)\r\n\r\n    // Agregar dependencias de navegación\r\n    implementation(\"androidx.navigation:navigation-compose:2.4.1\") // para Jetpack Compose\r\n    implementation(\"androidx.navigation:navigation-runtime-ktx:2.4.1\") // Añadir esta línea\r\n\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.androidx.junit)\r\n    androidTestImplementation(libs.androidx.espresso.core)\r\n    androidTestImplementation(platform(libs.androidx.compose.bom))\r\n    androidTestImplementation(libs.androidx.ui.test.junit4)\r\n    debugImplementation(libs.androidx.ui.tooling)\r\n    debugImplementation(libs.androidx.ui.test.manifest)\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SecurePath-main/app/build.gradle.kts b/SecurePath-main/app/build.gradle.kts
+--- a/SecurePath-main/app/build.gradle.kts	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ b/SecurePath-main/app/build.gradle.kts	(date 1731373768658)
+@@ -1,6 +1,7 @@
+ plugins {
+     alias(libs.plugins.android.application)
+     alias(libs.plugins.kotlin.android)
++
+ }
+ 
+ android {
+Index: SecurePath-main/app/src/main/java/com/example/avance/view/formulario_activity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.avance.view\r\n\r\nimport androidx.compose.foundation.Image\r\nimport androidx.compose.foundation.clickable\r\nimport androidx.compose.foundation.layout.*\r\nimport androidx.compose.foundation.rememberScrollState\r\nimport androidx.compose.foundation.verticalScroll\r\nimport androidx.compose.material3.*\r\nimport androidx.compose.runtime.*\r\nimport androidx.compose.ui.Alignment\r\nimport androidx.compose.ui.Modifier\r\nimport androidx.compose.ui.graphics.Color\r\nimport androidx.compose.ui.res.painterResource\r\nimport androidx.compose.ui.text.font.FontWeight\r\nimport androidx.compose.ui.unit.dp\r\nimport androidx.compose.ui.unit.sp\r\nimport androidx.navigation.NavController\r\nimport com.example.avance.R\r\nimport com.example.avance.viewmodel.FontSizeViewModel\r\nimport com.example.avance.viewmodel.FormularioViewModel\r\n\r\n@OptIn(ExperimentalMaterial3Api::class)\r\n@Composable\r\nfun FormularioScreen(\r\n    navController: NavController,\r\n    viewModel: FormularioViewModel,\r\n    fontSizeViewModel: FontSizeViewModel\r\n) {\r\n    val formData = viewModel.formData.value\r\n    val fontSize by fontSizeViewModel.fontSize.collectAsState()\r\n\r\n    Scaffold(\r\n        topBar = {\r\n            TopAppBar(\r\n                title = { Text(\"Formulario\", color = Color.White, fontSize = fontSize.sp) },\r\n                navigationIcon = {\r\n                    Text(\r\n                        text = \"<\",\r\n                        color = Color.White,\r\n                        fontSize = 24.sp,\r\n                        modifier = Modifier\r\n                            .padding(horizontal = 16.dp)\r\n                            .clickable { navController.popBackStack() }\r\n                    )\r\n                },\r\n                colors = TopAppBarDefaults.topAppBarColors(\r\n                    containerColor = Color(0xFFA4C639)\r\n                )\r\n            )\r\n        }\r\n    ) { padding ->\r\n        Column(\r\n            modifier = Modifier\r\n                .fillMaxSize()\r\n                .padding(padding)\r\n                .verticalScroll(rememberScrollState())\r\n                .padding(16.dp)\r\n        ) {\r\n            FormTextField(\"Nombre\", formData.name, fontSize = fontSize, onValueChange = viewModel::updateName)\r\n            FormTextField(\"Fecha\", formData.date, fontSize = fontSize, onValueChange = viewModel::updateDate)\r\n\r\n            Row(\r\n                verticalAlignment = Alignment.CenterVertically,\r\n                modifier = Modifier.fillMaxWidth()\r\n            ) {\r\n                FormTextField(\r\n                    \"Localidad\",\r\n                    formData.location,\r\n                    fontSize = fontSize,\r\n                    onValueChange = viewModel::updateLocation,\r\n                    modifier = Modifier.weight(1f)\r\n                )\r\n                IconButton(\r\n                    onClick = { /* Acción para abrir el mapa o buscar localización */ },\r\n                    modifier = Modifier.size(48.dp)\r\n                ) {\r\n                    Image(\r\n                        painter = painterResource(id = R.drawable.ic_map),\r\n                        contentDescription = \"Buscar ubicación\"\r\n                    )\r\n                }\r\n            }\r\n\r\n            FormTextField(\"Hora\", formData.time, fontSize = fontSize, onValueChange = viewModel::updateTime)\r\n            FormTextField(\"Número de Transecto\", formData.transectNumber, fontSize = fontSize, onValueChange = viewModel::updateTransectNumber)\r\n\r\n            Spacer(modifier = Modifier.height(16.dp))\r\n\r\n            Text(\"Estado del Tiempo\", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)\r\n            Spacer(modifier = Modifier.height(8.dp))\r\n            Row(\r\n                modifier = Modifier.fillMaxWidth(),\r\n                horizontalArrangement = Arrangement.SpaceEvenly\r\n            ) {\r\n                WeatherIcon(iconId = R.drawable.ic_soleado, description = \"Soleado\")\r\n                WeatherIcon(iconId = R.drawable.ic_nublado, description = \"Nublado\")\r\n                WeatherIcon(iconId = R.drawable.ic_lluvioso, description = \"Lluvioso\")\r\n            }\r\n\r\n            Spacer(modifier = Modifier.height(16.dp))\r\n\r\n            Text(\"Tipo de Registro\", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)\r\n            Spacer(modifier = Modifier.height(8.dp))\r\n            Column {\r\n                SelectableOption(\"Fauna en Transectos\", formData.selectedRegistro, fontSize) { viewModel.updateRegistro(\"Fauna en Transectos\") }\r\n                SelectableOption(\"Fauna en Punto de Conteo\", formData.selectedRegistro, fontSize) { viewModel.updateRegistro(\"Fauna en Punto de Conteo\") }\r\n                SelectableOption(\"Fauna Búsqueda Libre\", formData.selectedRegistro, fontSize) { viewModel.updateRegistro(\"Fauna Búsqueda Libre\") }\r\n                SelectableOption(\"Validación de Cobertura\", formData.selectedRegistro, fontSize) { viewModel.updateRegistro(\"Validación de Cobertura\") }\r\n                SelectableOption(\"Parcela de Vegetación\", formData.selectedRegistro, fontSize) { viewModel.updateRegistro(\"Parcela de Vegetación\") }\r\n                SelectableOption(\"Cámaras Trampa\", formData.selectedRegistro, fontSize) { viewModel.updateRegistro(\"Cámaras Trampa\") }\r\n                SelectableOption(\"Variables Climáticas\", formData.selectedRegistro, fontSize) { viewModel.updateRegistro(\"Variables Climáticas\") }\r\n            }\r\n\r\n            Spacer(modifier = Modifier.height(16.dp))\r\n\r\n            Button(\r\n                onClick = {\r\n                    when (formData.selectedRegistro) {\r\n                        \"Fauna en Transectos\" -> navController.navigate(\"form_1\")\r\n                        \"Fauna en Punto de Conteo\" -> navController.navigate(\"form_2\")\r\n                        \"Fauna Búsqueda Libre\" -> navController.navigate(\"form_3\")\r\n                        \"Validación de Cobertura\" -> navController.navigate(\"form_4\")\r\n                        \"Parcela de Vegetación\" -> navController.navigate(\"form_5\")\r\n                        \"Cámaras Trampa\" -> navController.navigate(\"form_6\")\r\n                        \"Variables Climáticas\" -> navController.navigate(\"form_7\")\r\n                    }\r\n                },\r\n                modifier = Modifier.fillMaxWidth(),\r\n                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))\r\n            ) {\r\n                Text(\"SIGUIENTE\", color = Color.White, fontSize = fontSize.sp)\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n@Composable\r\nfun FormTextField(label: String, value: String, fontSize: Float, modifier: Modifier = Modifier, onValueChange: (String) -> Unit) {\r\n    TextField(\r\n        value = value,\r\n        onValueChange = onValueChange,\r\n        label = { Text(label, fontSize = fontSize.sp) },\r\n        modifier = modifier.fillMaxWidth().padding(4.dp),\r\n        singleLine = true,\r\n        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)\r\n    )\r\n}\r\n\r\n@Composable\r\nfun WeatherIcon(iconId: Int, description: String, onClick: () -> Unit = {}) {\r\n    IconButton(onClick = onClick) {\r\n        Image(\r\n            painter = painterResource(id = iconId),\r\n            contentDescription = description,\r\n            modifier = Modifier.size(48.dp)\r\n        )\r\n    }\r\n}\r\n\r\n@Composable\r\nfun SelectableOption(label: String, selectedOption: String?, fontSize: Float, onSelected: (String) -> Unit) {\r\n    Row(\r\n        verticalAlignment = Alignment.CenterVertically,\r\n        modifier = Modifier\r\n            .fillMaxWidth()\r\n            .clickable { onSelected(label) }\r\n            .padding(vertical = 4.dp)\r\n    ) {\r\n        RadioButton(\r\n            selected = (label == selectedOption),\r\n            onClick = { onSelected(label) }\r\n        )\r\n        Text(label, fontSize = fontSize.sp)\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/view/formulario_activity.kt b/SecurePath-main/app/src/main/java/com/example/avance/view/formulario_activity.kt
+--- a/SecurePath-main/app/src/main/java/com/example/avance/view/formulario_activity.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ b/SecurePath-main/app/src/main/java/com/example/avance/view/formulario_activity.kt	(date 1731373768661)
+@@ -1,175 +1,189 @@
+ package com.example.avance.view
+ 
+-import androidx.compose.foundation.Image
+-import androidx.compose.foundation.clickable
++import android.Manifest
++import android.net.Uri
++import androidx.activity.compose.rememberLauncherForActivityResult
++import androidx.activity.result.contract.ActivityResultContracts
++import androidx.compose.foundation.*
+ import androidx.compose.foundation.layout.*
+-import androidx.compose.foundation.rememberScrollState
++import androidx.compose.foundation.shape.RoundedCornerShape
+ import androidx.compose.foundation.verticalScroll
+ import androidx.compose.material3.*
+ import androidx.compose.runtime.*
+ import androidx.compose.ui.Alignment
+ import androidx.compose.ui.Modifier
+ import androidx.compose.ui.graphics.Color
++import androidx.compose.ui.platform.LocalContext
+ import androidx.compose.ui.res.painterResource
++import androidx.compose.ui.text.TextStyle
+ import androidx.compose.ui.text.font.FontWeight
++import androidx.compose.ui.text.style.TextAlign
+ import androidx.compose.ui.unit.dp
+ import androidx.compose.ui.unit.sp
+ import androidx.navigation.NavController
+-import com.example.avance.R
+ import com.example.avance.viewmodel.FontSizeViewModel
+-import com.example.avance.viewmodel.FormularioViewModel
++import com.example.avance.viewmodel.FormViewModel
++import androidx.lifecycle.viewmodel.compose.viewModel
+ 
+-@OptIn(ExperimentalMaterial3Api::class)
++
+ @Composable
+-fun FormularioScreen(
++fun FormularioConsolidado(
+     navController: NavController,
+-    viewModel: FormularioViewModel,
+-    fontSizeViewModel: FontSizeViewModel
++    viewModel: FormViewModel = viewModel(),
++    fontSizeViewModel: FontSizeViewModel = viewModel()
+ ) {
+     val formData = viewModel.formData.value
+     val fontSize by fontSizeViewModel.fontSize.collectAsState()
++    val context = LocalContext.current
+ 
+-    Scaffold(
+-        topBar = {
+-            TopAppBar(
+-                title = { Text("Formulario", color = Color.White, fontSize = fontSize.sp) },
+-                navigationIcon = {
+-                    Text(
+-                        text = "<",
+-                        color = Color.White,
+-                        fontSize = 24.sp,
+-                        modifier = Modifier
+-                            .padding(horizontal = 16.dp)
+-                            .clickable { navController.popBackStack() }
+-                    )
+-                },
+-                colors = TopAppBarDefaults.topAppBarColors(
+-                    containerColor = Color(0xFFA4C639)
+-                )
+-            )
+-        }
+-    ) { padding ->
+-        Column(
+-            modifier = Modifier
+-                .fillMaxSize()
+-                .padding(padding)
+-                .verticalScroll(rememberScrollState())
+-                .padding(16.dp)
++    // Initialize image picker
++    val galleryLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
++        // Handle selected image URI
++    }
++
++    Column(
++        modifier = Modifier
++            .fillMaxSize()
++            .padding(16.dp)
++            .verticalScroll(rememberScrollState())
++    ) {
++        // Top Bar with Back Button
++        Row(
++            modifier = Modifier
++                .fillMaxWidth()
++                .padding(4.dp),
++            verticalAlignment = Alignment.CenterVertically,
++            horizontalArrangement = Arrangement.SpaceBetween
+         ) {
+-            FormTextField("Nombre", formData.name, fontSize = fontSize, onValueChange = viewModel::updateName)
+-            FormTextField("Fecha", formData.date, fontSize = fontSize, onValueChange = viewModel::updateDate)
++            IconButton(onClick = { navController.popBackStack() }) {
++                Icon(
++                    painter = painterResource(id = android.R.drawable.ic_menu_revert),
++                    contentDescription = "Regresar",
++                    tint = Color.Black,
++                    modifier = Modifier.size(45.dp)
++                )
++            }
++            Text(
++                text = "Formulario",
++                fontSize = 36.sp,
++                color = Color.Black
++            )
++        }
+ 
+-            Row(
+-                verticalAlignment = Alignment.CenterVertically,
+-                modifier = Modifier.fillMaxWidth()
+-            ) {
+-                FormTextField(
+-                    "Localidad",
+-                    formData.location,
+-                    fontSize = fontSize,
+-                    onValueChange = viewModel::updateLocation,
+-                    modifier = Modifier.weight(1f)
+-                )
+-                IconButton(
+-                    onClick = { /* Acción para abrir el mapa o buscar localización */ },
+-                    modifier = Modifier.size(48.dp)
+-                ) {
+-                    Image(
+-                        painter = painterResource(id = R.drawable.ic_map),
+-                        contentDescription = "Buscar ubicación"
+-                    )
+-                }
+-            }
+-
+-            FormTextField("Hora", formData.time, fontSize = fontSize, onValueChange = viewModel::updateTime)
+-            FormTextField("Número de Transecto", formData.transectNumber, fontSize = fontSize, onValueChange = viewModel::updateTransectNumber)
++        Spacer(modifier = Modifier.height(16.dp))
++
++        // Name, Date, Location, and Time fields
++        OutlinedTextField(
++            value = formData.name,
++            onValueChange = { viewModel.updateName(it) },
++            label = { Text("Nombre", fontSize = fontSize.sp) },
++            textStyle = TextStyle(fontSize = fontSize.sp),
++            modifier = Modifier.fillMaxWidth()
++        )
++        OutlinedTextField(
++            value = formData.date,
++            onValueChange = { viewModel.updateDate(it) },
++            label = { Text("Fecha", fontSize = fontSize.sp) },
++            textStyle = TextStyle(fontSize = fontSize.sp),
++            modifier = Modifier.fillMaxWidth()
++        )
++        Row(
++            verticalAlignment = Alignment.CenterVertically,
++            modifier = Modifier.fillMaxWidth()
++        ) {
++            OutlinedTextField(
++                value = formData.location,
++                onValueChange = { viewModel.updateLocation(it) },
++                label = { Text("Localidad", fontSize = fontSize.sp) },
++                textStyle = TextStyle(fontSize = fontSize.sp),
++                modifier = Modifier.weight(1f)
++            )
++            IconButton(onClick = { /* Acción para abrir el mapa o buscar localización */ }) {
++                Icon(
++                    painter = painterResource(id = android.R.drawable.ic_menu_mylocation),
++                    contentDescription = "Buscar ubicación"
++                )
++            }
++        }
++        OutlinedTextField(
++            value = formData.time,
++            onValueChange = { viewModel.updateTime(it) },
++            label = { Text("Hora", fontSize = fontSize.sp) },
++            textStyle = TextStyle(fontSize = fontSize.sp),
++            modifier = Modifier.fillMaxWidth()
++        )
+ 
+-            Spacer(modifier = Modifier.height(16.dp))
++        Spacer(modifier = Modifier.height(16.dp))
+ 
+-            Text("Estado del Tiempo", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Row(
+-                modifier = Modifier.fillMaxWidth(),
+-                horizontalArrangement = Arrangement.SpaceEvenly
+-            ) {
+-                WeatherIcon(iconId = R.drawable.ic_soleado, description = "Soleado")
+-                WeatherIcon(iconId = R.drawable.ic_nublado, description = "Nublado")
+-                WeatherIcon(iconId = R.drawable.ic_lluvioso, description = "Lluvioso")
++        // Weather Condition
++        Text("Estado del Tiempo", fontSize = fontSize.sp)
++        Row(
++            modifier = Modifier.fillMaxWidth(),
++            horizontalArrangement = Arrangement.SpaceAround
++        ) {
++            listOf("Soleado", "Nublado", "Lluvioso").forEach { weather ->
++                IconButton(onClick = { /* Acción para seleccionar el estado del tiempo */ }) {
++                    Icon(
++                        painter = painterResource(id = when (weather) {
++                            "Soleado" -> android.R.drawable.ic_menu_gallery
++                            "Nublado" -> android.R.drawable.ic_menu_compass
++                            else -> android.R.drawable.ic_menu_camera
++                        }),
++                        contentDescription = weather
++                    )
++                }
+             }
++        }
+ 
+-            Spacer(modifier = Modifier.height(16.dp))
++        Spacer(modifier = Modifier.height(16.dp))
+ 
+-            Text("Tipo de Registro", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+-            Spacer(modifier = Modifier.height(8.dp))
+-            Column {
+-                SelectableOption("Fauna en Transectos", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Transectos") }
+-                SelectableOption("Fauna en Punto de Conteo", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
+-                SelectableOption("Fauna Búsqueda Libre", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
+-                SelectableOption("Validación de Cobertura", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Validación de Cobertura") }
+-                SelectableOption("Parcela de Vegetación", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Parcela de Vegetación") }
+-                SelectableOption("Cámaras Trampa", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Cámaras Trampa") }
+-                SelectableOption("Variables Climáticas", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Variables Climáticas") }
++// Época
++        Text("Época", fontSize = fontSize.sp)
++        Column {
++            Row(verticalAlignment = Alignment.CenterVertically) {
++                RadioButton(
++                    selected = formData.selectedEpoca == "Verano/Seca",
++                    onClick = { viewModel.updateEpoca("Verano/Seca") }
++                )
++                Text("Verano/Seca", fontSize = fontSize.sp)
+             }
++            Row(verticalAlignment = Alignment.CenterVertically) {
++                RadioButton(
++                    selected = formData.selectedEpoca == "Invierno/Lluviosa",
++                    onClick = { viewModel.updateEpoca("Invierno/Lluviosa") }
++                )
++                Text("Invierno/Lluviosa", fontSize = fontSize.sp)
++            }
++        }
+ 
+-            Spacer(modifier = Modifier.height(16.dp))
++        Spacer(modifier = Modifier.height(16.dp))
+ 
+-            Button(
+-                onClick = {
+-                    when (formData.selectedRegistro) {
+-                        "Fauna en Transectos" -> navController.navigate("form_1")
+-                        "Fauna en Punto de Conteo" -> navController.navigate("form_2")
+-                        "Fauna Búsqueda Libre" -> navController.navigate("form_3")
+-                        "Validación de Cobertura" -> navController.navigate("form_4")
+-                        "Parcela de Vegetación" -> navController.navigate("form_5")
+-                        "Cámaras Trampa" -> navController.navigate("form_6")
+-                        "Variables Climáticas" -> navController.navigate("form_7")
+-                    }
+-                },
+-                modifier = Modifier.fillMaxWidth(),
+-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+-            ) {
+-                Text("SIGUIENTE", color = Color.White, fontSize = fontSize.sp)
+-            }
++// Tipo de Registro
++        Text("Tipo de Registro", fontSize = fontSize.sp)
++        Column {
++            listOf(
++                "Fauna en Transectos", "Fauna en Punto de Conteo", "Fauna Búsqueda Libre",
++                "Validación de Cobertura", "Parcela de Vegetación", "Cámaras Trampa", "Variables Climáticas"
++            ).forEach { type ->
++                Row(verticalAlignment = Alignment.CenterVertically) {
++                    RadioButton(
++                        selected = formData.selectedRegistro == type,
++                        onClick = { viewModel.updateRegistro(type) }
++                    )
++                    Text(type, fontSize = fontSize.sp)
++                }
++            }
++        }
++
++        Spacer(modifier = Modifier.height(16.dp))
++
++        // Submit Button
++        Button(
++            onClick = { /* Acción para enviar el formulario */ },
++            modifier = Modifier.fillMaxWidth(),
++            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
++        ) {
++            Text("SIGUIENTE", color = Color.White, fontSize = fontSize.sp)
+         }
+     }
+-}
+-
+-@Composable
+-fun FormTextField(label: String, value: String, fontSize: Float, modifier: Modifier = Modifier, onValueChange: (String) -> Unit) {
+-    TextField(
+-        value = value,
+-        onValueChange = onValueChange,
+-        label = { Text(label, fontSize = fontSize.sp) },
+-        modifier = modifier.fillMaxWidth().padding(4.dp),
+-        singleLine = true,
+-        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+-    )
+-}
+-
+-@Composable
+-fun WeatherIcon(iconId: Int, description: String, onClick: () -> Unit = {}) {
+-    IconButton(onClick = onClick) {
+-        Image(
+-            painter = painterResource(id = iconId),
+-            contentDescription = description,
+-            modifier = Modifier.size(48.dp)
+-        )
+-    }
+-}
+-
+-@Composable
+-fun SelectableOption(label: String, selectedOption: String?, fontSize: Float, onSelected: (String) -> Unit) {
+-    Row(
+-        verticalAlignment = Alignment.CenterVertically,
+-        modifier = Modifier
+-            .fillMaxWidth()
+-            .clickable { onSelected(label) }
+-            .padding(vertical = 4.dp)
+-    ) {
+-        RadioButton(
+-            selected = (label == selectedOption),
+-            onClick = { onSelected(label) }
+-        )
+-        Text(label, fontSize = fontSize.sp)
+-    }
+-}
++}
+\ No newline at end of file
+Index: SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.avance.viewmodel\r\n\r\nimport androidx.lifecycle.ViewModel\r\nimport androidx.compose.runtime.mutableStateOf\r\nimport com.example.avance.model.FormData\r\n\r\nclass FormularioViewModel : ViewModel() {\r\n    val formData = mutableStateOf(FormData())\r\n\r\n    // Métodos para actualizar los datos del formulario\r\n    fun updateName(value: String) { formData.value = formData.value.copy(name = value) }\r\n\r\n    fun updateDate(value: String) { formData.value = formData.value.copy(date = value) }\r\n\r\n    fun updateLocation(value: String) { formData.value = formData.value.copy(location = value) }\r\n\r\n    fun updateTime(value: String) { formData.value = formData.value.copy(time = value) }\r\n\r\n    fun updateTransectNumber(value: String) { formData.value = formData.value.copy(transectNumber = value) }\r\n\r\n    fun updateRegistro(value: String) { formData.value = formData.value.copy(selectedRegistro = value) }\r\n\r\n    fun updateSelectedAnimal(animal: String) { formData.value = formData.value.copy(selectedAnimal = animal) }\r\n\r\n    fun updateSelectedObservation(observation: String) { formData.value = formData.value.copy(selectedObservation = observation) }\r\n\r\n    fun updateCommonName(name: String) { formData.value = formData.value.copy(commonName = name) }\r\n\r\n    fun updateScientificName(name: String) { formData.value = formData.value.copy(scientificName = name) }\r\n\r\n    fun updateIndividualCount(count: String) { formData.value = formData.value.copy(individualCount = count) }\r\n\r\n    fun updateObservationNotes(notes: String) { formData.value = formData.value.copy(observationNotes = notes) }\r\n\r\n    fun updateSelectedGrowthHabit(habit: String) { formData.value = formData.value.copy(selectedGrowthHabit = habit) }\r\n\r\n    fun updatePlaca(placa: String) { formData.value = formData.value.copy(placa = placa) }\r\n\r\n    fun updateCircunference(circumference: String) { formData.value = formData.value.copy(circunference = circumference) }\r\n\r\n    fun updateDistance(distance: String) { formData.value = formData.value.copy(distance = distance) }\r\n\r\n    fun updateBiomonHeight(height: String) { formData.value = formData.value.copy(biomonHeight = height) }\r\n\r\n    fun updateHeight(height: String) { formData.value = formData.value.copy(height = height) }\r\n\r\n    fun updateSelectedSubQuadrant(subQuadrant: String) { formData.value = formData.value.copy(selectedSubQuadrant = subQuadrant) }\r\n\r\n    fun updateZone(zone: String) { formData.value = formData.value.copy(zone = zone) }\r\n\r\n    fun updateCameraName(name: String) { formData.value = formData.value.copy(cameraName = name) }\r\n\r\n    fun updateCameraPlate(plate: String) { formData.value = formData.value.copy(cameraPlate = plate) }\r\n\r\n    fun updateGuayaPlate(plate: String) { formData.value = formData.value.copy(guayaPlate = plate) }\r\n\r\n    fun updatePathWidth(width: String) { formData.value = formData.value.copy(pathWidth = width) }\r\n\r\n    fun updateInstallationDate(date: String) { formData.value = formData.value.copy(installationDate = date) }\r\n\r\n    fun updateTargetDistance(distance: String) { formData.value = formData.value.copy(targetDistance = distance) }\r\n\r\n    fun updateLensHeight(height: String) { formData.value = formData.value.copy(lensHeight = height) }\r\n\r\n    fun updateIsProgrammed(isProgrammed: Boolean) { formData.value = formData.value.copy(isProgrammed = isProgrammed) }\r\n\r\n    fun updateHasMemory(hasMemory: Boolean) { formData.value = formData.value.copy(hasMemory = hasMemory) }\r\n\r\n    fun updateHasGateTest(hasGateTest: Boolean) { formData.value = formData.value.copy(hasGateTest = hasGateTest) }\r\n\r\n    fun updateIsInstalled(isInstalled: Boolean) { formData.value = formData.value.copy(isInstalled = isInstalled) }\r\n\r\n    fun updateHasCameraSign(hasSign: Boolean) { formData.value = formData.value.copy(hasCameraSign = hasSign) }\r\n\r\n    fun updateIsOn(isOn: Boolean) { formData.value = formData.value.copy(isOn = isOn) }\r\n\r\n    fun updateObservations(observations: String) { formData.value = formData.value.copy(observations = observations) }\r\n\r\n    fun updateRainfall(rainfall: String) { formData.value = formData.value.copy(rainfall = rainfall) }\r\n\r\n    fun updateMaxTemperature(maxTemperature: String) { formData.value = formData.value.copy(maxTemperature = maxTemperature) }\r\n\r\n    fun updateMinTemperature(minTemperature: String) { formData.value = formData.value.copy(minTemperature = minTemperature) }\r\n\r\n    fun updateMaxHumidity(maxHumidity: String) { formData.value = formData.value.copy(maxHumidity = maxHumidity) }\r\n\r\n    fun updateMinHumidity(minHumidity: String) { formData.value = formData.value.copy(minHumidity = minHumidity) }\r\n\r\n    fun updateCreekLevel(creekLevel: String) { formData.value = formData.value.copy(creekLevel = creekLevel) }\r\n\r\n    fun updateObservationType(selectedObservationType: String) { formData.value = formData.value.copy(observationType = selectedObservationType) }\r\n\r\n    fun updateYesNo(yesandno: String) { formData.value = formData.value.copy(yesandno = yesandno) }\r\n\r\n    fun updateDisturbance(disturbance: String) { formData.value = formData.value.copy(disturbance = disturbance) }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt b/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt
+--- a/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt	(revision 67491e70033a17ea3929b5808c64933880d8eebf)
++++ b/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt	(date 1731373768662)
+@@ -2,96 +2,193 @@
+ 
+ import androidx.lifecycle.ViewModel
+ import androidx.compose.runtime.mutableStateOf
+-import com.example.avance.model.FormData
++import com.example.avance.model.FormModel
+ 
+-class FormularioViewModel : ViewModel() {
+-    val formData = mutableStateOf(FormData())
++class FormViewModel : ViewModel() {
++    val formData = mutableStateOf(FormModel())
+ 
+-    // Métodos para actualizar los datos del formulario
+-    fun updateName(value: String) { formData.value = formData.value.copy(name = value) }
++    // Update methods
++    fun updateName(value: String) {
++        formData.value = formData.value.copy(name = value)
++    }
+ 
+-    fun updateDate(value: String) { formData.value = formData.value.copy(date = value) }
++    fun updateDate(value: String) {
++        formData.value = formData.value.copy(date = value)
++    }
+ 
+-    fun updateLocation(value: String) { formData.value = formData.value.copy(location = value) }
++    fun updateLocation(value: String) {
++        formData.value = formData.value.copy(location = value)
++    }
+ 
+-    fun updateTime(value: String) { formData.value = formData.value.copy(time = value) }
++    fun updateTime(value: String) {
++        formData.value = formData.value.copy(time = value)
++    }
+ 
+-    fun updateTransectNumber(value: String) { formData.value = formData.value.copy(transectNumber = value) }
++    fun updateTransectNumber(value: String) {
++        formData.value = formData.value.copy(transectNumber = value)
++    }
+ 
+-    fun updateRegistro(value: String) { formData.value = formData.value.copy(selectedRegistro = value) }
++    fun updateRegistro(value: String) {
++        formData.value = formData.value.copy(selectedRegistro = value)
++    }
+ 
+-    fun updateSelectedAnimal(animal: String) { formData.value = formData.value.copy(selectedAnimal = animal) }
++    fun updateSelectedAnimal(animal: String) {
++        formData.value = formData.value.copy(selectedAnimal = animal)
++    }
+ 
+-    fun updateSelectedObservation(observation: String) { formData.value = formData.value.copy(selectedObservation = observation) }
++    fun updateSelectedObservation(observation: String) {
++        formData.value = formData.value.copy(selectedObservation = observation)
++    }
+ 
+-    fun updateCommonName(name: String) { formData.value = formData.value.copy(commonName = name) }
++    fun updateCommonName(name: String) {
++        formData.value = formData.value.copy(commonName = name)
++    }
+ 
+-    fun updateScientificName(name: String) { formData.value = formData.value.copy(scientificName = name) }
++    fun updateScientificName(name: String) {
++        formData.value = formData.value.copy(scientificName = name)
++    }
+ 
+-    fun updateIndividualCount(count: String) { formData.value = formData.value.copy(individualCount = count) }
++    fun updateIndividualCount(count: String) {
++        formData.value = formData.value.copy(individualCount = count)
++    }
+ 
+-    fun updateObservationNotes(notes: String) { formData.value = formData.value.copy(observationNotes = notes) }
++    fun updateObservationNotes(notes: String) {
++        formData.value = formData.value.copy(observationNotes = notes)
++    }
+ 
+-    fun updateSelectedGrowthHabit(habit: String) { formData.value = formData.value.copy(selectedGrowthHabit = habit) }
++    fun updateSelectedGrowthHabit(habit: String) {
++        formData.value = formData.value.copy(selectedGrowthHabit = habit)
++    }
+ 
+-    fun updatePlaca(placa: String) { formData.value = formData.value.copy(placa = placa) }
++    fun updatePlaca(placa: String) {
++        formData.value = formData.value.copy(placa = placa)
++    }
+ 
+-    fun updateCircunference(circumference: String) { formData.value = formData.value.copy(circunference = circumference) }
++    fun updateCircunference(circumference: String) {
++        formData.value = formData.value.copy(circunference = circumference)
++    }
+ 
+-    fun updateDistance(distance: String) { formData.value = formData.value.copy(distance = distance) }
++    fun updateDistance(distance: String) {
++        formData.value = formData.value.copy(distance = distance)
++    }
+ 
+-    fun updateBiomonHeight(height: String) { formData.value = formData.value.copy(biomonHeight = height) }
++    fun updateBiomonHeight(height: String) {
++        formData.value = formData.value.copy(biomonHeight = height)
++    }
+ 
+-    fun updateHeight(height: String) { formData.value = formData.value.copy(height = height) }
++    fun updateHeight(height: String) {
++        formData.value = formData.value.copy(height = height)
++    }
+ 
+-    fun updateSelectedSubQuadrant(subQuadrant: String) { formData.value = formData.value.copy(selectedSubQuadrant = subQuadrant) }
++    fun updateSelectedSubQuadrant(subQuadrant: String) {
++        formData.value = formData.value.copy(selectedSubQuadrant = subQuadrant)
++    }
+ 
+-    fun updateZone(zone: String) { formData.value = formData.value.copy(zone = zone) }
++    fun updateZone(zone: String) {
++        formData.value = formData.value.copy(zone = zone)
++    }
+ 
+-    fun updateCameraName(name: String) { formData.value = formData.value.copy(cameraName = name) }
++    fun updateCameraName(name: String) {
++        formData.value = formData.value.copy(cameraName = name)
++    }
+ 
+-    fun updateCameraPlate(plate: String) { formData.value = formData.value.copy(cameraPlate = plate) }
++    fun updateCameraPlate(plate: String) {
++        formData.value = formData.value.copy(cameraPlate = plate)
++    }
+ 
+-    fun updateGuayaPlate(plate: String) { formData.value = formData.value.copy(guayaPlate = plate) }
++    fun updateGuayaPlate(plate: String) {
++        formData.value = formData.value.copy(guayaPlate = plate)
++    }
+ 
+-    fun updatePathWidth(width: String) { formData.value = formData.value.copy(pathWidth = width) }
++    fun updatePathWidth(width: String) {
++        formData.value = formData.value.copy(pathWidth = width)
++    }
+ 
+-    fun updateInstallationDate(date: String) { formData.value = formData.value.copy(installationDate = date) }
++    fun updateInstallationDate(date: String) {
++        formData.value = formData.value.copy(installationDate = date)
++    }
+ 
+-    fun updateTargetDistance(distance: String) { formData.value = formData.value.copy(targetDistance = distance) }
++    fun updateTargetDistance(distance: String) {
++        formData.value = formData.value.copy(targetDistance = distance)
++    }
+ 
+-    fun updateLensHeight(height: String) { formData.value = formData.value.copy(lensHeight = height) }
++    fun updateLensHeight(height: String) {
++        formData.value = formData.value.copy(lensHeight = height)
++    }
+ 
+-    fun updateIsProgrammed(isProgrammed: Boolean) { formData.value = formData.value.copy(isProgrammed = isProgrammed) }
++    fun updateIsProgrammed(isProgrammed: Boolean) {
++        formData.value = formData.value.copy(isProgrammed = isProgrammed)
++    }
+ 
+-    fun updateHasMemory(hasMemory: Boolean) { formData.value = formData.value.copy(hasMemory = hasMemory) }
++    fun updateHasMemory(hasMemory: Boolean) {
++        formData.value = formData.value.copy(hasMemory = hasMemory)
++    }
+ 
+-    fun updateHasGateTest(hasGateTest: Boolean) { formData.value = formData.value.copy(hasGateTest = hasGateTest) }
++    fun updateHasGateTest(hasGateTest: Boolean) {
++        formData.value = formData.value.copy(hasGateTest = hasGateTest)
++    }
+ 
+-    fun updateIsInstalled(isInstalled: Boolean) { formData.value = formData.value.copy(isInstalled = isInstalled) }
++    fun updateIsInstalled(isInstalled: Boolean) {
++        formData.value = formData.value.copy(isInstalled = isInstalled)
++    }
+ 
+-    fun updateHasCameraSign(hasSign: Boolean) { formData.value = formData.value.copy(hasCameraSign = hasSign) }
++    fun updateHasCameraSign(hasSign: Boolean) {
++        formData.value = formData.value.copy(hasCameraSign = hasSign)
++    }
+ 
+-    fun updateIsOn(isOn: Boolean) { formData.value = formData.value.copy(isOn = isOn) }
++    fun updateIsOn(isOn: Boolean) {
++        formData.value = formData.value.copy(isOn = isOn)
++    }
+ 
+-    fun updateObservations(observations: String) { formData.value = formData.value.copy(observations = observations) }
++    fun updateObservations(observations: String) {
++        formData.value = formData.value.copy(observations = observations)
++    }
+ 
+-    fun updateRainfall(rainfall: String) { formData.value = formData.value.copy(rainfall = rainfall) }
++    fun updateRainfall(rainfall: String) {
++        formData.value = formData.value.copy(rainfall = rainfall)
++    }
+ 
+-    fun updateMaxTemperature(maxTemperature: String) { formData.value = formData.value.copy(maxTemperature = maxTemperature) }
++    fun updateMaxTemperature(maxTemperature: String) {
++        formData.value = formData.value.copy(maxTemperature = maxTemperature)
++    }
+ 
+-    fun updateMinTemperature(minTemperature: String) { formData.value = formData.value.copy(minTemperature = minTemperature) }
++    fun updateMinTemperature(minTemperature: String) {
++        formData.value = formData.value.copy(minTemperature = minTemperature)
++    }
+ 
+-    fun updateMaxHumidity(maxHumidity: String) { formData.value = formData.value.copy(maxHumidity = maxHumidity) }
++    fun updateMaxHumidity(maxHumidity: String) {
++        formData.value = formData.value.copy(maxHumidity = maxHumidity)
++    }
+ 
+-    fun updateMinHumidity(minHumidity: String) { formData.value = formData.value.copy(minHumidity = minHumidity) }
++    fun updateMinHumidity(minHumidity: String) {
++        formData.value = formData.value.copy(minHumidity = minHumidity)
++    }
+ 
+-    fun updateCreekLevel(creekLevel: String) { formData.value = formData.value.copy(creekLevel = creekLevel) }
++    fun updateCreekLevel(creekLevel: String) {
++        formData.value = formData.value.copy(creekLevel = creekLevel)
++    }
+ 
+-    fun updateObservationType(selectedObservationType: String) { formData.value = formData.value.copy(observationType = selectedObservationType) }
++    fun updateObservationType(selectedObservationType: String) {
++        formData.value = formData.value.copy(observationType = selectedObservationType)
++    }
+ 
+-    fun updateYesNo(yesandno: String) { formData.value = formData.value.copy(yesandno = yesandno) }
++    fun updateYesNo(yesandno: String) {
++        formData.value = formData.value.copy(yesandno = yesandno)
++    }
+ 
+-    fun updateDisturbance(disturbance: String) { formData.value = formData.value.copy(disturbance = disturbance) }
++    fun updateDisturbance(disturbance: String) {
++        formData.value = formData.value.copy(disturbance = disturbance)
++    }
+ 
+-}
+\ No newline at end of file
++    fun updateEpoca(epoca: String) {
++        formData.value = formData.value.copy(selectedEpoca = epoca)
++    }
++    fun updateWeather(weather: String) {
++        formData.value = formData.value.copy(weather = weather)
++    }
++    // Submission handler (optional)
++    fun submitForm(onFormSubmitted: (Long) -> Unit) {
++        val newId = System.currentTimeMillis() // Placeholder ID; replace with actual database logic
++        onFormSubmitted(newId)
++    }
++}
