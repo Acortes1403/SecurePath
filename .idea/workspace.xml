@@ -9,9 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Actualizacion de Lista de Forms">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Amhed">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/app/avance.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/OlvidasteContScreen.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/ThirdScreen.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/VerificarScreen.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/tiposformularios/FormSelect3.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/avance.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,14 +100,14 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "elit",
+    "git-widget-placeholder": "Amhed-Update-2.6",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Amhed/AndroidStudioProjects/SecurePath/SecurePath-main/app/src/main/res/drawable",
     "settings.editor.selected.configurable": "editor.preferences.appearance"
   },
   "keyToStringList": {
     "kotlin-gradle-user-dirs": [
-      "/Users/elit_acosta/.gradle"
+      "C:\\Users\\Amhed\\.gradle"
     ]
   }
 }]]></component>
@@ -215,13 +220,40 @@
       <option name="project" value="LOCAL" />
       <updated>1731960067697</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Secure Path 2.56 - Actualizacion de Auth0">
+      <option name="closed" value="true" />
+      <created>1732046396275</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732046396275</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Secure Path 2.56 - Actualizacion de Auth0">
+      <option name="closed" value="true" />
+      <created>1732047746036</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732047746036</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Secure Path 2.56 - Amhed">
+      <option name="closed" value="true" />
+      <created>1732049257977</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732049257977</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SecondScreen con diseño nuevo ya terminado" />
     <MESSAGE value="SecurePath 2.5 - Persistencia de datos implementada" />
     <MESSAGE value="Secure Path 2.56 - Actualizacion de Lista de Forms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - Actualizacion de Lista de Forms" />
+    <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0 - a" />
+    <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0" />
+    <MESSAGE value="Secure Path 2.56 - Amhed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - Amhed" />
   </component>
 </project>
