@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Actualizacion de Auth0" />
+    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Actualizacion de Auth0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +22,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=AJDRUT2809001210)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Amhed\.android\avd\Pixel_8a_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/SecurePath-main">
       <ProjectState />
@@ -53,7 +57,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="frontend-(Felipe)" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -92,7 +96,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Amhed-Update-2.6",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Amhed/AndroidStudioProjects/SecurePath/SecurePath-main/app/src/main/res/drawable",
     "settings.editor.selected.configurable": "editor.preferences.appearance"
@@ -220,13 +224,22 @@
       <option name="project" value="LOCAL" />
       <updated>1732046396275</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Secure Path 2.56 - Actualizacion de Auth0">
+      <option name="closed" value="true" />
+      <created>1732047746036</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732047746036</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SecondScreen con diseño nuevo ya terminado" />
     <MESSAGE value="SecurePath 2.5 - Persistencia de datos implementada" />
     <MESSAGE value="Secure Path 2.56 - Actualizacion de Lista de Forms" />
+    <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0 - a" />
     <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0" />
     <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - Actualizacion de Auth0" />
   </component>

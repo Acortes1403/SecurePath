@@ -209,7 +209,7 @@ fun FirstScreen(navController: NavController) {
                     .padding(bottom = 8.dp)
                     .offset(y = (-70).dp)
             ) {
-                Text("Iniciar Sesión", fontSize = 20.sp)
+                Text("Continuar", fontSize = 20.sp)
             }
 
             Button(
