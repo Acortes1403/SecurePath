@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
 
 
         // Inicializar Auth0 con clientId y dominio desde strings.xml
-
+        //ayuda
         auth0 = Auth0(
             getString(R.string.com_auth0_client_id),
             getString(R.string.com_auth0_domain)
