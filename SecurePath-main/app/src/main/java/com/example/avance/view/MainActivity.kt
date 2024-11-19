@@ -135,9 +135,6 @@ fun Navigation(
     NavHost(navController = navController, startDestination = "first_screen") {
         composable("first_screen") { FirstScreen(navController) }
         composable("second_screen") { AvanceTheme { SecondScreen(navController, mainActivity) } }
-        composable("third_screen") { SecondScreen(navController, mainActivity) }
-        composable("olvidaste_cont_screen") { OlvidasteContScreen(navController) }
-        composable("verificar_screen") { VerificarScreen(navController) }
         composable("hola_samantha") { HolaSamantha(navController) }
         composable("perfil") { Perfil() }
 
@@ -209,20 +206,7 @@ fun FirstScreen(navController: NavController) {
                     .padding(bottom = 8.dp)
                     .offset(y = (-70).dp)
             ) {
-                Text("Iniciar Sesión", fontSize = 20.sp)
-            }
-
-            Button(
-                onClick = { navController.navigate("third_screen") },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent,
-                    contentColor = Color.Black
-                ),
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-                    .offset(y = (-70).dp)
-            ) {
-                Text("Crear Cuenta", fontSize = 20.sp)
+                Text("Continuar", fontSize = 20.sp)
             }
         }
     }
