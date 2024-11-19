@@ -52,14 +52,15 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fontSizeViewModel = FontSizeViewModel()
 
 
         // Inicializar Auth0 con clientId y dominio desde strings.xml
-        /*
+
         auth0 = Auth0(
             getString(R.string.com_auth0_client_id),
             getString(R.string.com_auth0_domain)
-        ) */
+        )
 
 
         // Obtener instancia de AppDatabase desde MyApp

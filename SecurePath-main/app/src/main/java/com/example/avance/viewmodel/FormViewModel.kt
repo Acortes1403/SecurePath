@@ -295,24 +295,5 @@ class FormularioViewModel(
             variablesClimaticasDao.insertFormularioWithVariables(formularioBase, variablesClimaticas)
         }
     }
-    private val _formularios = MutableStateFlow<List<FormularioBase>>(emptyList())
-    val formularios: StateFlow<List<FormularioBase>> = _formularios
-    init {
-        fetchFormularios()
-    }
-    fun fetchFormularios() {
-        viewModelScope.launch {
-            _formularios.value = formularioBaseDao.getAllFormularios()
-        }
-    }
 
-    fun deleteFormulario(formulario: FormularioBase) {
-        viewModelScope.launch {
-            dao.deleteFormulario(formulario)
-            fetchFormularios() // Refrescamos la lista después de eliminar
-        }
-    }
-    fun getFormularioById(formId: Int): Flow<FormularioBase?> {
-        return dao.getFormularioById(formId)
-    }
 }
