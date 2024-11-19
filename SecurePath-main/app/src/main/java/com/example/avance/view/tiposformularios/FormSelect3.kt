@@ -43,7 +43,7 @@ fun FormSelect3(
                 .verticalScroll(rememberScrollState())
         ) {
             // Campo de Código
-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCodigof4(it) }
+            FormTextField("Código", formData.codigof4, fontSize) { viewModel.updateCodigof4(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
