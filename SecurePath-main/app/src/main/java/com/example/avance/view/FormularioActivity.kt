@@ -19,19 +19,17 @@ import com.example.avance.viewmodel.FormularioViewModel
 @Composable
 fun FormularioActivity(
     viewModel: FormularioViewModel,
-    formId: Int,
+    id: Int,
     navController: NavController
 ) {
-    // Obtener el formulario por ID desde el ViewModel
-    val formulario = viewModel.getFormularioById(formId).collectAsState(initial = null).value
+    // Obtenemos el formulario por ID desde el ViewModel
+    val formulario = viewModel.getFormularioById(id).collectAsState(initial = null).value
 
-    // Interfaz principal
     Column(modifier = Modifier.fillMaxSize()) {
         // AppBar superior
         TopAppBar(
             title = { Text("Detalles del Formulario", fontSize = 20.sp) },
             navigationIcon = {
-                // Botón para regresar con texto "<--"
                 Text(
                     text = "<--",
                     fontSize = 18.sp,
@@ -44,17 +42,14 @@ fun FormularioActivity(
             colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFA8D8A2))
         )
 
-        // Mostrar los detalles del formulario
+        // Mostrar detalles o mensaje de carga/error
         formulario?.let { form ->
             FormularioDetails(formulario = form)
-        } ?: run {
-            // Mostrar mensaje de carga o error si el formulario no se encuentra
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("Cargando detalles del formulario...")
-            }
+        } ?: Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("Formulario no encontrado o todavía cargando...")
         }
     }
 }
@@ -100,4 +95,3 @@ fun FormularioDetails(formulario: FormularioBase) {
         }
     }
 }
-

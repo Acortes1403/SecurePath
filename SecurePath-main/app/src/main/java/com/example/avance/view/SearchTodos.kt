@@ -33,6 +33,7 @@ import com.example.avance.viewmodel.FontSizeViewModel
 fun SearchTodos(
     navController: NavController,
     fontSizeViewModel: FontSizeViewModel,
+    id: Int,
     viewModel: FormularioViewModel
 ) {
     val fontSize by fontSizeViewModel.fontSize.collectAsState()
@@ -67,7 +68,7 @@ fun SearchTodos(
                 FormularioItem(
                     formulario = formulario,
                     onView = { selectedFormulario ->
-                        navController.navigate("form_activity/${selectedFormulario.id}/view")
+                        navController.navigate("FormularioActivity/$id")
                     },
                     onDelete = { selectedFormulario ->
                         viewModel.deleteFormulario(selectedFormulario)

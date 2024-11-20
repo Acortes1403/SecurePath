@@ -15,8 +15,8 @@ interface FormularioBaseDao {
     @Delete
     suspend fun deleteFormulario(formulario: FormularioBase)
 
-    @Query("SELECT * FROM formulario_base WHERE id = :formId LIMIT 1")
-    fun getFormularioById(formId: Int): Flow<FormularioBase?>
+    @Query("SELECT * FROM formulario_base WHERE id = :id LIMIT 1")
+    fun getFormularioById(id: Int): Flow<FormularioBase?>
 
 
 }
