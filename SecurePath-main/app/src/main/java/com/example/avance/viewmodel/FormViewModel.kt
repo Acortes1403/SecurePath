@@ -43,7 +43,7 @@ class FormularioViewModel(
     fun updateName(value: String) { formData.value = formData.value.copy(name = value) }
     fun updateDate(value: String) { formData.value = formData.value.copy(date = value) }
     fun updateLocation(value: String) { formData.value = formData.value.copy(location = value) }
-    fun updateTime(value: String) { formData.value = formData.value.copy(time = value) }
+    fun updatehora(value: String) { formData.value = formData.value.copy(hora = value) }
     fun updateTransectNumber(value: String) { formData.value = formData.value.copy(transectNumber = value) }
     fun updateRegistro(value: String) { formData.value = formData.value.copy(tipoDeRegistro = value) }
     fun updateSelectedAnimal(animal: String) { formData.value = formData.value.copy(selectedAnimal = animal) }

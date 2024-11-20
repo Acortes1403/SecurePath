@@ -16,14 +16,17 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.avance.R
 
 @Composable
 fun SupervisorScreen(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
+        // Fondo
         Image(
             painter = painterResource(id = R.drawable.vista3),
             contentDescription = null,
@@ -31,6 +34,7 @@ fun SupervisorScreen(navController: NavController) {
             modifier = Modifier.fillMaxSize()
         )
 
+        // Botón superior izquierdo
         IconButton(
             onClick = { /* Acción para el botón izquierdo */ },
             modifier = Modifier
@@ -47,9 +51,12 @@ fun SupervisorScreen(navController: NavController) {
             )
         }
 
+        // Botón superior derecho
         Button(
             onClick = { navController.navigate("perfil") },
-            modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(16.dp)
         ) {
             Text("Imagen perfil")
         }
@@ -92,6 +99,7 @@ fun SupervisorScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Lista de formularios recientes
             Text("Formularios Recientes", fontSize = 24.sp, fontWeight = FontWeight.Bold)
             LazyColumn(
                 modifier = Modifier
@@ -110,6 +118,7 @@ fun SupervisorScreen(navController: NavController) {
             }
         }
 
+        // Barra de navegación inferior
         Column(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -123,17 +132,26 @@ fun SupervisorScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(onClick = { navController.navigate("supervisor") }, iconResId = R.drawable.ic_home)
+                    CustomiconButton(
+                        onClick = { navController.navigate("supervisor") },
+                        iconResId = R.drawable.ic_home
+                    )
                     Text(text = "Inicio", fontSize = 12.sp, color = Color.Black)
                 }
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(onClick = { navController.navigate("search_todos") }, iconResId = R.drawable.ic_search)
+                    CustomiconButton(
+                        onClick = { navController.navigate("search_todos") },
+                        iconResId = R.drawable.ic_search
+                    )
                     Text(text = "Buscar", fontSize = 12.sp, color = Color.Black)
                 }
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(onClick = { navController.navigate("settings") }, iconResId = R.drawable.ic_settings)
+                    CustomiconButton(
+                        onClick = { navController.navigate("settings") },
+                        iconResId = R.drawable.ic_settings
+                    )
                     Text(text = "Configuración", fontSize = 12.sp, color = Color.Black)
                 }
             }
@@ -142,13 +160,16 @@ fun SupervisorScreen(navController: NavController) {
 }
 
 @Composable
-fun CustomSupervisorButton(onClick: () -> Unit, iconResId: Int) {
+fun CustomiconButton(onClick: () -> Unit, iconResId: Int) {
     var isSelected by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
-            .size(50.dp) // Ajuste del tamaño
-            .background(if (isSelected) Color.LightGray else Color.Transparent, shape = CircleShape)
+            .size(50.dp)
+            .background(
+                color = if (isSelected) Color.LightGray else Color.Transparent,
+                shape = CircleShape
+            )
             .pointerInput(Unit) {
                 detectTapGestures(
                     onPress = {
@@ -167,4 +188,11 @@ fun CustomSupervisorButton(onClick: () -> Unit, iconResId: Int) {
             modifier = Modifier.size(24.dp)
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewSupervisorScreen() {
+    val navController = rememberNavController() // Usa NavController seguro para la vista previa
+    SupervisorScreen(navController = navController)
 }
