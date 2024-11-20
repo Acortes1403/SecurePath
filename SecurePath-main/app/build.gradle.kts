@@ -77,6 +77,8 @@ dependencies {
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    implementation("androidx.camera:camera-view:1.4.0")
+    implementation("androidx.camera:camera-core:1.4.0")
     ksp(libs.androidx.room.compiler)
 
     // Dependencia de Auth0

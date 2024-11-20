@@ -9,8 +9,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Actualizacion de Lista de Forms">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - SupervisorScreen">
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/CameraViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_01_48_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_01_48_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +55,38 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="Julian" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -69,8 +103,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Acortes1403/SecurePath.git&quot;,
-    &quot;accountId&quot;: &quot;0dea8c16-3f8a-4269-a5de-5bf854763b5b&quot;
+    &quot;url&quot;: &quot;https://github.com/Acortes1403/SecurePath&quot;,
+    &quot;accountId&quot;: &quot;b77777be-778f-4297-9af8-807b5abbfa95&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -96,7 +130,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "Julian",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Amhed/AndroidStudioProjects/SecurePath/SecurePath-main/app/src/main/res/drawable",
+    "last_opened_file_path": "C:/Users/A0174/AndroidStudioProjects/SecurePath/SecurePath-main/app/src/main/java/com/example/avance/viewmodel",
     "settings.editor.selected.configurable": "editor.preferences.appearance"
   },
   "keyToStringList": {
@@ -107,6 +141,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\A0174\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\java\com\example\avance\viewmodel" />
       <recent name="C:\Users\Amhed\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -214,13 +249,39 @@
       <option name="project" value="LOCAL" />
       <updated>1731960067697</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Secure Path 2.56 - Julian">
+      <option name="closed" value="true" />
+      <created>1732050532483</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732050532483</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Secure Path 2.56 - SupervisorScreen">
+      <option name="closed" value="true" />
+      <created>1732051577871</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732051577871</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Secure Path 2.56 - SupervisorScreen">
+      <option name="closed" value="true" />
+      <created>1732130151287</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732130151287</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SecondScreen con diseño nuevo ya terminado" />
     <MESSAGE value="SecurePath 2.5 - Persistencia de datos implementada" />
     <MESSAGE value="Secure Path 2.56 - Actualizacion de Lista de Forms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - Actualizacion de Lista de Forms" />
+    <MESSAGE value="Secure Path 2.56 - Julian" />
+    <MESSAGE value="Secure Path 2.56 - SupervisorScreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - SupervisorScreen" />
   </component>
 </project>
