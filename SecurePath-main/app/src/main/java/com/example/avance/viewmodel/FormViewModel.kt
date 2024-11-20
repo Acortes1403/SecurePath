@@ -312,7 +312,8 @@ class FormularioViewModel(
             fetchFormularios() // Refrescamos la lista después de eliminar
         }
     }
-    fun getFormularioById(formId: Int): Flow<FormularioBase?> {
-        return dao.getFormularioById(formId)
+    fun getFormularioById(id: Int): Flow<FormularioBase?> {
+        return formularioBaseDao.getFormularioById(id)
     }
+
 }

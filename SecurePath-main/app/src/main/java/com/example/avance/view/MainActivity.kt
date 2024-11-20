@@ -139,13 +139,11 @@ fun Navigation(
         composable("perfil") { Perfil() }
 
         // Pasar el mismo formularioViewModel a todos los formularios
-        composable(
-            route = "FormularioActivity/{formId}",
-            arguments = listOf(navArgument("formId") { type = NavType.IntType })
-        ) { backStackEntry ->
-            val formId = backStackEntry.arguments?.getInt("formId") ?: 0
-            FormularioActivity(viewModel = formularioViewModel, formId = formId, navController = navController)
+        composable("FormularioActivity/{id}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")?.toInt() ?: 0
+            FormularioActivity(viewModel = formularioViewModel, id = id, navController = navController)
         }
+
         composable("formulario_activity") {
             FormularioScreen(navController, formularioViewModel, fontSizeViewModel)
         }
@@ -172,7 +170,7 @@ fun Navigation(
         }
 
         composable("settings") { Settings(navController, fontSizeViewModel) }
-        composable("search_todos") { SearchTodos(navController, fontSizeViewModel, formularioViewModel) }
+        composable("search_todos") { SearchTodos(navController, fontSizeViewModel, id, formularioViewModel) }
     }
 }
 
