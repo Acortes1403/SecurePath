@@ -4,6 +4,9 @@
 
     <!-- Permiso necesario para la autenticación en línea -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
 
     <application
         android:allowBackup="true"

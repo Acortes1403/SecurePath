@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    implementation("androidx.room:room-common:2.6.1")
     ksp(libs.androidx.room.compiler)
 
     // Dependencia de Auth0

@@ -24,6 +24,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+
 
 
 class FormularioViewModel(
@@ -36,14 +40,16 @@ class FormularioViewModel(
     private val variablesClimaticasDao: VariablesClimaticasDao,
     private val formularioBaseDao: FormularioBaseDao,
     private val dao: FormularioBaseDao
+
 ): ViewModel() {
     val formData = mutableStateOf(FormData())
+
 
     // Métodos para actualizar los datos del formulario
     fun updateName(value: String) { formData.value = formData.value.copy(name = value) }
     fun updateDate(value: String) { formData.value = formData.value.copy(date = value) }
     fun updateLocation(value: String) { formData.value = formData.value.copy(location = value) }
-    fun updateTime(value: String) { formData.value = formData.value.copy(time = value) }
+    fun updateTime(value: String) { formData.value = formData.value.copy(hora = value) }
     fun updateTransectNumber(value: String) { formData.value = formData.value.copy(transectNumber = value) }
     fun updateRegistro(value: String) { formData.value = formData.value.copy(tipoDeRegistro = value) }
     fun updateSelectedAnimal(animal: String) { formData.value = formData.value.copy(selectedAnimal = animal) }
@@ -85,6 +91,7 @@ class FormularioViewModel(
     fun updateYesNo1(yesandno1: String) { formData.value = formData.value.copy(yesandno1 = yesandno1) }
     fun updateYesNo2(yesandno2: String) { formData.value = formData.value.copy(yesandno2 = yesandno2) }
     fun updateDisturbance(disturbance: String) { formData.value = formData.value.copy(disturbance = disturbance) }
+    fun updateImageUri(uri: String) {formData.value = formData.value.copy(imagen = uri) }
 
     //ViewModel para guardar
     //FaunaTransecto
@@ -135,6 +142,7 @@ class FormularioViewModel(
                 scientificName = formData.value.scientificName,
                 individualCount = formData.value.individualCount,
                 selectedObservation = formData.value.selectedObservation,
+                imagen = formData.value.imagen,
                 observationNotes = formData.value.observationNotes
 
             )

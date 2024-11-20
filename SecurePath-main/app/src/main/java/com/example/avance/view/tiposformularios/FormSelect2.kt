@@ -1,5 +1,8 @@
 package com.example.avance.view.tiposformularios
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -15,6 +18,7 @@ import androidx.navigation.NavController
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormSelect2(
@@ -24,6 +28,15 @@ fun FormSelect2(
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState()
+
+    // Configura el ActivityResultLauncher para abrir la galería de imágenes
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            viewModel.updateImageUri(uri.toString()) // Guarda el URI de la imagen en el ViewModel
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -87,7 +100,7 @@ fun FormSelect2(
             Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Button(
-                onClick = { /* Acción para elegir archivos */ },
+                onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
                 modifier = Modifier.fillMaxWidth()
             ) {

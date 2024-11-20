@@ -17,6 +17,7 @@ data class FormData(
     var observationNotes: String = "",
     var selectedAnimal: String? = null,
     var selectedObservation: String = "",
+    var imagen: String = "",
 
     // Formulario específico: FormSelect2 - Fauna en Punto de Conteo
     var selectedZone: String = "",  // Zona (Bosque, Arreglo Agroforestal, etc.)

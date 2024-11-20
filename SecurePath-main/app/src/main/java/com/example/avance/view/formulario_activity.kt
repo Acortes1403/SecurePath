@@ -85,7 +85,7 @@ fun FormularioScreen(
                 }
             }
 
-            FormTextField("Hora", formData.hora, fontSize = fontSize, onValueChange = viewModel::updateHora)
+            FormTextField("Hora", formData.hora, fontSize = fontSize, onValueChange = viewModel::updateTime)
             FormTextField("Número de Transecto", formData.transectNumber, fontSize = fontSize, onValueChange = viewModel::updateTransectNumber)
 
             Spacer(modifier = Modifier.height(16.dp))
