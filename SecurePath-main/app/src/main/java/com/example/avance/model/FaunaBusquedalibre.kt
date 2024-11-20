@@ -25,4 +25,6 @@ data class FaunaBusquedalibre(
     var individualCount: String = "",
     var selectedObservation: String = "",
     var observationNotes: String = "",
+    var imagen: String? = null, // Verifica que sea del tipo correcto
+
 )

@@ -11,4 +11,6 @@ data class FormularioBase(
     val location: String?,
     val hora: String?,
     val tipoDeRegistro: String?,
+    var imagen: String? = null, // Verifica que sea del tipo correcto
+
 )

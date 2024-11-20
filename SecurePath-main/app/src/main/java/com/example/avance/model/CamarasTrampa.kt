@@ -33,4 +33,5 @@ data class CamarasTrampa(
     var hasCameraSign: Boolean = false,
     var isOn: Boolean = false,
     var observationNotes: String = "",
+    var imagen: String? = null, // Verifica que sea del tipo correcto
 )

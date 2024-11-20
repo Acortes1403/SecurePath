@@ -161,7 +161,7 @@ class FormularioViewModel(
                 location = formData.value.location,
                 hora = formData.value.hora,
                 tipoDeRegistro = formData.value.tipoDeRegistro
-            )
+                )
 
             // Crear el objeto `FaunaBusquedalibre` con los datos específicos del formulario
             val faunaBusquedalibre = FaunaBusquedalibre(
@@ -172,8 +172,10 @@ class FormularioViewModel(
                 scientificName = formData.value.scientificName,
                 individualCount = formData.value.individualCount,
                 selectedObservation = formData.value.selectedObservation,
+                imagen = formData.value.imagen,
                 observationNotes = formData.value.observationNotes
-            )
+
+                )
 
             // Insertar ambos datos en la base de datos mediante una transacción
             faunaBusquedalibreDao.insertFormularioWithBusquedalibre(formularioBase, faunaBusquedalibre)
@@ -199,6 +201,7 @@ class FormularioViewModel(
                 yesandno2 = formData.value.yesandno2,
                 observationType = formData.value.observationType,
                 disturbance = formData.value.disturbance,
+                imagen = formData.value.imagen,
                 observationNotes = formData.value.observationNotes
             )
 
@@ -232,6 +235,7 @@ class FormularioViewModel(
                 height = formData.value.height,
                 selectedQuadrant = formData.value.selectedQuadrant,
                 selectedSubQuadrant = formData.value.selectedSubQuadrant,
+                imagen = formData.value.imagen,
                 observationNotes = formData.value.observationNotes
             )
 
@@ -267,6 +271,7 @@ class FormularioViewModel(
                 hasGateTest = formData.value.hasGateTest,
                 isInstalled = formData.value.isInstalled,
                 isOn = formData.value.isOn,
+                imagen = formData.value.imagen,
                 observationNotes = formData.value.observationNotes
 
             )

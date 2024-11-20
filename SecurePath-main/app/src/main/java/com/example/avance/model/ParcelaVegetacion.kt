@@ -30,4 +30,6 @@ data class ParcelaVegetacion(
     var selectedQuadrant: String? = null,
     var selectedSubQuadrant: String? = null,
     var observationNotes: String = "",
+    var imagen: String? = null, // Verifica que sea del tipo correcto
+
 )
