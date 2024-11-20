@@ -136,7 +136,7 @@ fun Navigation(
         composable("first_screen") { FirstScreen(navController) }
         composable("second_screen") { AvanceTheme { SecondScreen(navController, mainActivity) } }
         composable("hola_samantha") { HolaSamantha(navController) }
-        composable("perfil") { Perfil() }
+        composable("perfil") { Perfil(navController) }
 
         // Pasar el mismo formularioViewModel a todos los formularios
         composable("FormularioActivity/{id}") { backStackEntry ->

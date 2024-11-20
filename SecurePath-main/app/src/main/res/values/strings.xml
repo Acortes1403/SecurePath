@@ -1,8 +1,25 @@
 <resources>
     <!-- Nombre de la aplicación -->
-    <string name="app_name">avance</string>
+    <string name="app_name">AWAQ_SP</string>
 
     <!-- Configuración de Auth0 -->
     <string name="com_auth0_domain">dev-6vzyeoluir57rec7.us.auth0.com</string>
     <string name="com_auth0_client_id">sxlOUkpm591uWTxtwpKguSg0rFneEFjJ</string>
+
+    <string name="greeting">Hola,</string>
+    <string name="user_name">Elit</string>
+    <string name="new_register">Nuevo registro</string>
+    <string name="emergency">Emergencia</string>
+    <string name="emergency_subtext">Tienes %1$d formularios sin subir a la nube</string>
+    <string name="total">En Total</string>
+    <string name="uploaded">Subidos</string>
+    <string name="saved">Guardados</string>
+    <string name="marked">Marcados</string>
+    <string name="home">Inicio</string>
+    <string name="search">Buscar</string>
+    <string name="settings">Configuración</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="logo">Logo</string>
+    <string name="warning_icon">Warning Icon</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

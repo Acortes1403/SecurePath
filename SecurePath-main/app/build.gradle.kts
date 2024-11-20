@@ -97,6 +97,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(kotlin("script-runtime"))
+
+    //Front
+    implementation(libs.androidx.material.icons.extended)
 }
 android {
     defaultConfig {
