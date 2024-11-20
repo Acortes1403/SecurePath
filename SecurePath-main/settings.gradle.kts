@@ -8,6 +8,7 @@ pluginManagement {
             }
         }
         mavenCentral()
+        jcenter() // Agrega esta línea
         gradlePluginPortal()
     }
 }
@@ -16,9 +17,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter() // Agrega esta línea también aquí
     }
 }
 
 rootProject.name = "avance"
 include(":app")
- 

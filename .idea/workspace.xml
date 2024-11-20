@@ -9,18 +9,30 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/awaq_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_1_light.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_1_tablet.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_2_light.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Theme.kt" afterDir="false" />
+    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Amhed.">
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/EditarPerfil.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/ic_warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/test_profile_picture.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_dashboard2_awaq.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_perfil_awaq.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2024_05_49_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2024_05_49_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_01_48_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_01_48_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/HolaSamntha.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/HolaSamntha.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/SecondScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/SecondScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Perfil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Perfil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Settings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Settings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,14 +42,46 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Admin\.android\avd\Pixel_8a_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R83X90BEFMH)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/SecurePath-main">
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/SecurePath-main/app">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/SecurePath-main">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -47,14 +91,17 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Acortes1403/SecurePath&quot;,
-    &quot;accountId&quot;: &quot;c99bb9ba-50ff-4317-858c-6559a585bd52&quot;
+    &quot;url&quot;: &quot;https://github.com/Acortes1403/SecurePath.git&quot;,
+    &quot;accountId&quot;: &quot;0dea8c16-3f8a-4269-a5de-5bf854763b5b&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2ogCkDuGOk2NjlYuCwDSFxqGQwe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -62,24 +109,30 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Amhed-Update-2.6&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Amhed/AndroidStudioProjects/basic-android-kotlin-compose-training-affirmations-main&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\Admin\\.gradle&quot;
+      &quot;C:\\Users\\Amhed\\.gradle&quot;
     ]
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Amhed\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Amhed\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
     </key>
   </component>
@@ -160,6 +213,81 @@
       <option name="presentableId" value="Default" />
       <updated>1731281972150</updated>
     </task>
+    <task id="LOCAL-00001" summary="SecondScreen con diseño nuevo ya terminado">
+      <option name="closed" value="true" />
+      <created>1731370562065</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731370562065</updated>
+    </task>
+    <task id="LOCAL-00002" summary="SecondScreen con diseño nuevo ya terminado">
+      <option name="closed" value="true" />
+      <created>1731370627203</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731370627203</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Secure Path 2.56 - Actualizacion de Lista de Forms">
+      <option name="closed" value="true" />
+      <created>1731960067697</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731960067697</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Secure Path 2.56 - Actualizacion de Auth0">
+      <option name="closed" value="true" />
+      <created>1732046396275</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732046396275</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Secure Path 2.56 - Actualizacion de Auth0">
+      <option name="closed" value="true" />
+      <created>1732047746036</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732047746036</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Secure Path 2.56 - Amhed">
+      <option name="closed" value="true" />
+      <created>1732049257977</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732049257977</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Secure Path 2.56 - Amhed">
+      <option name="closed" value="true" />
+      <created>1732049845057</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732049845057</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Secure Path 2.56 - Amhed.">
+      <option name="closed" value="true" />
+      <created>1732133549946</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732133549946</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SecondScreen con diseño nuevo ya terminado" />
+    <MESSAGE value="SecurePath 2.5 - Persistencia de datos implementada" />
+    <MESSAGE value="Secure Path 2.56 - Actualizacion de Lista de Forms" />
+    <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0 - a" />
+    <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0" />
+    <MESSAGE value="Secure Path 2.56 - Amhed" />
+    <MESSAGE value="Secure Path 2.56 - Amhed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - Amhed." />
   </component>
 </project>

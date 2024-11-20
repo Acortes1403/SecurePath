@@ -160,42 +160,14 @@ fun Settings(navController: NavController, fontSizeViewModel: FontSizeViewModel 
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                // Botón de Inicio
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(
-                        onClick = {
-                            if (navController.currentDestination?.route != "hola_samantha") {
-                                navController.navigate("hola_samantha?refresh=true") // Navega al inicio si no está ya en él
-                            }
-                        },
-                        iconResId = R.drawable.ic_home
+                // Bottom Navigation Bar
+                Box(modifier = Modifier.fillMaxSize()) {
+                    BottomNavigationBar(
+                        navController = navController,
+                        modifier = Modifier.align(Alignment.BottomCenter) // Esto ahora funciona
                     )
-                    Text(text = "Inicio", fontSize = 12.sp, color = Color.Black)
                 }
 
-                // Botón de Buscar
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(
-                        onClick = {
-                            navController.navigate("search_todos") // Navega a la pantalla de búsqueda
-                        },
-                        iconResId = R.drawable.ic_search
-                    )
-                    Text(text = "Buscar", fontSize = 12.sp, color = Color.Black)
-                }
-
-                // Botón de Configuración
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CustomIconButton(
-                        onClick = {
-                            if (navController.currentDestination?.route != "settings") {
-                                navController.navigate("settings") // Navega a la configuración si no está ya en ella
-                            }
-                        },
-                        iconResId = R.drawable.ic_settings
-                    )
-                    Text(text = "Configuración", fontSize = 12.sp, color = Color.Black)
-                }
             }
         }
     }

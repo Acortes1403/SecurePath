@@ -50,7 +50,7 @@ fun FormSelect5(
                 .verticalScroll(rememberScrollState())
         ) {
             // Campo de Código
-            FormTextField("Código", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+            FormTextField("Código", formData.codigof4, fontSize) { viewModel.updateCodigof4(it) }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -63,11 +63,11 @@ fun FormSelect5(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                QuadrantButton(label = "A", isSelected = formData.selectedObservation == "A", fontSize) {
-                    viewModel.updateSelectedObservation("A")
+                QuadrantButton(label = "A", isSelected = formData.selectedQuadrant == "A", fontSize) {
+                    viewModel.updateSelectedQuadrant("A")
                 }
-                QuadrantButton(label = "B", isSelected = formData.selectedObservation == "B", fontSize) {
-                    viewModel.updateSelectedObservation("B")
+                QuadrantButton(label = "B", isSelected = formData.selectedQuadrant == "B", fontSize) {
+                    viewModel.updateSelectedQuadrant("B")
                 }
             }
 
@@ -78,10 +78,23 @@ fun FormSelect5(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                listOf("C", "D", "E", "F", "G", "H").forEach { label ->
-                    QuadrantButton(label = label, isSelected = formData.selectedObservation == label, fontSize) {
-                        viewModel.updateSelectedObservation(label)
-                    }
+                QuadrantButton(label = "C", isSelected = formData.selectedQuadrant == "C", fontSize) {
+                    viewModel.updateSelectedQuadrant("C")
+                }
+                QuadrantButton(label = "D", isSelected = formData.selectedQuadrant == "D", fontSize) {
+                    viewModel.updateSelectedQuadrant("D")
+                }
+                QuadrantButton(label = "E", isSelected = formData.selectedQuadrant == "E", fontSize) {
+                    viewModel.updateSelectedQuadrant("E")
+                }
+                QuadrantButton(label = "F", isSelected = formData.selectedQuadrant == "F", fontSize) {
+                    viewModel.updateSelectedQuadrant("F")
+                }
+                QuadrantButton(label = "G", isSelected = formData.selectedQuadrant == "G", fontSize) {
+                    viewModel.updateSelectedQuadrant("G")
+                }
+                QuadrantButton(label = "H", isSelected = formData.selectedQuadrant == "H", fontSize) {
+                    viewModel.updateSelectedQuadrant("H")
                 }
             }
 
@@ -178,7 +191,10 @@ fun FormSelect5(
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
-                    onClick = { /* Acción para enviar el formulario */ },
+                    onClick = {
+                        viewModel.saveParcelaVegetacion() //Boton para guardar datos de formulario y parcela vegetacion
+                        navController.navigate("hola_samantha")
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)

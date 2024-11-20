@@ -12,12 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.avance.R
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
+import androidx.navigation.compose.rememberNavController
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -81,7 +85,7 @@ fun FormularioScreen(
                 }
             }
 
-            FormTextField("Hora", formData.time, fontSize = fontSize, onValueChange = viewModel::updateTime)
+            FormTextField("Hora", formData.hora, fontSize = fontSize, onValueChange = viewModel::updateHora)
             FormTextField("Número de Transecto", formData.transectNumber, fontSize = fontSize, onValueChange = viewModel::updateTransectNumber)
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -102,20 +106,20 @@ fun FormularioScreen(
             Text("Tipo de Registro", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                SelectableOption("Fauna en Transectos", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Transectos") }
-                SelectableOption("Fauna en Punto de Conteo", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
-                SelectableOption("Fauna Búsqueda Libre", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
-                SelectableOption("Validación de Cobertura", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Validación de Cobertura") }
-                SelectableOption("Parcela de Vegetación", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Parcela de Vegetación") }
-                SelectableOption("Cámaras Trampa", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Cámaras Trampa") }
-                SelectableOption("Variables Climáticas", formData.selectedRegistro, fontSize) { viewModel.updateRegistro("Variables Climáticas") }
+                SelectableOption("Fauna en Transectos", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna en Transectos") }
+                SelectableOption("Fauna en Punto de Conteo", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
+                SelectableOption("Fauna Búsqueda Libre", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
+                SelectableOption("Validación de Cobertura", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Validación de Cobertura") }
+                SelectableOption("Parcela de Vegetación", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Parcela de Vegetación") }
+                SelectableOption("Cámaras Trampa", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Cámaras Trampa") }
+                SelectableOption("Variables Climáticas", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Variables Climáticas") }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
                 onClick = {
-                    when (formData.selectedRegistro) {
+                    when (formData.tipoDeRegistro) {
                         "Fauna en Transectos" -> navController.navigate("form_1")
                         "Fauna en Punto de Conteo" -> navController.navigate("form_2")
                         "Fauna Búsqueda Libre" -> navController.navigate("form_3")
@@ -171,5 +175,6 @@ fun SelectableOption(label: String, selectedOption: String?, fontSize: Float, on
             onClick = { onSelected(label) }
         )
         Text(label, fontSize = fontSize.sp)
-    }
-}
+    }}
+
+
