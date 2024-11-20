@@ -24,7 +24,6 @@ import com.example.avance.R
 @Composable
 fun SupervisorScreen(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
-        // Imagen de fondo
         Image(
             painter = painterResource(id = R.drawable.vista3),
             contentDescription = null,
@@ -32,7 +31,6 @@ fun SupervisorScreen(navController: NavController) {
             modifier = Modifier.fillMaxSize()
         )
 
-        // Botón izquierdo con logo
         IconButton(
             onClick = { /* Acción para el botón izquierdo */ },
             modifier = Modifier
@@ -49,7 +47,6 @@ fun SupervisorScreen(navController: NavController) {
             )
         }
 
-        // Botón derecho para perfil
         Button(
             onClick = { navController.navigate("perfil") },
             modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)
@@ -65,7 +62,6 @@ fun SupervisorScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            // Título de "Supervisor"
             Text(
                 text = "Supervisor",
                 fontSize = 36.sp,
@@ -96,7 +92,6 @@ fun SupervisorScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Lista corta de formularios
             Text("Formularios Recientes", fontSize = 24.sp, fontWeight = FontWeight.Bold)
             LazyColumn(
                 modifier = Modifier
@@ -115,7 +110,6 @@ fun SupervisorScreen(navController: NavController) {
             }
         }
 
-        // Botones en la parte inferior
         Column(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
