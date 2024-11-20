@@ -1,5 +1,8 @@
 package com.example.avance.view.tiposformularios
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -26,6 +29,13 @@ fun FormSelect6(
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            viewModel.updateImageUri(uri.toString()) // Guarda el URI de la imagen en el ViewModel
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -135,7 +145,7 @@ fun FormSelect6(
             Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Button(
-                onClick = { /* Acción para elegir archivos */ },
+                onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
                 modifier = Modifier.fillMaxWidth()
             ) {
