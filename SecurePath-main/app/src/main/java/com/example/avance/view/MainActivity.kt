@@ -171,6 +171,7 @@ fun Navigation(
 
         composable("settings") { Settings(navController, fontSizeViewModel) }
         composable("search_todos") { SearchTodos(navController, fontSizeViewModel, id, formularioViewModel) }
+        composable("editar_perfil") { EditarPerfil(navController)}
     }
 }
 
