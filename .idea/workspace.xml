@@ -9,14 +9,30 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Amhed">
+    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Amhed.">
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/EditarPerfil.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/ic_warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/test_profile_picture.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_dashboard2_awaq.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_perfil_awaq.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2024_05_49_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2024_05_49_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_01_48_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_01_48_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2024_02_06_p__m___Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/dao/FormularioBaseDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/dao/FormularioBaseDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/FormularioActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/FormularioActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/HolaSamntha.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/HolaSamntha.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/SearchTodos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/SearchTodos.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Perfil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Perfil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Settings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/Settings.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/viewmodel/FormViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +42,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Amhed\.android\avd\Pixel_8a_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R83X90BEFMH)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/SecurePath-main">
       <ProjectState />
@@ -53,8 +69,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -73,17 +89,17 @@
     &quot;assignee&quot;: &quot;Feko2&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Acortes1403/SecurePath",
-    "accountId": "09c28fd3-6b43-4f9e-9f90-f98858f7fe34"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Acortes1403/SecurePath.git&quot;,
+    &quot;accountId&quot;: &quot;0dea8c16-3f8a-4269-a5de-5bf854763b5b&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2ogCkDuGOk2NjlYuCwDSFxqGQwe" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -110,12 +126,13 @@
       &quot;C:\\Users\\Amhed\\.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Amhed\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Amhed\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
     </key>
   </component>
@@ -252,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732049845057</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Secure Path 2.56 - Amhed.">
+      <option name="closed" value="true" />
+      <created>1732133549946</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732133549946</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -262,6 +287,7 @@
     <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0 - a" />
     <MESSAGE value="Secure Path 2.56 - Actualizacion de Auth0" />
     <MESSAGE value="Secure Path 2.56 - Amhed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - Amhed" />
+    <MESSAGE value="Secure Path 2.56 - Amhed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Secure Path 2.56 - Amhed." />
   </component>
 </project>
