@@ -73,17 +73,17 @@
     &quot;assignee&quot;: &quot;Feko2&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Acortes1403/SecurePath.git&quot;,
-    &quot;accountId&quot;: &quot;0dea8c16-3f8a-4269-a5de-5bf854763b5b&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Acortes1403/SecurePath",
+    "accountId": "09c28fd3-6b43-4f9e-9f90-f98858f7fe34"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2ogCkDuGOk2NjlYuCwDSFxqGQwe" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -110,7 +110,7 @@
       &quot;C:\\Users\\Amhed\\.gradle&quot;
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Amhed\AndroidStudioProjects\SecurePath\SecurePath-main\app\src\main\res\drawable" />
