@@ -9,6 +9,7 @@ data class FormData(
     var transectNumber: String = "",
     var time: String = "",
     var tipoDeRegistro: String? = null,
+    var imagen: String? = null,
 
     // Formulario específico: FormSelect1 - Fauna en Transecto
     var commonName: String = "",

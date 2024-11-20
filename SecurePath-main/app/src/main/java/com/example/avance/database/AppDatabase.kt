@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.avance.model.*
 import com.example.avance.dao.*
 
-@Database(entities = [FormularioBase::class, FaunaTransecto::class, FaunaConteo::class, FaunaBusquedalibre::class, ValidacionCobertura::class, ParcelaVegetacion::class, CamarasTrampa::class, VariablesClimaticas::class], version = 1, exportSchema = false)
+@Database(entities = [FormularioBase::class, FaunaTransecto::class, FaunaConteo::class, FaunaBusquedalibre::class, ValidacionCobertura::class, ParcelaVegetacion::class, CamarasTrampa::class, VariablesClimaticas::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun faunaTransectoDao(): FaunaTransectoDao
     abstract fun faunaConteoDao(): FaunaConteoDao

@@ -1,5 +1,8 @@
 package com.example.avance.view.tiposformularios
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -33,6 +36,13 @@ fun FormSelect1(
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState()  // Observa el tamaño de letra global
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            viewModel.updateImageUri(uri.toString()) // Guarda el URI de la imagen en el ViewModel
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -99,7 +109,15 @@ fun FormSelect1(
                 ObservationRadioButton("Cacería", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
                 ObservationRadioButton("Le Dijeron", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
             }
-
+            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
+            }
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
