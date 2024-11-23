@@ -24,4 +24,5 @@ data class ValidacionCobertura (
     var observationType: String = "",
     var disturbance: String = "",
     var observationNotes: String = "",
+    var imagen: String? = null
 )

@@ -24,4 +24,5 @@ data class FaunaTransecto(
     var observationNotes: String = "",
     var selectedAnimal: String? = null,
     var selectedObservation: String = "",
+    var imagen: String? = null
 )

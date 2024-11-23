@@ -107,7 +107,8 @@ class FormularioViewModel(
                 individualCount = formData.value.individualCount,
                 observationNotes = formData.value.observationNotes,
                 selectedAnimal = formData.value.selectedAnimal,
-                selectedObservation = formData.value.selectedObservation
+                selectedObservation = formData.value.selectedObservation,
+                imagen = formData.value.imagen
             )
 
             // Insertar ambos datos en la base de datos mediante una transacción
@@ -135,7 +136,8 @@ class FormularioViewModel(
                 scientificName = formData.value.scientificName,
                 individualCount = formData.value.individualCount,
                 selectedObservation = formData.value.selectedObservation,
-                observationNotes = formData.value.observationNotes
+                observationNotes = formData.value.observationNotes,
+                imagen = formData.value.imagen
 
             )
 
@@ -164,7 +166,8 @@ class FormularioViewModel(
                 scientificName = formData.value.scientificName,
                 individualCount = formData.value.individualCount,
                 selectedObservation = formData.value.selectedObservation,
-                observationNotes = formData.value.observationNotes
+                observationNotes = formData.value.observationNotes,
+                imagen = formData.value.imagen
             )
 
             // Insertar ambos datos en la base de datos mediante una transacción
@@ -180,7 +183,8 @@ class FormularioViewModel(
                 date = formData.value.date,
                 location = formData.value.location,
                 hora = formData.value.hora,
-                tipoDeRegistro = formData.value.tipoDeRegistro
+                tipoDeRegistro = formData.value.tipoDeRegistro,
+
             )
 
             // Crear el objeto `FaunaBusquedalibre` con los datos específicos del formulario
@@ -191,7 +195,8 @@ class FormularioViewModel(
                 yesandno2 = formData.value.yesandno2,
                 observationType = formData.value.observationType,
                 disturbance = formData.value.disturbance,
-                observationNotes = formData.value.observationNotes
+                observationNotes = formData.value.observationNotes,
+                imagen = formData.value.imagen
             )
 
             // Insertar ambos datos en la base de datos mediante una transacción
@@ -224,7 +229,8 @@ class FormularioViewModel(
                 height = formData.value.height,
                 selectedQuadrant = formData.value.selectedQuadrant,
                 selectedSubQuadrant = formData.value.selectedSubQuadrant,
-                observationNotes = formData.value.observationNotes
+                observationNotes = formData.value.observationNotes,
+                imagen = formData.value.imagen
             )
 
             // Insertar ambos datos en la base de datos mediante una transacción
@@ -259,7 +265,8 @@ class FormularioViewModel(
                 hasGateTest = formData.value.hasGateTest,
                 isInstalled = formData.value.isInstalled,
                 isOn = formData.value.isOn,
-                observationNotes = formData.value.observationNotes
+                observationNotes = formData.value.observationNotes,
+                imagen = formData.value.imagen
 
             )
 
@@ -316,4 +323,7 @@ class FormularioViewModel(
         return formularioBaseDao.getFormularioById(id)
     }
 
+    fun updateImageUri(uri: String){
+        formData.value = formData.value.copy(imagen = uri)
+    }
 }
