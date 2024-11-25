@@ -163,11 +163,11 @@ fun ProgressIndicator(progress: Float) {
             .shadow(elevation = 2.dp, shape = CircleShape)
     ) {
         CircularProgressIndicator(
-            progress = progress,
+            progress = { progress },
+            modifier = Modifier.size(248.dp),
             color = PrimaryColor,
             strokeWidth = 22.dp,
             trackColor = SecondaryColor,
-            modifier = Modifier.size(248.dp)
         )
         Text(
             text = "${(progress * 100).toInt()}%",
@@ -257,7 +257,7 @@ fun HolaSamantha(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         // Background Image
         Image(
-            painter = painterResource(id = R.drawable.vista_dashboard2_awaq),
+            painter = painterResource(id = R.drawable.vista_perfil_awaq),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = Modifier.fillMaxSize()
@@ -357,11 +357,18 @@ fun HolaSamantha(navController: NavController) {
         }
 
 
-        // Bottom Navigation Bar
-        BottomNavigationBar(
-            navController = navController,
-            modifier = Modifier.align(Alignment.BottomCenter)
-        )
+        // Bottom Navigation Bar with semi-transparent background
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(SecondaryColor.copy(alpha = 0.2f)) // Semi-transparent background
+                .align(Alignment.BottomEnd)
+        ) {
+            BottomNavigationBar(
+                navController = navController,
+                modifier = Modifier.padding(vertical = 8.dp) // Add padding if needed
+            )
+        }
     }
 }
 

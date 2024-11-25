@@ -9,6 +9,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="SecurePath 2.55 - Juntar Auth, Dao y front">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/avance.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/fondo_decor_awaq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_dashboard1_awaq.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_dashboard_awaq.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_home_awaq.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p_ m__[Changes]/shelved.patch" beforeDir="false" />
     <list default="true" id="29e8b64d-2f67-41c3-9f49-f6574a592e0d" name="Changes" comment="Secure Path 2.56 - Front implementado">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_11_2024_05_13_p__m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2024_05_49_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2024_05_49_p__m___Changes_.xml" afterDir="false" />
@@ -18,6 +29,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/EditarPerfil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/view/EditarPerfil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/ic_warning.png" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/ic_warning.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/test_profile_picture.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/test_profile_picture.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_dashboard2_awaq.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_dashboard2_awaq.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_perfil_awaq.png" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/res/drawable/vista_perfil_awaq.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/model/CamarasTrampa.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/model/CamarasTrampa.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/model/FaunaBusquedalibre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/SecurePath-main/app/src/main/java/com/example/avance/model/FaunaBusquedalibre.kt" afterDir="false" />

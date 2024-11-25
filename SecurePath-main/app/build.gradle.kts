@@ -19,6 +19,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+        // Agregar placeholders para pruebas unitarias
+        manifestPlaceholders["auth0Domain"] = "example.auth0.com"
+        manifestPlaceholders["auth0Scheme"] = "https"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -101,19 +108,4 @@ dependencies {
     //Front
     implementation(libs.androidx.material.icons.extended)
 }
-android {
-    defaultConfig {
-        applicationId = "com.example.avance"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
-
-        // Agregar placeholders para pruebas unitarias
-        manifestPlaceholders["auth0Domain"] = "example.auth0.com"
-        manifestPlaceholders["auth0Scheme"] = "https"
-    }
-}

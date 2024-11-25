@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.avance.ui.theme.PrimaryColor
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
@@ -40,7 +41,7 @@ fun FormSelect2(
             TopAppBar(
                 title = { Text("Fauna en Punto de Conteo", color = Color.White, fontSize = fontSize.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
+                    containerColor = PrimaryColor
                 )
             )
         }
@@ -97,7 +98,7 @@ fun FormSelect2(
             Spacer(modifier = Modifier.height(8.dp))
             Button(
                 onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
@@ -127,7 +128,7 @@ fun FormSelect2(
             ) {
                 Button(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
@@ -136,7 +137,7 @@ fun FormSelect2(
                         viewModel.saveFaunaConteo()
                         navController.navigate("hola_samantha")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }

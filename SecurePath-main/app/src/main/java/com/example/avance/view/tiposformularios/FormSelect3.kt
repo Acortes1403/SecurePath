@@ -3,20 +3,28 @@ package com.example.avance.view.tiposformularios
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
+import com.example.avance.R
+import com.example.avance.ui.theme.PrimaryColor
+import com.example.avance.ui.theme.SecondaryColor
+import com.example.avance.view.SelectableOption
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,16 +39,33 @@ fun FormSelect3(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         if (uri != null) {
-            viewModel.updateImageUri(uri.toString()) // Guarda el URI de la imagen en el ViewModel
+            viewModel.updateImageUri(uri.toString())
         }
     }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Fauna Búsqueda Libre", color = Color.White, fontSize = fontSize.sp) },
+                title = {
+                    Text(
+                        "Fauna Búsqueda Libre",
+                        color = Color.White,
+                        fontSize = fontSize.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                },
+                navigationIcon = {
+                    Text(
+                        text = "<",
+                        color = Color.White,
+                        fontSize = 24.sp,
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .clickable { navController.popBackStack() }
+                    )
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
+                    containerColor = PrimaryColor
                 )
             )
         }
@@ -52,95 +77,183 @@ fun FormSelect3(
                 .padding(16.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            // Campo de Código
-            FormTextField("Código", formData.codigof4, fontSize) { viewModel.updateCodigof4(it) }
+            // Código Field
+            FormTextField(
+                label = "Código",
+                value = formData.codigof4,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateCodigof4
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Zona
-            Text("Zona", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            // Zona Section
+            Text(
+                text = "Zona",
+                fontWeight = FontWeight.Bold,
+                fontSize = fontSize.sp,
+                color = PrimaryColor
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                ObservationRadioButton("Bosque", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
-                ObservationRadioButton("Arreglo Agroforestal", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
-                ObservationRadioButton("Cultivos Transitorios", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
-                ObservationRadioButton("Cultivos Permanentes", formData.selectedZone, fontSize) { viewModel.updateZone(it) }
+                val zones = listOf("Bosque", "Arreglo Agroforestal", "Cultivos Transitorios", "Cultivos Permanentes")
+                zones.forEach { zone ->
+                    SelectableOption(
+                        label = zone,
+                        selectedOption = formData.selectedZone,
+                        fontSize = fontSize,
+                        onSelected = viewModel::updateZone
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Nombre Común
-            FormTextField("Nombre Común", formData.commonName, fontSize) { viewModel.updateCommonName(it) }
+            // Nombre Común and Científico Fields
+            FormTextField(
+                label = "Nombre Común",
+                value = formData.commonName,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateCommonName
+            )
 
-            // Nombre Científico
-            FormTextField("Nombre Científico", formData.scientificName, fontSize) { viewModel.updateScientificName(it) }
+            // Nombre Científico Field
+            FormTextField(
+                label = "Nombre Científico",
+                value = formData.scientificName,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateScientificName
+            )
 
-            // Número de Individuos
-            FormTextField("Número de Individuos", formData.individualCount, fontSize, isNumeric = true) { viewModel.updateIndividualCount(it) }
+            // Número de Individuos Field
+            FormTextField(
+                label = "Número de Individuos",
+                value = formData.individualCount,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateIndividualCount
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Tipo de Observación
-            Text("Tipo de Observación", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            // Tipo de Observación Section
+            Text(
+                text = "Tipo de Observación",
+                fontWeight = FontWeight.Bold,
+                fontSize = fontSize.sp,
+                color = PrimaryColor
+            )
             Spacer(modifier = Modifier.height(8.dp))
-            Column(modifier = Modifier.fillMaxWidth()) {
-                ObservationRadioButton("La Vió", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Huella", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Rastro", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Cacería", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
-                ObservationRadioButton("Le Dijeron", formData.selectedObservation, fontSize) { viewModel.updateSelectedObservation(it) }
+            Column {
+                val observations = listOf("La Vió", "Huella", "Rastro", "Cacería", "Le Dijeron")
+                observations.forEach { observation ->
+                    SelectableOption(
+                        label = observation,
+                        selectedOption = formData.selectedObservation,
+                        fontSize = fontSize,
+                        onSelected = viewModel::updateSelectedObservation
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            // Evidencias Section
+            Text(
+                text = "Evidencias",
+                fontWeight = FontWeight.Bold,
+                fontSize = fontSize.sp,
+                color = PrimaryColor
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Button(
-                onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
-                modifier = Modifier.fillMaxWidth()
+                onClick = { imagePickerLauncher.launch("image/*") },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
             ) {
                 Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Observaciones
-            Text("Observaciones", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            // Observaciones Field
+            Text(
+                text = "Observaciones",
+                fontWeight = FontWeight.Bold,
+                fontSize = fontSize.sp,
+                color = PrimaryColor
+            )
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = formData.observationNotes,
                 onValueChange = { viewModel.updateObservationNotes(it) },
+                placeholder = { Text("Observaciones", fontSize = fontSize.sp, color = SecondaryColor) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(120.dp),
-                placeholder = { Text("Observaciones", fontSize = fontSize.sp) },
-                textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+                textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp),
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color.White,
+                    focusedIndicatorColor = PrimaryColor,
+                    unfocusedIndicatorColor = Color.Gray
+                )
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Botones de Acción
+            // Action Buttons
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
-                    Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
+                    Text("ATRÁS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
                     onClick = {
-                        viewModel.saveFaunaBusquedalibre() //Boton para guardar datos de formulario y faunaBusquedalibre
+                        viewModel.saveFaunaBusquedalibre()
                         navController.navigate("hola_samantha")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FormTextField(
+    label: String,
+    value: String,
+    fontSize: Float,
+    modifier: Modifier = Modifier,
+    isNumeric: Boolean = false, // New parameter for numeric input handling
+    onValueChange: (String) -> Unit
+) {
+    TextField(
+        value = value,
+        onValueChange = { input ->
+            // Validate input for numeric fields
+            if (!isNumeric || input.all { it.isDigit() }) {
+                onValueChange(input)
+            }
+        },
+        label = { Text(label, fontSize = fontSize.sp, color = PrimaryColor) },
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(4.dp),
+        singleLine = true,
+        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp),
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.White,
+            focusedIndicatorColor = PrimaryColor,
+            unfocusedIndicatorColor = Color.Gray
+        ),
+        keyboardOptions = if (isNumeric) KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number) else KeyboardOptions.Default
+    )
 }
