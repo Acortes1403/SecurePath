@@ -1,6 +1,10 @@
 package com.example.avance.view.tiposformularios
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.avance.R
+import com.example.avance.ui.theme.PrimaryColor
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
@@ -27,18 +32,31 @@ import com.example.avance.viewmodel.FormularioViewModel
 fun FormSelect5(
     navController: NavController,
     viewModel: FormularioViewModel = viewModel(),
-    fontSizeViewModel: FontSizeViewModel = viewModel() // Obtenemos fontSize desde FontSizeViewModel
+    fontSizeViewModel: FontSizeViewModel = viewModel() // Obtain fontSize from FontSizeViewModel
 ) {
     val formData = viewModel.formData.value
-    val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
+    val fontSize by fontSizeViewModel.fontSize.collectAsState()
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let { viewModel.updateImageUri(it.toString()) }
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Parcela de Vegetación", color = Color.White, fontSize = fontSize.sp) },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
-                )
+                title = { Text("Parcela de Vegetación", fontSize = 20.sp, color = Color.White) },
+                navigationIcon = {
+                    Text(
+                        text = "<",
+                        fontSize = 18.sp,
+                        color = Color.Black,
+                        modifier = Modifier
+                            .padding(horizontal = 12.dp)
+                            .clickable { navController.popBackStack() }
+                    )
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = PrimaryColor)
             )
         }
     ) { padding ->
@@ -54,49 +72,22 @@ fun FormSelect5(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Cuadrante
-            Text("Cuadrante", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            // Quadrant Section
+            Text(text = "Cuadrante", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
-
-            // Primera fila de cuadrantes: A y B
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                QuadrantButton(label = "A", isSelected = formData.selectedQuadrant == "A", fontSize) {
-                    viewModel.updateSelectedQuadrant("A")
-                }
-                QuadrantButton(label = "B", isSelected = formData.selectedQuadrant == "B", fontSize) {
-                    viewModel.updateSelectedQuadrant("B")
-                }
-            }
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Segunda fila de cuadrantes: C, D, E, F, G, H
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                QuadrantButton(label = "C", isSelected = formData.selectedQuadrant == "C", fontSize) {
-                    viewModel.updateSelectedQuadrant("C")
-                }
-                QuadrantButton(label = "D", isSelected = formData.selectedQuadrant == "D", fontSize) {
-                    viewModel.updateSelectedQuadrant("D")
-                }
-                QuadrantButton(label = "E", isSelected = formData.selectedQuadrant == "E", fontSize) {
-                    viewModel.updateSelectedQuadrant("E")
-                }
-                QuadrantButton(label = "F", isSelected = formData.selectedQuadrant == "F", fontSize) {
-                    viewModel.updateSelectedQuadrant("F")
-                }
-                QuadrantButton(label = "G", isSelected = formData.selectedQuadrant == "G", fontSize) {
-                    viewModel.updateSelectedQuadrant("G")
-                }
-                QuadrantButton(label = "H", isSelected = formData.selectedQuadrant == "H", fontSize) {
-                    viewModel.updateSelectedQuadrant("H")
-                }
-            }
+            QuadrantSection(
+                selectedABQuadrant = formData.selectedABQuadrant,
+                selectedCGQuadrant = formData.selectedCGQuadrant,
+                onABClick = { abQuadrant ->
+                    viewModel.updateSelectedQuadrant("AB") // Ensure this updates the AB quadrant
+                    viewModel.updateSelectedABQuadrant(abQuadrant) // Update selectedABQuadrant directly
+                },
+                onCGClick = { cgQuadrant ->
+                    viewModel.updateSelectedQuadrant("CG") // Ensure this updates the CG quadrant
+                    viewModel.updateSelectedCGQuadrant(cgQuadrant) // Update selectedCGQuadrant directly
+                },
+                fontSize = fontSize
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -108,7 +99,14 @@ fun FormSelect5(
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 listOf("1", "2", "3", "4").forEach { label ->
-                    QuadrantButton(label = label, isSelected = formData.selectedSubQuadrant == label, fontSize) {
+                    QuadrantButton(
+                        label = label,
+                        isSelected = formData.selectedSubQuadrant == label,
+                        fontSize = fontSize,
+                        shape = RoundedCornerShape(50),
+                        modifier = Modifier
+                            .size(fontSize.dp * 5) // Larger size for better visibility
+                    ) {
                         viewModel.updateSelectedSubQuadrant(label)
                     }
                 }
@@ -155,8 +153,8 @@ fun FormSelect5(
             Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Button(
-                onClick = { /* Acción para elegir archivos */ },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+                onClick = { imagePickerLauncher.launch("image/*") },
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
@@ -186,16 +184,16 @@ fun FormSelect5(
             ) {
                 Button(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
                 Button(
                     onClick = {
-                        viewModel.saveParcelaVegetacion() //Boton para guardar datos de formulario y parcela vegetacion
+                        viewModel.saveParcelaVegetacion()
                         navController.navigate("hola_samantha")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }
@@ -204,43 +202,136 @@ fun FormSelect5(
     }
 }
 
+
 @Composable
-fun QuadrantButton(label: String, isSelected: Boolean, fontSize: Float, onClick: () -> Unit) {
-    Column(
-        modifier = Modifier
+fun QuadrantButton(
+    label: String,
+    isSelected: Boolean,
+    fontSize: Float,
+    shape: RoundedCornerShape,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
             .clickable(onClick = onClick)
             .border(
                 width = 2.dp,
-                color = if (isSelected) Color(0xFFA4C639) else Color.Gray,
-                shape = RoundedCornerShape(8.dp)
+                color = if (isSelected) Color(0xFFA8D8A2) else Color.Gray,
+                shape = shape
             )
-            .padding(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(
+                color = if (isSelected) Color(0xFFA8D8A2) else Color.Transparent,
+                shape = shape
+            )
     ) {
-        Text(label, fontSize = fontSize.sp, color = if (isSelected) Color.Black else Color.Gray)
+        Text(
+            text = label,
+            fontSize = fontSize.sp,
+            color = if (isSelected) Color.Black else Color.Gray
+        )
     }
 }
 
+
 @Composable
-fun GrowthHabitButton(iconId: Int, label: String, isSelected: Boolean, fontSize: Float, onClick: () -> Unit) {
+fun GrowthHabitButton(
+    iconId: Int,
+    label: String,
+    isSelected: Boolean,
+    fontSize: Float,
+    onClick: () -> Unit
+) {
+    val iconSize = fontSize.dp * 8
     Column(
         modifier = Modifier
-            .size(width = 100.dp, height = 120.dp)
-            .clickable(onClick = onClick)
-            .border(
-                width = 2.dp,
-                color = if (isSelected) Color(0xFFA4C639) else Color.Gray,
-                shape = RoundedCornerShape(8.dp)
+            .padding(8.dp)
+            .size(iconSize) // Adjust size for button
+            .background(
+                color = if (isSelected) Color(0xFFDCE775) else Color.Transparent, // Highlight color when selected
+                shape = MaterialTheme.shapes.medium
             )
-            .padding(8.dp),
+            .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Icon
         Image(
             painter = painterResource(id = iconId),
             contentDescription = label,
-            modifier = Modifier.size(48.dp)
+            modifier = Modifier
+                .weight(1f) // Use weight to push the icon to the top
+                .fillMaxWidth()
+                .padding(8.dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(label, fontSize = fontSize.sp, color = Color.Black)
+        // Label
+        Text(
+            text = label,
+            fontSize = fontSize.sp,
+            color = if (isSelected) Color.Black else Color.Gray, // Highlight text if selected
+            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+            modifier = Modifier.padding(bottom = 8.dp) // Ensure spacing at the bottom
+        )
+    }
+}
+
+
+@Composable
+fun QuadrantSection(
+    selectedABQuadrant: String?,
+    selectedCGQuadrant: String?,
+    onABClick: (String) -> Unit,
+    onCGClick: (String) -> Unit,
+    fontSize: Float
+) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        // First Row: Quadrants A and B
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            QuadrantButton(
+                label = "A",
+                isSelected = selectedABQuadrant == "A",
+                fontSize = fontSize,
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier.size(fontSize.dp * 8)
+            ) {
+                onABClick("A")
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            QuadrantButton(
+                label = "B",
+                isSelected = selectedABQuadrant == "B",
+                fontSize = fontSize,
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier.size(fontSize.dp * 8)
+            ) {
+                onABClick("B")
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Second Column: Quadrants C-G
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            listOf("C", "D", "E", "F", "G").forEach { label ->
+                QuadrantButton(
+                    label = label,
+                    isSelected = selectedCGQuadrant == label,
+                    fontSize = fontSize,
+                    shape = RoundedCornerShape(20),
+                    modifier = Modifier
+                        .fillMaxWidth(0.25f)
+                        .height(50.dp)
+                ) {
+                    onCGClick(label)
+                }
+            }
+        }
     }
 }

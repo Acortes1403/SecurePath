@@ -1,5 +1,8 @@
 package com.example.avance.view.tiposformularios
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -14,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.avance.ui.theme.PrimaryColor
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
@@ -26,13 +30,20 @@ fun FormSelect6(
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            viewModel.updateImageUri(uri.toString()) // Guarda el URI de la imagen en el ViewModel
+        }
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Cámaras Trampa", color = Color.White, fontSize = fontSize.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
+                    containerColor = PrimaryColor
                 )
             )
         }
@@ -135,8 +146,8 @@ fun FormSelect6(
             Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Button(
-                onClick = { /* Acción para elegir archivos */ },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+                onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
@@ -166,7 +177,7 @@ fun FormSelect6(
             ) {
                 Button(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
@@ -175,7 +186,7 @@ fun FormSelect6(
                         viewModel.saveCamarasTrampa() //Boton para guardar datos de formulario y camaras trampa
                         navController.navigate("hola_samantha")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }

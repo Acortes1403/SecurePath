@@ -1,5 +1,8 @@
 package com.example.avance.view.tiposformularios
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.avance.ui.theme.PrimaryColor
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
@@ -21,16 +25,23 @@ fun FormSelect4(
     navController: NavController,
     viewModel: FormularioViewModel = viewModel(),
     fontSizeViewModel: FontSizeViewModel = viewModel() // Obtenemos fontSize desde FontSizeViewModel
+
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
-
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            viewModel.updateImageUri(uri.toString()) // Guarda el URI de la imagen en el ViewModel
+        }
+    }
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Validación de Cobertura", color = Color.White, fontSize = fontSize.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
+                    containerColor = PrimaryColor
                 )
             )
         }
@@ -101,12 +112,11 @@ fun FormSelect4(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Evidencias
             Text("Evidencias", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Button(
-                onClick = { /* Acción para elegir archivos */ },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+                onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
@@ -136,7 +146,7 @@ fun FormSelect4(
             ) {
                 Button(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
@@ -145,7 +155,7 @@ fun FormSelect4(
                         viewModel.saveValidacionCobertura() //Boton para guardar datos de formulario y ValidacionCobertura
                         navController.navigate("hola_samantha")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }
