@@ -1,6 +1,7 @@
 package com.example.avance.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,7 +21,8 @@ import com.example.avance.R
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 import androidx.navigation.compose.rememberNavController
-
+import com.example.avance.ui.theme.PrimaryColor
+import com.example.avance.ui.theme.SecondaryColor
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,11 +34,19 @@ fun FormularioScreen(
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState()
+    var selectedWeather by remember { mutableStateOf("Soleado") }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Formulario", color = Color.White, fontSize = fontSize.sp) },
+                title = {
+                    Text(
+                        "Formulario",
+                        color = Color.White,
+                        fontSize = fontSize.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                },
                 navigationIcon = {
                     Text(
                         text = "<",
@@ -48,7 +58,7 @@ fun FormularioScreen(
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
+                    containerColor = PrimaryColor // Use app's primary color
                 )
             )
         }
@@ -60,16 +70,26 @@ fun FormularioScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
         ) {
-            FormTextField("Nombre", formData.name, fontSize = fontSize, onValueChange = viewModel::updateName)
-            FormTextField("Fecha", formData.date, fontSize = fontSize, onValueChange = viewModel::updateDate)
+            FormTextField(
+                label = "Nombre",
+                value = formData.name,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateName
+            )
+            FormTextField(
+                label = "Fecha",
+                value = formData.date,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateDate
+            )
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 FormTextField(
-                    "Localidad",
-                    formData.location,
+                    label = "Localidad",
+                    value = formData.location,
                     fontSize = fontSize,
                     onValueChange = viewModel::updateLocation,
                     modifier = Modifier.weight(1f)
@@ -85,34 +105,84 @@ fun FormularioScreen(
                 }
             }
 
-            FormTextField("Hora", formData.hora, fontSize = fontSize, onValueChange = viewModel::updateHora)
-            FormTextField("Número de Transecto", formData.transectNumber, fontSize = fontSize, onValueChange = viewModel::updateTransectNumber)
+            FormTextField(
+                label = "Hora",
+                value = formData.hora,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateHora
+            )
+            FormTextField(
+                label = "Número de Transecto",
+                value = formData.transectNumber,
+                fontSize = fontSize,
+                onValueChange = viewModel::updateTransectNumber
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text("Estado del Tiempo", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            // Weather Condition Section
+            Text(
+                text = "Estado del Tiempo",
+                fontWeight = FontWeight.Bold,
+                fontSize = fontSize.sp,
+                color = PrimaryColor
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                WeatherIcon(iconId = R.drawable.ic_soleado, description = "Soleado")
-                WeatherIcon(iconId = R.drawable.ic_nublado, description = "Nublado")
-                WeatherIcon(iconId = R.drawable.ic_lluvioso, description = "Lluvioso")
+
+                WeatherIcon(
+                    iconId = R.drawable.ic_soleado,
+                    description = "Soleado",
+                    isSelected = selectedWeather == "Soleado",
+                    fontSize = fontSize,
+                    onClick = { selectedWeather = "Soleado" }
+                )
+                WeatherIcon(
+                    iconId = R.drawable.ic_nublado,
+                    description = "Nublado",
+                    isSelected = selectedWeather == "Nublado",
+                    fontSize = fontSize,
+                    onClick = { selectedWeather = "Nublado" }
+                )
+                WeatherIcon(
+                    iconId = R.drawable.ic_lluvioso,
+                    description = "Lluvioso",
+                    isSelected = selectedWeather == "Lluvioso",
+                    fontSize = fontSize,
+                    onClick = { selectedWeather = "Lluvioso" }
+                )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text("Tipo de Registro", fontWeight = FontWeight.Bold, fontSize = fontSize.sp)
+            Text(
+                text = "Tipo de Registro",
+                fontWeight = FontWeight.Bold,
+                fontSize = fontSize.sp,
+                color = PrimaryColor
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Column {
-                SelectableOption("Fauna en Transectos", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna en Transectos") }
-                SelectableOption("Fauna en Punto de Conteo", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna en Punto de Conteo") }
-                SelectableOption("Fauna Búsqueda Libre", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Fauna Búsqueda Libre") }
-                SelectableOption("Validación de Cobertura", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Validación de Cobertura") }
-                SelectableOption("Parcela de Vegetación", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Parcela de Vegetación") }
-                SelectableOption("Cámaras Trampa", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Cámaras Trampa") }
-                SelectableOption("Variables Climáticas", formData.tipoDeRegistro, fontSize) { viewModel.updateRegistro("Variables Climáticas") }
+                val options = listOf(
+                    "Fauna en Transectos",
+                    "Fauna en Punto de Conteo",
+                    "Fauna Búsqueda Libre",
+                    "Validación de Cobertura",
+                    "Parcela de Vegetación",
+                    "Cámaras Trampa",
+                    "Variables Climáticas"
+                )
+                options.forEach { option ->
+                    SelectableOption(
+                        label = option,
+                        selectedOption = formData.tipoDeRegistro,
+                        fontSize = fontSize,
+                        onSelected = { viewModel.updateRegistro(it) }
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -130,33 +200,59 @@ fun FormularioScreen(
                     }
                 },
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
             ) {
-                Text("SIGUIENTE", color = Color.White, fontSize = fontSize.sp)
+                Text("SIGUIENTE", color = Color.White, fontSize = fontSize.sp, fontWeight = FontWeight.Bold)
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormTextField(label: String, value: String, fontSize: Float, modifier: Modifier = Modifier, onValueChange: (String) -> Unit) {
     TextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text(label, fontSize = fontSize.sp) },
-        modifier = modifier.fillMaxWidth().padding(4.dp),
+        label = { Text(label, fontSize = fontSize.sp, color = PrimaryColor) },
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(4.dp),
         singleLine = true,
-        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp)
+        textStyle = LocalTextStyle.current.copy(fontSize = fontSize.sp),
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.White,
+            focusedIndicatorColor = PrimaryColor,
+            unfocusedIndicatorColor = Color.Gray
+        )
     )
 }
 
 @Composable
-fun WeatherIcon(iconId: Int, description: String, onClick: () -> Unit = {}) {
-    IconButton(onClick = onClick) {
+fun WeatherIcon(
+    iconId: Int,
+    description: String,
+    isSelected: Boolean,
+    fontSize: Float,
+    onClick: () -> Unit
+) {
+    val iconSize = fontSize.dp * 8 // Adjust size based on fontSize
+
+    Box(
+        modifier = Modifier
+            .size(iconSize)
+            .padding(4.dp)
+            .background(
+                color = if (isSelected) Color(0xFFDCE775) else Color.Transparent, // Highlight color
+                shape = MaterialTheme.shapes.medium
+            )
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
         Image(
             painter = painterResource(id = iconId),
             contentDescription = description,
-            modifier = Modifier.size(48.dp)
+            modifier = Modifier.size(iconSize * 0.8f) // Slightly smaller to fit inside the background
         )
     }
 }
@@ -172,9 +268,15 @@ fun SelectableOption(label: String, selectedOption: String?, fontSize: Float, on
     ) {
         RadioButton(
             selected = (label == selectedOption),
-            onClick = { onSelected(label) }
+            onClick = { onSelected(label) },
+            colors = RadioButtonDefaults.colors(
+                selectedColor = PrimaryColor,
+                unselectedColor = SecondaryColor
+            )
         )
-        Text(label, fontSize = fontSize.sp)
-    }}
+        Text(label, fontSize = fontSize.sp, color = if (label == selectedOption) PrimaryColor else Color.Gray)
+    }
+}
+
 
 

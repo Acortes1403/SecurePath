@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.avance.ui.theme.PrimaryColor
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
@@ -24,6 +25,7 @@ fun FormSelect4(
     navController: NavController,
     viewModel: FormularioViewModel = viewModel(),
     fontSizeViewModel: FontSizeViewModel = viewModel() // Obtenemos fontSize desde FontSizeViewModel
+
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState() // Recogemos el valor de fontSize
@@ -39,7 +41,7 @@ fun FormSelect4(
             TopAppBar(
                 title = { Text("Validación de Cobertura", color = Color.White, fontSize = fontSize.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
+                    containerColor = PrimaryColor
                 )
             )
         }
@@ -114,7 +116,7 @@ fun FormSelect4(
             Spacer(modifier = Modifier.height(8.dp))
             Button(
                 onClick = { imagePickerLauncher.launch("image/*") }, // Abre la galería de imágenes
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4A5E23)),
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Elige archivo", color = Color.White, fontSize = fontSize.sp)
@@ -144,7 +146,7 @@ fun FormSelect4(
             ) {
                 Button(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
@@ -153,7 +155,7 @@ fun FormSelect4(
                         viewModel.saveValidacionCobertura() //Boton para guardar datos de formulario y ValidacionCobertura
                         navController.navigate("hola_samantha")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }

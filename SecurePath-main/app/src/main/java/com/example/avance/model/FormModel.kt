@@ -38,6 +38,8 @@ data class FormData(
     var biomonHeight: String = "",
     var height: String = "",
     var selectedQuadrant: String? = null,
+    var selectedABQuadrant: String = "",
+    var selectedCGQuadrant: String = "",
     var selectedSubQuadrant: String? = null,
     var selectedGrowthHabit: String? = null,  // Hábito de crecimiento (Arbusto, Arbolito, Árbol)
     var placa: String = "",  // Placa identificadora

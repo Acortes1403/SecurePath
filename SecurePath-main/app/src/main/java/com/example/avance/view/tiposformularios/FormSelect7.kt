@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.avance.ui.theme.PrimaryColor
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
 
@@ -32,7 +33,7 @@ fun FormSelect7(
             TopAppBar(
                 title = { Text("Variables Climáticas", color = Color.White, fontSize = fontSize.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFA4C639)
+                    containerColor = PrimaryColor
                 )
             )
         }
@@ -93,7 +94,7 @@ fun FormSelect7(
             ) {
                 Button(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA4C639))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ATRAS", color = Color.White, fontSize = fontSize.sp)
                 }
@@ -102,7 +103,7 @@ fun FormSelect7(
                         viewModel.saveVariablesClimaticas() //Boton para guardar datos de formulario y variaciones climaticas
                         navController.navigate("hola_samantha")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor)
                 ) {
                     Text("ENVIAR", color = Color.White, fontSize = fontSize.sp)
                 }
