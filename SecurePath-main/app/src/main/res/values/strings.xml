@@ -1,6 +1,6 @@
 <resources>
     <!-- Nombre de la aplicación -->
-    <string name="app_name">AWAQ_SP</string>
+    <string name="app_name">Awaq</string>
 
     <!-- Configuración de Auth0 -->
     <string name="com_auth0_domain">dev-6vzyeoluir57rec7.us.auth0.com</string>

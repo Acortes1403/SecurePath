@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +23,11 @@ fun FormularioActivity(
     id: Int,
     navController: NavController
 ) {
-    // Obtenemos el formulario por ID desde el ViewModel
+    // Reset the form data when entering the screen
+    LaunchedEffect(Unit) {
+        viewModel.resetFormData()
+    }
+        // Obtenemos el formulario por ID desde el ViewModel
     val formulario = viewModel.getFormularioById(id).collectAsState(initial = null).value
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -31,7 +36,7 @@ fun FormularioActivity(
             title = { Text("Detalles del Formulario", fontSize = 20.sp) },
             navigationIcon = {
                 Text(
-                    text = "<--",
+                    text = "<",
                     fontSize = 18.sp,
                     color = Color.Black,
                     modifier = Modifier

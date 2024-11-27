@@ -40,6 +40,9 @@ class FormularioViewModel(
     val formData = mutableStateOf(FormData())
 
     // Métodos para actualizar los datos del formulario
+    fun resetFormData() {
+        formData.value = FormData() // Reset to default state
+    }
     fun updateName(value: String) { formData.value = formData.value.copy(name = value) }
     fun updateDate(value: String) { formData.value = formData.value.copy(date = value) }
     fun updateLocation(value: String) { formData.value = formData.value.copy(location = value) }
@@ -60,6 +63,8 @@ class FormularioViewModel(
     fun updateBiomonHeight(height: String) { formData.value = formData.value.copy(biomonHeight = height) }
     fun updateHeight(height: String) { formData.value = formData.value.copy(height = height) }
     fun updateSelectedQuadrant(quadrant: String) { formData.value = formData.value.copy(selectedQuadrant = quadrant) }
+    fun updateSelectedABQuadrant(quadrant: String) { formData.value = formData.value.copy(selectedABQuadrant = quadrant) }
+    fun updateSelectedCGQuadrant(quadrant: String) { formData.value = formData.value.copy(selectedCGQuadrant = quadrant) }
     fun updateSelectedSubQuadrant(subQuadrant: String) { formData.value = formData.value.copy(selectedSubQuadrant = subQuadrant) }
     fun updateZone(selectedZone: String) { formData.value = formData.value.copy(selectedZone = selectedZone) }
     fun updateCameraName(name: String) { formData.value = formData.value.copy(cameraName = name) }
