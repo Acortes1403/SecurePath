@@ -27,7 +27,8 @@ import kotlinx.coroutines.launch
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 
 class FormularioViewModel(
@@ -41,8 +42,13 @@ class FormularioViewModel(
     private val formularioBaseDao: FormularioBaseDao,
     private val dao: FormularioBaseDao
 
+
 ): ViewModel() {
     val formData = mutableStateOf(FormData())
+    var location = mutableStateOf("")
+
+
+
 
 
     // Métodos para actualizar los datos del formulario
@@ -92,6 +98,8 @@ class FormularioViewModel(
     fun updateYesNo2(yesandno2: String) { formData.value = formData.value.copy(yesandno2 = yesandno2) }
     fun updateDisturbance(disturbance: String) { formData.value = formData.value.copy(disturbance = disturbance) }
     fun updateImageUri(uri: String) {formData.value = formData.value.copy(imagen = uri) }
+
+
 
     //ViewModel para guardar
     //FaunaTransecto
@@ -328,4 +336,12 @@ class FormularioViewModel(
     fun getFormularioById(formId: Int): Flow<FormularioBase?> {
         return dao.getFormularioById(formId)
     }
+    fun updateLatitude(latitude: Double) {
+        formData.value = formData.value.copy(latitude = latitude)
+    }
+
+    fun updateLongitude(longitude: Double) {
+        formData.value = formData.value.copy(longitude = longitude)
+    }
+
 }

@@ -29,12 +29,19 @@ fun FormSelect2(
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState()
 
+
+    // Estado para mostrar el mensaje
+    var selectedImageMessage by remember { mutableStateOf<String?>(null) }
+
     // Configura el ActivityResultLauncher para abrir la galería de imágenes
     val imagePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         if (uri != null) {
             viewModel.updateImageUri(uri.toString()) // Guarda el URI de la imagen en el ViewModel
+            selectedImageMessage = "Imagen seleccionada con éxito" // Actualiza el mensaje
+        } else {
+            selectedImageMessage = "No se seleccionó ninguna imagen" // Mensaje opcional
         }
     }
 

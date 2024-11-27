@@ -68,6 +68,12 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("com.google.android.gms:play-services-location:18.0.0")
+    implementation("androidx.core:core-ktx:1.10.0")
+    implementation ("com.google.android.gms:play-services-location:18.0.0")
+    implementation ("androidx.activity:activity-ktx:1.6.1")  // Asegúrate de tener esta dependencia
+    implementation ("androidx.activity:activity-compose:1.6.1")  // Asegúrate de tener esta dependencia también
+
 
     // Dependencias de navegación
     implementation(libs.androidx.navigation.compose)

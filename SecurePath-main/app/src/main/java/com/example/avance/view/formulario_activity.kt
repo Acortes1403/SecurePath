@@ -1,5 +1,11 @@
 package com.example.avance.view
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.location.Location
+import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.ActivityResultLauncher
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,7 +25,13 @@ import androidx.navigation.NavController
 import com.example.avance.R
 import com.example.avance.viewmodel.FontSizeViewModel
 import com.example.avance.viewmodel.FormularioViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.rememberNavController
+import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat
+import androidx.activity.compose.rememberLauncherForActivityResult
 
 
 
@@ -32,6 +44,31 @@ fun FormularioScreen(
 ) {
     val formData = viewModel.formData.value
     val fontSize by fontSizeViewModel.fontSize.collectAsState()
+
+    val context = LocalContext.current
+    val fusedLocationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
+
+    // Lanzador de permiso para ubicación
+    val requestPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission(),
+        onResult = { granted ->
+            if (granted) {
+                // Permiso concedido, obtener ubicación
+                obtenerUbicacion(fusedLocationClient, viewModel)
+            } else {
+                // Permiso denegado
+            }
+        }
+    )
+
+    // Comprobar si ya tenemos permiso
+    LaunchedEffect(context) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            obtenerUbicacion(fusedLocationClient, viewModel)
+        } else {
+            requestPermissionLauncher?.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -75,7 +112,7 @@ fun FormularioScreen(
                     modifier = Modifier.weight(1f)
                 )
                 IconButton(
-                    onClick = { /* Acción para abrir el mapa o buscar localización */ },
+                    onClick = { obtenerUbicacion(fusedLocationClient, viewModel) },
                     modifier = Modifier.size(48.dp)
                 ) {
                     Image(
@@ -175,6 +212,20 @@ fun SelectableOption(label: String, selectedOption: String?, fontSize: Float, on
             onClick = { onSelected(label) }
         )
         Text(label, fontSize = fontSize.sp)
-    }}
+    }
+}
 
-
+// Función para obtener la ubicación
+private fun obtenerUbicacion(fusedLocationClient: FusedLocationProviderClient, viewModel: FormularioViewModel) {
+    try {
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            location?.let {
+                val coordenadas = "${it.latitude}, ${it.longitude}"
+                viewModel.updateLocation(coordenadas)
+            }
+        }
+    } catch (e: SecurityException) {
+        // Manejo de excepción si no se tiene permiso
+        e.printStackTrace()
+    }
+}
